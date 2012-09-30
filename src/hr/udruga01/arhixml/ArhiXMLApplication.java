@@ -1,5 +1,7 @@
 package hr.udruga01.arhixml;
 
+import hr.udruga01.arhixml.modules.mainwindow.MainWindow;
+
 import com.vaadin.Application;
 import com.vaadin.ui.*;
 
@@ -8,7 +10,7 @@ public class ArhiXMLApplication extends Application {
 
     @Override
     public void init() {
-        Window mainWindow = new Window("ArhiXML");
+        Window mainWindow = new MainWindow("ArhiXML");
         setMainWindow(mainWindow);
     }
 }
