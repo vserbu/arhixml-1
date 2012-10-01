@@ -49,6 +49,7 @@ public class MainWindow extends Window {
         registrationUnitTable.setColumnHeader(HOLDER_ID_PROPERTY, "Imatelj Id");
         
         registrationUnitTable.setSelectable(true);
+        registrationUnitTable.addListener(controller);
         
         verticalLayout.addComponent(registrationUnitTable);
 

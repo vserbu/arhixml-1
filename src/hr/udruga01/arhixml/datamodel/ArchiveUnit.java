@@ -26,6 +26,7 @@ public class ArchiveUnit implements Serializable {
 
     /**
      * Sets the value of the measurementUnitId property.
+     * @param value - The value which will be stored in measurementUnitId property.
      */
     public void setMeasurementUnitId(int value) {
         this.measurementUnitId = value;
@@ -34,7 +35,7 @@ public class ArchiveUnit implements Serializable {
     /**
      * Gets the value of the amount property.
      * 
-     * @return possible object is {@link BigDecimal }
+     * @return possible object is {@link BigDecimal}
      */
     public BigDecimal getAmount() {
         return amount;
@@ -43,8 +44,7 @@ public class ArchiveUnit implements Serializable {
     /**
      * Sets the value of the amount property.
      * 
-     * @param value
-     *            allowed object is {@link BigDecimal }
+     * @param value - The value which will be stored in amount property. Allowed object is {@link BigDecimal}.
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
