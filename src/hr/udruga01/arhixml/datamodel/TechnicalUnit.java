@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "KolicinaTehnickihJedinica", propOrder = { "tvarneZnacajke" })
+@XmlType(name = "KolicinaTehnickihJedinica", propOrder = { "characteristics" })
 public class TechnicalUnit implements Serializable {
     private final static long serialVersionUID = 1L;
     

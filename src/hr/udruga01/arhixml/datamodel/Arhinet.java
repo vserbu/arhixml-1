@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "registraturnaJedinica" })
+@XmlType(name = "", propOrder = { "registrationUnits" })
 @XmlRootElement(name = "ARHiNET")
 public class Arhinet implements Serializable {
     private final static long serialVersionUID = 1L;

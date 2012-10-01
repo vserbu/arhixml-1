@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ARHiNET"
+           targetNamespace="http://arhinet.arhiv.hr/ARHiNET.xsd"
+           elementFormDefault="qualified"
+           xmlns:NS="http://arhinet.arhiv.hr/ARHiNET.xsd"
+           xmlns:nt="http://arhinet.arhiv.hr/ARHiNET.NT.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:import namespace="http://arhinet.arhiv.hr/ARHiNET.NT.xsd" schemaLocation="ARHiNET.NT.xsd" />
+
+    <xs:element name="ARHiNET">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="RegistraturnaJedinica" type="NS:RegistraturnaJedinica" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="RegistraturnaJedinica">
+        <xs:sequence>
+            <xs:element name="NapomenaORazdoblju" type="NS:StringMax1000" minOccurs="0" />
+            <xs:element name="Sadrzaj" type="xs:string" minOccurs="0" />
+            <xs:element name="Napomena" type="xs:string" minOccurs="0" />
+            <xs:element name="Oznaka" type="NS:Oznaka" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="Stvaratelj" type="NS:Stvaratelj" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="Gradja" type="NS:Gradja" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="Medij" type="NS:Medij" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="KolicinaArhivskihJedinica" type="NS:KolicinaArhivskihJedinica" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="KolicinaTehnickihJedinica" type="NS:KolicinaTehnickihJedinica" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="RegistraturnaJedinica" type="NS:RegistraturnaJedinica" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="RazinaId" type="xs:int" use="required" />
+        <xs:attribute name="Signatura" type="xs:int" use="required" />
+        <xs:attribute name="Naziv" type="NS:StringMax400" use="required" />
+        <xs:attribute name="ImateljId" type="xs:int" />
+        <xs:attribute name="GodinaOd" type="xs:int" />
+        <xs:attribute name="GodinaDo" type="xs:int" />
+    </xs:complexType>
+    <xs:complexType name="Oznaka">
+        <xs:attribute name="Naziv" type="NS:StringMax500" use="required" />
+        <xs:attribute name="VrstaOstaleOznakeId" type="nt:VrstaOznake" />
+    </xs:complexType>
+    <xs:complexType name="Stvaratelj">
+        <xs:sequence>
+            <xs:element name="NapomenaOStvaratelju" type="NS:StringMax2000" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="StvarateljId" type="xs:int" use="required" />
+        <xs:attribute name="UlogaId" type="nt:VrstaUloge" />
+        <xs:attribute name="Razdoblje" type="NS:StringMax200" />
+    </xs:complexType>
+    <xs:complexType name="Gradja">
+        <xs:attribute name="KomPodvrstaId" type="nt:KomPodvrsta" use="required" />
+    </xs:complexType>
+    <xs:complexType name="Medij">
+        <xs:attribute name="VrstaMedijaId" type="nt:VrstaMedija" use="required" />
+    </xs:complexType>
+    <xs:complexType name="KolicinaArhivskihJedinica">
+        <xs:attribute name="MjernaJedinicaId" type="nt:VrstaMjereJedinice" use="required" />
+        <xs:attribute name="Kolicina" type="xs:decimal" />
+    </xs:complexType>
+    <xs:complexType name="KolicinaTehnickihJedinica">
+        <xs:sequence>
+            <xs:element name="TvarneZnacajke" type="NS:StringMax500" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="VrstaTehnickeJediniceId" type="nt:VrstaTehnickeJedinice" use="required" />
+        <xs:attribute name="Kolicina" type="xs:decimal" />
+    </xs:complexType>
+
+    <xs:simpleType name="StringMax200">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax400">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="400" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax500">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="500" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax1000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax2000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2000" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

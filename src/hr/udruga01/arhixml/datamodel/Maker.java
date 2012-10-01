@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Stvaratelj", propOrder = { "napomenaOStvaratelju" })
+@XmlType(name = "Stvaratelj", propOrder = { "makerNote" })
 public class Maker implements Serializable {
     private final static long serialVersionUID = 1L;
     

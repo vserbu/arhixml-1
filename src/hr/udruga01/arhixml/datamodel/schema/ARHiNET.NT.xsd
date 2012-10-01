@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ARHiNET_NT"
+           targetNamespace="http://arhinet.arhiv.hr/ARHiNET.NT.xsd"
+           elementFormDefault="qualified"
+           xmlns:NS="http://arhinet.arhiv.hr/ARHiNET.NT.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="VrstaOznake">
+        <xs:annotation>
+            <xs:appinfo>NT_02_VrsteOstalihOznaka</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="3"><xs:annotation><xs:documentation>Stara signatura</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="4"><xs:annotation><xs:documentation>Izvorna uredska oznaka - Klasa</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="5"><xs:annotation><xs:documentation>Izvorna uredska oznaka - Urudžbeni broj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="6"><xs:annotation><xs:documentation>Registraturna oznaka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="7"><xs:annotation><xs:documentation>Inventarni broj</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VrstaUloge">
+        <xs:annotation>
+            <xs:appinfo>NT_02_VrsteUloge</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1"><xs:annotation><xs:documentation>stvaratelj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="2"><xs:annotation><xs:documentation>autor</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="3"><xs:annotation><xs:documentation>primatelj pisma</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="4"><xs:annotation><xs:documentation>pošiljatelj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="5"><xs:annotation><xs:documentation>pisar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="6"><xs:annotation><xs:documentation>potpisnik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="7"><xs:annotation><xs:documentation>urednik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="8"><xs:annotation><xs:documentation>nakladnik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="9"><xs:annotation><xs:documentation>prevoditelj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="10"><xs:annotation><xs:documentation>kartograf</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="11"><xs:annotation><xs:documentation>graver</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="12"><xs:annotation><xs:documentation>bakrorezac</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="13"><xs:annotation><xs:documentation>litograf</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="14"><xs:annotation><xs:documentation>graver u kovini</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="15"><xs:annotation><xs:documentation>tiskar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="16"><xs:annotation><xs:documentation>tiskar gravura</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="17"><xs:annotation><xs:documentation>izvođač</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="18"><xs:annotation><xs:documentation>fotograf</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="19"><xs:annotation><xs:documentation>drvorezac</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="20"><xs:annotation><xs:documentation>redatelj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="21"><xs:annotation><xs:documentation>scenarist</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="22"><xs:annotation><xs:documentation>prerađivač</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="23"><xs:annotation><xs:documentation>autor predloška</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="24"><xs:annotation><xs:documentation>skladatelj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="25"><xs:annotation><xs:documentation>dirigent</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="26"><xs:annotation><xs:documentation>organizator izložbe</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="27"><xs:annotation><xs:documentation>nesigurno autorstvo</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="28"><xs:annotation><xs:documentation>filmski montažer</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="29"><xs:annotation><xs:documentation>iluminator</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="30"><xs:annotation><xs:documentation>ilustrator</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="31"><xs:annotation><xs:documentation>pripovjedač</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="32"><xs:annotation><xs:documentation>začetnik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="33"><xs:annotation><xs:documentation>drugo</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="34"><xs:annotation><xs:documentation>podnositelj zahtjeva za patent</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="35"><xs:annotation><xs:documentation>vlasnik patenta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="36"><xs:annotation><xs:documentation>producent</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="37"><xs:annotation><xs:documentation>recenzent</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="38"><xs:annotation><xs:documentation>glumac</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="39"><xs:annotation><xs:documentation>aranžer</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="40"><xs:annotation><xs:documentation>umjetnik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="41"><xs:annotation><xs:documentation>sakupljač</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="43"><xs:annotation><xs:documentation>investitor</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="44"><xs:annotation><xs:documentation>projektant</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="45"><xs:annotation><xs:documentation>destinatar</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="KomPodvrsta">
+        <xs:annotation>
+            <xs:appinfo>NT_02_KomPodvrste</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1"><xs:annotation><xs:documentation>Spis</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="2"><xs:annotation><xs:documentation>Isprava</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="3"><xs:annotation><xs:documentation>Rukopis</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="4"><xs:annotation><xs:documentation>Knjiga</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="5"><xs:annotation><xs:documentation>Crtež</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="6"><xs:annotation><xs:documentation>Fototisak</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="7"><xs:annotation><xs:documentation>Plakat</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="8"><xs:annotation><xs:documentation>Razglednica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="9"><xs:annotation><xs:documentation>Slika</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="10"><xs:annotation><xs:documentation>Otisak</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="11"><xs:annotation><xs:documentation>Zemljopisna karta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="12"><xs:annotation><xs:documentation>Atlas</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="13"><xs:annotation><xs:documentation>Dijagram</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="14"><xs:annotation><xs:documentation>Globus</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="15"><xs:annotation><xs:documentation>Model</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="16"><xs:annotation><xs:documentation>Prezentacijski list</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="17"><xs:annotation><xs:documentation>Skica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="18"><xs:annotation><xs:documentation>Pogled</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="19"><xs:annotation><xs:documentation>Plan</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="20"><xs:annotation><xs:documentation>Arhitektonski nacrt</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="21"><xs:annotation><xs:documentation>Dijagram</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="22"><xs:annotation><xs:documentation>Model</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="23"><xs:annotation><xs:documentation>Prezentacijski list</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="24"><xs:annotation><xs:documentation>Skica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="25"><xs:annotation><xs:documentation>Tehnički nacrt</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="26"><xs:annotation><xs:documentation>Ostalo</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="27"><xs:annotation><xs:documentation>Neodređeno</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="28"><xs:annotation><xs:documentation>Film</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="33"><xs:annotation><xs:documentation>Video snimka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="34"><xs:annotation><xs:documentation>Vizualna projekcija</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="37"><xs:annotation><xs:documentation>Podaci</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="38"><xs:annotation><xs:documentation>Program</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="39"><xs:annotation><xs:documentation>Grafički prikaz</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="40"><xs:annotation><xs:documentation>Dokument</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="41"><xs:annotation><xs:documentation>Font</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="42"><xs:annotation><xs:documentation>Igra</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="43"><xs:annotation><xs:documentation>Zvuk</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="44"><xs:annotation><xs:documentation>Mrežni sustav</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="45"><xs:annotation><xs:documentation>Mješano</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="46"><xs:annotation><xs:documentation>Ostalo</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="47"><xs:annotation><xs:documentation>Plan</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="48"><xs:annotation><xs:documentation>Položajni nacrt</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VrstaMedija">
+        <xs:annotation>
+            <xs:appinfo>NT_02_VrsteMedija</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1"><xs:annotation><xs:documentation>Papir</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="2"><xs:annotation><xs:documentation>Pergamena</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="3"><xs:annotation><xs:documentation>Mikrooblik</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="4"><xs:annotation><xs:documentation>Fotografija</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="7"><xs:annotation><xs:documentation>Dijapozitiv</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="8"><xs:annotation><xs:documentation>Filmska vrpca</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="9"><xs:annotation><xs:documentation>Magnetofonska traka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="10"><xs:annotation><xs:documentation>Digitalni medij</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="11"><xs:annotation><xs:documentation>Video kazeta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="12"><xs:annotation><xs:documentation>Audio kazeta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="13"><xs:annotation><xs:documentation>Staklo</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="14"><xs:annotation><xs:documentation>Predmet</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="15"><xs:annotation><xs:documentation>Gramofonska ploča</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="16"><xs:annotation><xs:documentation>Platno</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VrstaMjereJedinice">
+        <xs:annotation>
+            <xs:appinfo>NT_01_VrsteMjernihJedinica</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1"><xs:annotation><xs:documentation>metar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="3"><xs:annotation><xs:documentation>komad</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="5"><xs:annotation><xs:documentation>minuta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="6"><xs:annotation><xs:documentation>snimka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="267"><xs:annotation><xs:documentation>milimetar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="268"><xs:annotation><xs:documentation>centimetar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="269"><xs:annotation><xs:documentation>decimetar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="270"><xs:annotation><xs:documentation>metar</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="681"><xs:annotation><xs:documentation>piksel</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VrstaTehnickeJedinice">
+        <xs:annotation>
+            <xs:appinfo>NT_02_TehnickeJediniceVrste</xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="2"><xs:annotation><xs:documentation>album</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="4"><xs:annotation><xs:documentation>ambalažna kutija</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="7"><xs:annotation><xs:documentation>audio kazeta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="10"><xs:annotation><xs:documentation>bilježnica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="12"><xs:annotation><xs:documentation>komad</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="16"><xs:annotation><xs:documentation>CD</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="22"><xs:annotation><xs:documentation>disk</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="23"><xs:annotation><xs:documentation>fascikl</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="24"><xs:annotation><xs:documentation>mikrooblik II</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="26"><xs:annotation><xs:documentation>kutija</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="27"><xs:annotation><xs:documentation>DVD</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="32"><xs:annotation><xs:documentation>film</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="33"><xs:annotation><xs:documentation>filmski svitak</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="36"><xs:annotation><xs:documentation>foto-album</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="39"><xs:annotation><xs:documentation>gramofonska ploča</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="42"><xs:annotation><xs:documentation>kartoteka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="43"><xs:annotation><xs:documentation>knjiga</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="48"><xs:annotation><xs:documentation>omotnica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="56"><xs:annotation><xs:documentation>ladica</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="61"><xs:annotation><xs:documentation>list</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="63"><xs:annotation><xs:documentation>magnetofonska traka</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="67"><xs:annotation><xs:documentation>mapa</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="69"><xs:annotation><xs:documentation>mikrofilmski svitak</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="74"><xs:annotation><xs:documentation>neg.</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="80"><xs:annotation><xs:documentation>ormar*</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="91"><xs:annotation><xs:documentation>registrator</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="94"><xs:annotation><xs:documentation>svitak*</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="97"><xs:annotation><xs:documentation>sanduk*</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="105"><xs:annotation><xs:documentation>svezak</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="108"><xs:annotation><xs:documentation>svežanj</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="118"><xs:annotation><xs:documentation>vrpca</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="121"><xs:annotation><xs:documentation>video kazeta</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="122"><xs:annotation><xs:documentation>vrećica</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

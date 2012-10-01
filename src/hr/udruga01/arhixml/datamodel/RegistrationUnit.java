@@ -7,12 +7,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RegistraturnaJedinica", propOrder = { "napomenaORazdoblju", "sadrzaj", "napomena", "oznaka", "stvaratelj", "gradja", "medij", "kolicinaArhivskihJedinica", "kolicinaTehnickihJedinica", "registraturnaJedinica" })
+@XmlType(name = "RegistraturnaJedinica", propOrder = { "timePeriodNote", "contents", "note", "labels", "makers", "materials", "mediums", "archiveUnits", "technicalUnits", "registrationUnits" })
 public class RegistrationUnit implements Serializable {
     private final static long serialVersionUID = 1L;
+    
     @XmlElement(name = "NapomenaORazdoblju")
     protected String timePeriodNote;
     @XmlElement(name = "Sadrzaj")
@@ -45,6 +47,9 @@ public class RegistrationUnit implements Serializable {
     protected Integer yearFrom;
     @XmlAttribute(name = "GodinaDo")
     protected Integer yearTo;
+    
+    @XmlTransient
+    protected RegistrationUnit parentRegistrationUnit;
 
     /**
      * Gets the value of the timePeriodNote property.
@@ -398,5 +403,13 @@ public class RegistrationUnit implements Serializable {
      */
     public void setYearTo(Integer value) {
         this.yearTo = value;
+    }
+    
+    public RegistrationUnit getParentRegistrationUnit() {
+        return parentRegistrationUnit;
+    }
+    
+    public void setParentRegistrationUnit(RegistrationUnit registrationUnit) {
+        parentRegistrationUnit = registrationUnit;
     }
 }
