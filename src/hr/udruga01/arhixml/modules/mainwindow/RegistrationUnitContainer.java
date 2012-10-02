@@ -10,19 +10,28 @@ import com.vaadin.data.Container;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
 
-public class ArhinetContainer extends BeanItemContainer<RegistrationUnit> implements Container.Hierarchical {
+/**
+ * {@link RegistrationUnitContainer} is the container for the {@link TreeTable} component.
+ * <p>
+ * Basically, it is a {@link BeanItemContainer} which implements {@link Container.Hierarchical}.
+ * This allows that our container maps to the JavaBeans properties automatically and that our JavaBeans can have some kind of hierarchy.
+ * In our case, JavaBeans are a collection of {@link RegistrationUnit} objects.
+ * <p>
+ * The hierarchy is neccesery because each {@link RegistrationUnit} object can have multiple of {@link RegistrationUnit} objects. 
+ */
+public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> implements Container.Hierarchical {
     private static final long serialVersionUID = 1L;
     
     private Arhinet root;
     private static final int HIGEST_LEVEL_ID = 5;
 
-    public ArhinetContainer() {
+    public RegistrationUnitContainer() {
         super(RegistrationUnit.class);
         
         root = new Arhinet();
     }
     
-    public ArhinetContainer(Arhinet root) {
+    public RegistrationUnitContainer(Arhinet root) {
         super(RegistrationUnit.class);
         
         for (RegistrationUnit registrationUnit : root.getRegistrationUnits()) {
@@ -95,8 +104,7 @@ public class ArhinetContainer extends BeanItemContainer<RegistrationUnit> implem
         
         if (levelId == 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

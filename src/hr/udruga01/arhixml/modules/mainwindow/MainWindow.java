@@ -18,7 +18,7 @@ public class MainWindow extends Window {
     private static final String YEAR_FROM_PROPERTY = "yearFrom";
     private static final String YEAR_TO_PROPERTY = "yearTo";
     private static final String HOLDER_ID_PROPERTY = "holderId";
-    private ArhinetContainer arhinetContainer = new ArhinetContainer();
+    private RegistrationUnitContainer registrationUnitContainer = new RegistrationUnitContainer();
     private TreeTable registrationUnitTable;
 
     public MainWindow(String caption) {
@@ -38,7 +38,7 @@ public class MainWindow extends Window {
         registrationUnitTable = new TreeTable();
         registrationUnitTable.setWidth("100%");
 
-        registrationUnitTable.setContainerDataSource(arhinetContainer);
+        registrationUnitTable.setContainerDataSource(registrationUnitContainer);
         registrationUnitTable.setVisibleColumns(new Object[] {NAME_PROPERTY, LEVEL_ID_PROPERTY, SIGNATURE_PROPERTY, HOLDER_ID_PROPERTY, YEAR_FROM_PROPERTY, YEAR_TO_PROPERTY});
         
         registrationUnitTable.setColumnHeader(LEVEL_ID_PROPERTY, "Razina Id");
@@ -57,6 +57,6 @@ public class MainWindow extends Window {
     }
 
     public void setTableData(Arhinet arhinet) {
-        arhinetContainer.setData(arhinet);
+        registrationUnitContainer.setData(arhinet);
     }
 }
