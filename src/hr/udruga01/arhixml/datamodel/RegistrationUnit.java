@@ -3,6 +3,7 @@ package hr.udruga01.arhixml.datamodel;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -188,6 +189,10 @@ public class RegistrationUnit implements Serializable {
         }
 
         return this.materials;
+    }
+    
+    public void setMaterials(List<Material> materials) {
+        this.materials = materials;
     }
 
     /**

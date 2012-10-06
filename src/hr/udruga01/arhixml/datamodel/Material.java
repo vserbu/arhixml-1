@@ -24,7 +24,7 @@ public class Material implements Serializable {
     /**
      * Sets the value of the subtypeId property.
      */
-    public void setSubtypeId(int value) {
-        this.subtypeId = value;
+    public void setSubtypeId(int subtypeId) {
+        this.subtypeId = subtypeId;
     }
 }

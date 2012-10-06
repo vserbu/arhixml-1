@@ -1,7 +1,10 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Arhinet;
+import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
+import com.vaadin.data.util.BeanItem;
+import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload;
@@ -20,11 +23,13 @@ public class MainWindow extends Window {
     private static final String HOLDER_ID_PROPERTY = "holderId";
     private RegistrationUnitContainer registrationUnitContainer = new RegistrationUnitContainer();
     private TreeTable registrationUnitTable;
+    private Form registrationUnitDetails;
 
     public MainWindow(String caption) {
         setCaption(caption);
 
         VerticalLayout verticalLayout = new VerticalLayout();
+        verticalLayout.setSpacing(true);
         
         HorizontalLayout buttonToolbar = new HorizontalLayout();
         Upload loadFileButton = new Upload(null, controller);
@@ -36,6 +41,8 @@ public class MainWindow extends Window {
         verticalLayout.addComponent(buttonToolbar);
         
         registrationUnitTable = new TreeTable();
+        registrationUnitTable.setImmediate(true);
+        registrationUnitTable.setMultiSelect(true);
         registrationUnitTable.setWidth("100%");
 
         registrationUnitTable.setContainerDataSource(registrationUnitContainer);
@@ -52,11 +59,23 @@ public class MainWindow extends Window {
         registrationUnitTable.addListener(controller);
         
         verticalLayout.addComponent(registrationUnitTable);
-
+        
+        registrationUnitDetails = new Form();
+        registrationUnitDetails.setWidth("100%");
+        registrationUnitDetails.setCaption("Registraturna Jedinica");
+        registrationUnitDetails.setFormFieldFactory(new RegistrationUnitFieldFactory());
+        
+        verticalLayout.addComponent(registrationUnitDetails);
+        
         addComponent(verticalLayout);
     }
 
     public void setTableData(Arhinet arhinet) {
         registrationUnitContainer.setData(arhinet);
+    }
+
+    public void setFormData(RegistrationUnit registrationUnit) {
+        BeanItem<RegistrationUnit> item = new BeanItem<RegistrationUnit>(registrationUnit);
+        registrationUnitDetails.setItemDataSource(item);
     }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import com.vaadin.data.Container;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.ui.TreeTable;
 
 /**
  * {@link RegistrationUnitContainer} is the container for the {@link TreeTable} component.

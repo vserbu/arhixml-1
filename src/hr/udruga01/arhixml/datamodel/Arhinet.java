@@ -45,4 +45,8 @@ public class Arhinet implements Serializable {
 
         return this.registrationUnits;
     }
+    
+    public void setRegistrationUnits(List<RegistrationUnit> registrationUnits) {
+        this.registrationUnits = registrationUnits;
+    }
 }

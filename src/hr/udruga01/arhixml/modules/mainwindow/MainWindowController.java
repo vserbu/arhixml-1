@@ -1,6 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Arhinet;
+import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.io.OutputStream;
 
@@ -51,6 +52,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
      */
     @Override
     public void itemClick(ItemClickEvent event) {
-        // TODO Implement setting the selected item as the data source for the Form component.
+        RegistrationUnit registrationUnit = (RegistrationUnit) event.getItemId();
+        mainWindow.setFormData(registrationUnit);
     }
 }
