@@ -11,6 +11,15 @@ import com.vaadin.ui.Field;
 import com.vaadin.ui.FormFieldFactory;
 import com.vaadin.ui.TextField;
 
+/**
+ * The custom {@link FormFieldFactory} for the form in which {@link RegistrationUnit} is bound to.
+ * <p>
+ * By default, {@link Form} will render default components for each JavaBean property.
+ * Registering this class on our form will instruct it to use our specific component for each {@link RegistrationUnit} property.
+ * <p>
+ * This works in a way that {@link Form} will automatically call <code>createField()</code> defined in this class for each {@link RegistrationUnit} property.
+ * When this happens we will create our own component that will represent this property and return it as a {@link Field}.
+ */
 public class RegistrationUnitFieldFactory implements FormFieldFactory {
     private static final long serialVersionUID = 1L;
 
@@ -60,6 +69,10 @@ public class RegistrationUnitFieldFactory implements FormFieldFactory {
         materialField = new MaterialsCustomField("Graða");
     }
 
+    /**
+     * This method will be automatically called by {@link Form} for each {@link RegistrationUnit} property.
+     * Our job here is that we create component and return it to the caller for each property.
+     */
     @Override
     public Field createField(Item item, Object propertyId, Component uiContext) {
         String beanProperty = (String) propertyId;

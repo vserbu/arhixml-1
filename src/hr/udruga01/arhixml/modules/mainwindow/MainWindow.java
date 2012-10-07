@@ -11,6 +11,15 @@ import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+/**
+ * {@link MainWindow} represents the main application window.
+ * <p>
+ * The user interface of this window consists of two parts:
+ * <li>Upper part holds the table of {@link RegistrationUnit} items.
+ * Selecting an item from this table revails the lower part of the window.
+ * <li>Lower part holds the details of selected {@link RegistrationUnit}.
+ * This is where user is able to see all the details of the selected {@link RegistrationUnit}.
+ */
 public class MainWindow extends Window {
     private static final long serialVersionUID = 1L;
     
@@ -70,10 +79,24 @@ public class MainWindow extends Window {
         addComponent(verticalLayout);
     }
 
+    /**
+     * This method is called after the unmarshaling process of the XML file is succesfull.
+     * <p>
+     * It will populate the table container with all {@link RegistrationUnit} objects in {@link Arhinet}.
+     * 
+     * @param arhinet - This is the object that the unmarshaler creates out of the XML file.
+     */
     public void setTableData(Arhinet arhinet) {
         registrationUnitContainer.setData(arhinet);
     }
 
+    /**
+     * This method is called when user selects a {@link RegistrationUnit} item from the table.
+     * <p>
+     * It will bind the properties from {@link RegistrationUnit} object to a form.
+     * 
+     * @param registrationUnit - The selected table item that will be bound to a form.
+     */
     public void setFormData(RegistrationUnit registrationUnit) {
         BeanItem<RegistrationUnit> item = new BeanItem<RegistrationUnit>(registrationUnit);
         registrationUnitDetails.setItemDataSource(item);
