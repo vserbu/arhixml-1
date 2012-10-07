@@ -17,10 +17,13 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 class MainWindowModel implements Serializable {
     private static final long serialVersionUID = 1L;
+    private final Logger logger = LoggerFactory.getLogger(MainWindowModel.class.getName());
     
     private File file;
     private Arhinet arhinet;
@@ -36,21 +39,26 @@ class MainWindowModel implements Serializable {
      * @return {@link FileOutputStream} created out of the {@link File}
      */
     public OutputStream setUpUpload(String filename) {
+        logger.trace("Entering setUpUpload()");
         FileOutputStream fos = null;
 
         try {
             file = File.createTempFile(filename, null);
             fos = new FileOutputStream(file);
         } catch (FileNotFoundException exception) {
+            logger.error("File {} can not be opened for writing.", filename);
             exception.printStackTrace();
 
+            logger.trace("Exiting setUpUpload()");
             return null;
         } catch (IOException exception) {
-            exception.printStackTrace();
+            logger.error("IO error when uploading a file: {}", exception);
 
+            logger.trace("Exiting setUpUpload()");
             return null;
         }
 
+        logger.trace("Exiting setUpUpload()");
         return fos;
     }
 
@@ -63,6 +71,7 @@ class MainWindowModel implements Serializable {
      * @return The Java POJO of type {@link Arhinet} created out of the uploaded XML file.
      */
     public Arhinet unmarshalFile() {
+        logger.trace("Entering unmarshalFile()");
         try {
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             URL schemaURL = MainWindowModel.class.getResource("/hr/udruga01/arhixml/datamodel/schema/ARHiNET.xsd");
@@ -71,16 +80,19 @@ class MainWindowModel implements Serializable {
             Unmarshaller um = jc.createUnmarshaller();
             um.setSchema(schema);
             arhinet = (Arhinet) um.unmarshal(file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
+            logger.trace("Exiting unmarshalFile()");
             
+            return arhinet;
+        } catch (JAXBException exception) {
+            logger.error("Error when unmarshaling a file: {}", exception);
+            
+            logger.trace("Exiting unmarshalFile()");
             return null;
-        } catch (SAXException e) {
-            e.printStackTrace();
+        } catch (SAXException exception) {
+            logger.error("XML schema is wrong: {}", exception);
             
+            logger.trace("Exiting unmarshalFile()");
             return null;
         }
-        
-        return arhinet;
     }
 }

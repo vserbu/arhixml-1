@@ -5,6 +5,9 @@ import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.io.OutputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Form;
@@ -14,12 +17,15 @@ import com.vaadin.ui.Upload.SucceededListener;
 
 class MainWindowController implements Receiver, SucceededListener, ItemClickListener {
     private static final long serialVersionUID = 1L;
+    private final Logger logger = LoggerFactory.getLogger(MainWindowController.class.getName());
     
     private MainWindowModel model = new MainWindowModel();
     private MainWindow mainWindow;
 
     public MainWindowController(MainWindow mainWindow) {
+        logger.trace("Entering MainWindowController()");
         this.mainWindow = mainWindow;
+        logger.trace("Exiting MainWindowController()");
     }
 
     /**
@@ -29,6 +35,8 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
      */
     @Override
     public OutputStream receiveUpload(String filename, String mimeType) {
+        logger.trace("Entering receiveUpload()");
+        logger.trace("Exiting receiveUpload()");
         return model.setUpUpload(filename);
     }
 
@@ -40,8 +48,10 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
      */
     @Override
     public void uploadSucceeded(SucceededEvent event) {
+        logger.trace("Entering uploadSucceeded()");
         Arhinet arhinet = model.unmarshalFile();
         mainWindow.setTableData(arhinet);
+        logger.trace("Exiting uploadSucceeded()");
     }
 
     /**
@@ -52,7 +62,9 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
      */
     @Override
     public void itemClick(ItemClickEvent event) {
+        logger.trace("Entering itemClick()");
         RegistrationUnit registrationUnit = (RegistrationUnit) event.getItemId();
         mainWindow.setFormData(registrationUnit);
+        logger.trace("Exiting itemClick()");
     }
 }

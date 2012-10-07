@@ -1,5 +1,8 @@
 package hr.udruga01.arhixml;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import hr.udruga01.arhixml.modules.mainwindow.MainWindow;
 
 import com.vaadin.Application;
@@ -7,6 +10,7 @@ import com.vaadin.ui.*;
 
 public class ArhiXMLApplication extends Application {
     private static final long serialVersionUID = 1L;
+    private final Logger logger = LoggerFactory.getLogger(ArhiXMLApplication.class.getName()); 
 
     /**
      * This is the application entry point.
@@ -15,7 +19,9 @@ public class ArhiXMLApplication extends Application {
      */
     @Override
     public void init() {
+        logger.trace("Entering init()");
         Window mainWindow = new MainWindow("ArhiXML");
         setMainWindow(mainWindow);
+        logger.trace("Exiting init()");
     }
 }

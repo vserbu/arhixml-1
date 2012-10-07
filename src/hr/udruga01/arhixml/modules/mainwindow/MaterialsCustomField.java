@@ -2,6 +2,8 @@ package hr.udruga01.arhixml.modules.mainwindow;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.vaadin.addon.customfield.CustomField;
 
 import com.vaadin.data.Container;
@@ -14,12 +16,14 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class MaterialsCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
+    private final Logger logger = LoggerFactory.getLogger(MaterialsCustomField.class.getName());
 
     private static final int NUMBER_OF_VISIBLE_ROWS = 5;
     private VerticalLayout layout;
     private Table materialsList;
 
     public MaterialsCustomField(String caption) {
+        logger.trace("Entering MaterialsCustomField()");
         setCaption(caption);
 
         layout = new VerticalLayout();
@@ -33,6 +37,7 @@ public class MaterialsCustomField extends CustomField {
         layout.addComponent(materialsList);
 
         setCompositionRoot(layout);
+        logger.trace("Exiting MaterialsCustomField()");
     }
 
     /**
@@ -41,7 +46,9 @@ public class MaterialsCustomField extends CustomField {
      * @param container - {@link Container} that holds the {@link Material} objects.
      */
     public void setContainerDataSource(Container container) {
+        logger.trace("Entering setContainerDataSource()");
         materialsList.setContainerDataSource(container);
+        logger.trace("Exiting setContainerDataSource()");
     }
 
     /**
@@ -57,6 +64,8 @@ public class MaterialsCustomField extends CustomField {
      */
     @Override
     public Class<?> getType() {
+        logger.trace("Entering getType()");
+        logger.trace("Exiting getType()");
         return ArrayList.class;
     }
 }

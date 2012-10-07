@@ -3,6 +3,9 @@ package hr.udruga01.arhixml.modules.mainwindow;
 import hr.udruga01.arhixml.datamodel.Arhinet;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
@@ -22,6 +25,7 @@ import com.vaadin.ui.Window;
  */
 public class MainWindow extends Window {
     private static final long serialVersionUID = 1L;
+    private final Logger logger = LoggerFactory.getLogger(MainWindow.class.getName());
     
     private MainWindowController controller = new MainWindowController(this);
     private static final String LEVEL_ID_PROPERTY = "levelId";
@@ -35,6 +39,7 @@ public class MainWindow extends Window {
     private Form registrationUnitDetails;
 
     public MainWindow(String caption) {
+        logger.trace("Entering MainWindow()");
         setCaption(caption);
 
         VerticalLayout verticalLayout = new VerticalLayout();
@@ -77,6 +82,7 @@ public class MainWindow extends Window {
         verticalLayout.addComponent(registrationUnitDetails);
         
         addComponent(verticalLayout);
+        logger.trace("Exiting MainWindow()");
     }
 
     /**
@@ -87,7 +93,9 @@ public class MainWindow extends Window {
      * @param arhinet - This is the object that the unmarshaler creates out of the XML file.
      */
     public void setTableData(Arhinet arhinet) {
+        logger.trace("Entering setTableData()");
         registrationUnitContainer.setData(arhinet);
+        logger.trace("Exiting setTableData()");
     }
 
     /**
@@ -98,7 +106,9 @@ public class MainWindow extends Window {
      * @param registrationUnit - The selected table item that will be bound to a form.
      */
     public void setFormData(RegistrationUnit registrationUnit) {
+        logger.trace("Entering setFormData()");
         BeanItem<RegistrationUnit> item = new BeanItem<RegistrationUnit>(registrationUnit);
         registrationUnitDetails.setItemDataSource(item);
+        logger.trace("Exiting setFormData()");
     }
 }
