@@ -142,6 +142,10 @@ public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUni
         return false;
     }
 
+    public Arhinet getData() {
+        return root;
+    }
+    
     public void setData(Arhinet root) {
         logger.trace("Entering setData()");
         this.root = root;
