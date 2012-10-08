@@ -82,6 +82,7 @@ public class MainWindow extends Window {
         verticalLayout.addComponent(registrationUnitDetails);
         
         addComponent(verticalLayout);
+        logger.debug("Main window initialization finalized.");
         logger.trace("Exiting MainWindow()");
     }
 
@@ -95,6 +96,7 @@ public class MainWindow extends Window {
     public void setTableData(Arhinet arhinet) {
         logger.trace("Entering setTableData()");
         registrationUnitContainer.setData(arhinet);
+        logger.debug("Table data updated with the new contents.");
         logger.trace("Exiting setTableData()");
     }
 
@@ -109,6 +111,7 @@ public class MainWindow extends Window {
         logger.trace("Entering setFormData()");
         BeanItem<RegistrationUnit> item = new BeanItem<RegistrationUnit>(registrationUnit);
         registrationUnitDetails.setItemDataSource(item);
+        logger.debug("Form data updated with the new contents.");
         logger.trace("Exiting setFormData()");
     }
 }

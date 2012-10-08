@@ -40,11 +40,17 @@ class MainWindowModel implements Serializable {
      */
     public OutputStream setUpUpload(String filename) {
         logger.trace("Entering setUpUpload()");
+        logger.debug("Configuring the upload of the XML file.");
         FileOutputStream fos = null;
 
         try {
+            logger.debug("Creating temporary file to hold uploaded data.");
             file = File.createTempFile(filename, null);
             fos = new FileOutputStream(file);
+            logger.trace("Exiting setUpUpload()");
+            logger.debug("File upload successfully configured.");
+            
+            return fos;
         } catch (FileNotFoundException exception) {
             logger.error("File {} can not be opened for writing.", filename);
             exception.printStackTrace();
@@ -57,9 +63,6 @@ class MainWindowModel implements Serializable {
             logger.trace("Exiting setUpUpload()");
             return null;
         }
-
-        logger.trace("Exiting setUpUpload()");
-        return fos;
     }
 
     /**
@@ -74,12 +77,16 @@ class MainWindowModel implements Serializable {
         logger.trace("Entering unmarshalFile()");
         try {
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            logger.debug("Reading XML schema for the data model.");
             URL schemaURL = MainWindowModel.class.getResource("/hr/udruga01/arhixml/datamodel/schema/ARHiNET.xsd");
             Schema schema = sf.newSchema(schemaURL); 
+            logger.debug("XML schema initialized.");
             JAXBContext jc = JAXBContext.newInstance(Arhinet.class);
             Unmarshaller um = jc.createUnmarshaller();
             um.setSchema(schema);
+            logger.debug("Unmarshaling XML file.");
             arhinet = (Arhinet) um.unmarshal(file);
+            logger.debug("File successfully unmarshaled.");
             logger.trace("Exiting unmarshalFile()");
             
             return arhinet;
