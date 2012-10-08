@@ -1,12 +1,20 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
+import hr.udruga01.arhixml.datamodel.Material;
+import hr.udruga01.arhixml.datamodel.RegistrationUnit;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.customfield.CustomField;
 
 import com.vaadin.data.Container;
+import com.vaadin.terminal.ThemeResource;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
@@ -19,22 +27,41 @@ public class MaterialsCustomField extends CustomField {
     private final Logger logger = LoggerFactory.getLogger(MaterialsCustomField.class.getName());
 
     private static final int NUMBER_OF_VISIBLE_ROWS = 5;
-    private VerticalLayout layout;
+    
     private Table materialsList;
+    private Button newMaterialButton;
+    private Button deleteMaterialButton;
 
     public MaterialsCustomField(String caption) {
         logger.trace("Entering MaterialsCustomField()");
         setCaption(caption);
 
-        layout = new VerticalLayout();
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setWidth("20%");
+        layout.setSpacing(true);
+        
         materialsList = new Table();
         materialsList.setSelectable(true);
         materialsList.setMultiSelect(true);
-        materialsList.setWidth("10%");
+        materialsList.setWidth("100%");
         materialsList.setImmediate(true);
         materialsList.setColumnHeaderMode(Table.COLUMN_HEADER_MODE_HIDDEN);
         materialsList.setPageLength(NUMBER_OF_VISIBLE_ROWS);
         layout.addComponent(materialsList);
+        
+        VerticalLayout buttonsLayout = new VerticalLayout();
+        
+        newMaterialButton = new Button();
+        newMaterialButton.setStyleName("small");
+        newMaterialButton.setIcon(new ThemeResource("icons/add.png"));
+        buttonsLayout.addComponent(newMaterialButton);
+        
+        deleteMaterialButton = new Button();
+        deleteMaterialButton.setStyleName("small");
+        deleteMaterialButton.setIcon(new ThemeResource("icons/remove.png"));
+        buttonsLayout.addComponent(deleteMaterialButton);
+        
+        layout.addComponent(buttonsLayout);
 
         setCompositionRoot(layout);
         logger.trace("Exiting MaterialsCustomField()");

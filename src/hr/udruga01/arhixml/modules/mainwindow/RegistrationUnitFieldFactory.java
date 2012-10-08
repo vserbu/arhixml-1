@@ -1,6 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Material;
+import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.vaadin.data.Item;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Field;
+import com.vaadin.ui.Form;
 import com.vaadin.ui.FormFieldFactory;
 import com.vaadin.ui.TextField;
 
