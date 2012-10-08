@@ -2,6 +2,7 @@ package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Arhinet;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
+import hr.udruga01.arhixml.util.FileDownloadResource;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -77,9 +78,11 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     }
 
     /**
-     * This method will be automatically called by the framework when user clicks on "Save File" button.
+     * This method will be automatically called by the framework when user
+     * clicks on "Save File" button.
      * <p>
-     * This will trigger marshaling process of the table data object and downloading the created file from the marshal process.
+     * This will trigger marshaling process of the table data object and
+     * downloading the created file from the marshal process.
      */
     @Override
     public void buttonClick(ClickEvent event) {

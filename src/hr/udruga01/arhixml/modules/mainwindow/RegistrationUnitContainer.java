@@ -15,37 +15,41 @@ import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.TreeTable;
 
 /**
- * {@link RegistrationUnitContainer} is the container for the {@link TreeTable} component.
+ * {@link RegistrationUnitContainer} is the container for the {@link TreeTable}
+ * component.
  * <p>
- * Basically, it is a {@link BeanItemContainer} which implements {@link Container.Hierarchical}.
- * This allows that our container maps to the JavaBeans properties automatically and that our JavaBeans can have some kind of hierarchy.
- * In our case, JavaBeans are a collection of {@link RegistrationUnit} objects.
+ * Basically, it is a {@link BeanItemContainer} which implements
+ * {@link Container.Hierarchical}. This allows that our container maps to the
+ * JavaBeans properties automatically and that our JavaBeans can have some kind
+ * of hierarchy. In our case, JavaBeans are a collection of
+ * {@link RegistrationUnit} objects.
  * <p>
- * The hierarchy is neccesery because each {@link RegistrationUnit} object can have multiple of {@link RegistrationUnit} objects. 
+ * The hierarchy is neccesery because each {@link RegistrationUnit} object can
+ * have multiple of {@link RegistrationUnit} objects.
  */
-public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> implements Container.Hierarchical {
+class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> implements Container.Hierarchical {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(RegistrationUnitContainer.class.getName());
-    
+
     private Arhinet root;
     private static final int HIGEST_LEVEL_ID = 5;
 
     public RegistrationUnitContainer() {
         super(RegistrationUnit.class);
         logger.trace("Entering RegistrationUnitContainer()");
-        
+
         root = new Arhinet();
         logger.trace("Exiting RegistrationUnitContainer()");
     }
-    
+
     public RegistrationUnitContainer(Arhinet root) {
         super(RegistrationUnit.class);
         logger.trace("Entering RegistrationUnitContainer()");
-        
+
         for (RegistrationUnit registrationUnit : root.getRegistrationUnits()) {
             addBean(registrationUnit);
         }
-        
+
         logger.trace("Exiting RegistrationUnitContainer()");
     }
 
@@ -53,27 +57,27 @@ public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUni
     public BeanItem<RegistrationUnit> addBean(RegistrationUnit bean) {
         logger.trace("Entering addBean()");
         BeanItem<RegistrationUnit> addedBean = super.addBean(bean);
-        
+
         List<RegistrationUnit> registrationUnits = bean.getRegistrationUnits();
         if (registrationUnits.size() > 0) {
             for (RegistrationUnit registrationUnit : registrationUnits) {
                 addBean(registrationUnit);
             }
         }
-        
+
         logger.trace("Exiting addBean()");
         return addedBean;
     }
-    
+
     @Override
     public Collection<?> getChildren(Object itemId) {
         logger.trace("Entering getChildren()");
         List<RegistrationUnit> registrationUnits = ((RegistrationUnit) itemId).getRegistrationUnits();
-        
-        for(RegistrationUnit registrationUnit : registrationUnits) {
+
+        for (RegistrationUnit registrationUnit : registrationUnits) {
             registrationUnit.setParentRegistrationUnit((RegistrationUnit) itemId);
         }
-        
+
         logger.trace("Exiting getChildren()");
         return registrationUnits;
     }
@@ -103,12 +107,11 @@ public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUni
     public boolean areChildrenAllowed(Object itemId) {
         logger.trace("Entering areChildrenAllowed()");
         int levelId = ((RegistrationUnit) itemId).getLevelId();
-        
+
         if (levelId == HIGEST_LEVEL_ID) {
             logger.trace("Exiting areChildrenAllowed()");
             return false;
-        }
-        else {
+        } else {
             logger.trace("Exiting areChildrenAllowed()");
             return true;
         }
@@ -125,7 +128,7 @@ public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUni
     public boolean isRoot(Object itemId) {
         logger.trace("Entering isRoot()");
         int levelId = ((RegistrationUnit) itemId).getLevelId();
-        
+
         if (levelId == 0) {
             logger.trace("Exiting isRoot()");
             return true;
@@ -145,15 +148,15 @@ public class RegistrationUnitContainer extends BeanItemContainer<RegistrationUni
     public Arhinet getData() {
         return root;
     }
-    
+
     public void setData(Arhinet root) {
         logger.trace("Entering setData()");
         this.root = root;
-        
+
         for (RegistrationUnit registrationUnit : root.getRegistrationUnits()) {
             addBean(registrationUnit);
         }
-        
+
         logger.trace("Exiting setData()");
     }
 }
