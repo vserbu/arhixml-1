@@ -72,8 +72,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void itemClick(ItemClickEvent event) {
         logger.trace("Entering itemClick()");
-        RegistrationUnit registrationUnit = (RegistrationUnit) event.getItemId();
-        mainWindow.setFormData(registrationUnit);
+        mainWindow.setFormData(event.getItem());
         logger.trace("Exiting itemClick()");
     }
 

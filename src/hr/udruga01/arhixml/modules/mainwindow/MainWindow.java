@@ -6,10 +6,13 @@ import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vaadin.data.util.BeanItem;
+import com.vaadin.data.Item;
+import com.vaadin.terminal.ThemeResource;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Layout;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
@@ -83,9 +86,27 @@ public class MainWindow extends Window {
         verticalLayout.addComponent(registrationUnitTable);
 
         registrationUnitDetails = new Form();
+        registrationUnitDetails.setWriteThrough(false);
         registrationUnitDetails.setWidth("100%");
         registrationUnitDetails.setCaption("Registraturna Jedinica");
         registrationUnitDetails.setFormFieldFactory(new RegistrationUnitFieldFactory());
+
+        HorizontalLayout formButtonsLayout = new HorizontalLayout();
+        formButtonsLayout.setSizeUndefined();
+        formButtonsLayout.setSpacing(true);
+
+        Button saveDetailsButton = new Button("Save", registrationUnitDetails, "commit");
+        saveDetailsButton.setIcon(new ThemeResource("icons/save.png"));
+        formButtonsLayout.addComponent(saveDetailsButton);
+
+        Button cancelDetailsButton = new Button("Cancel", registrationUnitDetails, "discard");
+        cancelDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
+        formButtonsLayout.addComponent(cancelDetailsButton);
+
+        Layout formFooter = registrationUnitDetails.getFooter();
+        formFooter.setWidth("100%");
+        formFooter.addComponent(formButtonsLayout);
+        ((HorizontalLayout) formFooter).setComponentAlignment(formButtonsLayout, Alignment.MIDDLE_CENTER);
 
         verticalLayout.addComponent(registrationUnitDetails);
 
@@ -125,13 +146,11 @@ public class MainWindow extends Window {
      * It will bind the properties from {@link RegistrationUnit} object to a
      * form.
      * 
-     * @param registrationUnit
-     *            - The selected table item that will be bound to a form.
+     * @param tableItem - The selected table item that will be bound to a form.
      */
-    public void setFormData(RegistrationUnit registrationUnit) {
+    public void setFormData(Item tableItem) {
         logger.trace("Entering setFormData()");
-        BeanItem<RegistrationUnit> item = new BeanItem<RegistrationUnit>(registrationUnit);
-        registrationUnitDetails.setItemDataSource(item);
+        registrationUnitDetails.setItemDataSource(tableItem);
         logger.debug("Form data updated with the new contents.");
         logger.trace("Exiting setFormData()");
     }
