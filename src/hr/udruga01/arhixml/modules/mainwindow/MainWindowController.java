@@ -21,6 +21,7 @@ import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload.Receiver;
 import com.vaadin.ui.Upload.SucceededEvent;
 import com.vaadin.ui.Upload.SucceededListener;
+import com.vaadin.ui.Window.Notification;
 
 class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener {
     private static final long serialVersionUID = 1L;
@@ -59,8 +60,19 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void uploadSucceeded(SucceededEvent event) {
         logger.trace("Entering uploadSucceeded()");
+
         Arhinet arhinet = model.unmarshalFile();
+
+        if (arhinet == null) {
+            logger.error("Validation of the uploaded XML file failed.");
+            mainWindow.showNotification("Validation of the uploaded XML file failed", Notification.TYPE_ERROR_MESSAGE);
+            logger.trace("Exiting uploadSucceeded()");
+
+            return;
+        }
+
         mainWindow.setTableData(arhinet);
+
         logger.trace("Exiting uploadSucceeded()");
     }
 
