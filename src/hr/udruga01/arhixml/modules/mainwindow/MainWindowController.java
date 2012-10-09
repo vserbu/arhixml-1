@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Button.ClickEvent;
@@ -20,7 +22,7 @@ import com.vaadin.ui.Upload.Receiver;
 import com.vaadin.ui.Upload.SucceededEvent;
 import com.vaadin.ui.Upload.SucceededListener;
 
-class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener {
+class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(MainWindowController.class.getName());
 
@@ -86,11 +88,36 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void buttonClick(ClickEvent event) {
         logger.trace("Entering buttonClick()");
+
         Arhinet arhinet = mainWindow.getTableData();
         logger.debug("Fetched table data.");
         File file = model.marshalToFile(arhinet);
         mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
         logger.debug("File offered for downloading.");
+
         logger.trace("Exiting buttonClick()");
+    }
+
+    /**
+     * This method is automatically called by the framework when user changes
+     * selection on a table.
+     * <p>
+     * Difference between this method and the
+     * {@link #itemClick(ItemClickEvent event) itemClick()} is in processing of
+     * selection state. The {@link #itemClick(ItemClickEvent event) itemClick()}
+     * will report the old selection state, whereas this method will report
+     * current (correct) selection change.
+     */
+    @Override
+    public void valueChange(ValueChangeEvent event) {
+        logger.trace("Entering valueChange()");
+
+        if (mainWindow.isTableItemSelected() == true) {
+            mainWindow.setFormVisible(true);
+        } else {
+            mainWindow.setFormVisible(false);
+        }
+
+        logger.trace("Exiting valueChange()");
     }
 }

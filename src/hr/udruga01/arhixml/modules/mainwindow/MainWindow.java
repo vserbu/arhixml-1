@@ -3,19 +3,26 @@ package hr.udruga01.arhixml.modules.mainwindow;
 import hr.udruga01.arhixml.datamodel.Arhinet;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Item;
+import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.event.ItemClickEvent.ItemClickListener;
+import com.vaadin.terminal.Sizeable;
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.ui.Window;
 
 /**
@@ -40,6 +47,8 @@ public class MainWindow extends Window {
     private static final String YEAR_TO_PROPERTY = "yearTo";
     private static final String HOLDER_ID_PROPERTY = "holderId";
     private RegistrationUnitContainer registrationUnitContainer = new RegistrationUnitContainer();
+    private VerticalLayout verticalLayout;
+    private VerticalSplitPanel splitPanel;
     private TreeTable registrationUnitTable;
     private Form registrationUnitDetails;
 
@@ -47,7 +56,10 @@ public class MainWindow extends Window {
         logger.trace("Entering MainWindow()");
         setCaption(caption);
 
-        VerticalLayout verticalLayout = new VerticalLayout();
+        verticalLayout = new VerticalLayout();
+        setContent(verticalLayout);
+        verticalLayout.setSizeFull();
+        verticalLayout.setMargin(true);
         verticalLayout.setSpacing(true);
 
         HorizontalLayout buttonToolbar = new HorizontalLayout();
@@ -60,15 +72,19 @@ public class MainWindow extends Window {
         buttonToolbar.addComponent(loadFileButton);
 
         Button saveFileButton = new Button("Save File");
-        saveFileButton.addListener(controller);
+        saveFileButton.addListener((ClickListener) controller);
         buttonToolbar.addComponent(saveFileButton);
 
         verticalLayout.addComponent(buttonToolbar);
 
+        splitPanel = new VerticalSplitPanel();
+        splitPanel.setSizeFull();
+        splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
+
         registrationUnitTable = new TreeTable();
         registrationUnitTable.setImmediate(true);
         registrationUnitTable.setMultiSelect(true);
-        registrationUnitTable.setWidth("100%");
+        registrationUnitTable.setSizeFull();
 
         registrationUnitTable.setContainerDataSource(registrationUnitContainer);
         registrationUnitTable.setVisibleColumns(new Object[] { NAME_PROPERTY, LEVEL_ID_PROPERTY, SIGNATURE_PROPERTY, HOLDER_ID_PROPERTY, YEAR_FROM_PROPERTY, YEAR_TO_PROPERTY });
@@ -81,11 +97,13 @@ public class MainWindow extends Window {
         registrationUnitTable.setColumnHeader(HOLDER_ID_PROPERTY, "Imatelj Id");
 
         registrationUnitTable.setSelectable(true);
-        registrationUnitTable.addListener(controller);
+        registrationUnitTable.addListener((ItemClickListener) controller);
+        registrationUnitTable.addListener((ValueChangeListener) controller);
 
-        verticalLayout.addComponent(registrationUnitTable);
+        splitPanel.setFirstComponent(registrationUnitTable);
 
         registrationUnitDetails = new Form();
+        registrationUnitDetails.setVisible(false);
         registrationUnitDetails.setWriteThrough(false);
         registrationUnitDetails.setWidth("100%");
         registrationUnitDetails.setCaption("Registraturna Jedinica");
@@ -108,9 +126,11 @@ public class MainWindow extends Window {
         formFooter.addComponent(formButtonsLayout);
         ((HorizontalLayout) formFooter).setComponentAlignment(formButtonsLayout, Alignment.MIDDLE_CENTER);
 
-        verticalLayout.addComponent(registrationUnitDetails);
+        splitPanel.setSecondComponent(registrationUnitDetails);
 
-        addComponent(verticalLayout);
+        verticalLayout.addComponent(splitPanel);
+        verticalLayout.setExpandRatio(splitPanel, 1);
+
         logger.debug("Main window initialization finalized.");
         logger.trace("Exiting MainWindow()");
     }
@@ -146,12 +166,58 @@ public class MainWindow extends Window {
      * It will bind the properties from {@link RegistrationUnit} object to a
      * form.
      * 
-     * @param tableItem - The selected table item that will be bound to a form.
+     * @param tableItem
+     *            - The selected table item that will be bound to a form.
      */
     public void setFormData(Item tableItem) {
         logger.trace("Entering setFormData()");
         registrationUnitDetails.setItemDataSource(tableItem);
         logger.debug("Form data updated with the new contents.");
         logger.trace("Exiting setFormData()");
+    }
+
+    /**
+     * Returns the table of {@link RegistrationUnit} items selection state.
+     * 
+     * @return - If there are selected items in a table, method will return
+     *         <code>true</code>. Otherwise it will return <code>false</code>.
+     */
+    public boolean isTableItemSelected() {
+        logger.trace("Entering isTableItemSelected()");
+        @SuppressWarnings("unchecked")
+        Set<RegistrationUnit> itemList = (Set<RegistrationUnit>) registrationUnitTable.getValue();
+
+        if (itemList.size() == 0) {
+            logger.trace("Exiting isTableItemSelected()");
+
+            return false;
+        } else {
+            logger.trace("Exiting isTableItemSelected()");
+
+            return true;
+        }
+    }
+
+    /**
+     * Setting the visible state for the form which contains selected
+     * {@link RegistrationUnit} details.
+     * 
+     * @param isVisible
+     *            - If set to <code>true</code>, form which contains the details
+     *            for the selected {@link RegistrationUnit} will be set visible.
+     *            Otherwise the form will be hidden.
+     */
+    public void setFormVisible(boolean isVisible) {
+        logger.trace("Entering setFormVisible()");
+
+        if (isVisible) {
+            splitPanel.setSplitPosition(40, Sizeable.UNITS_PERCENTAGE);
+            registrationUnitDetails.setVisible(true);
+        } else {
+            splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
+            registrationUnitDetails.setVisible(false);
+        }
+
+        logger.trace("Exiting setFormVisible()");
     }
 }
