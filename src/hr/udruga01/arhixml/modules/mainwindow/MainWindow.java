@@ -51,6 +51,7 @@ public class MainWindow extends Window {
     private VerticalSplitPanel splitPanel;
     private TreeTable registrationUnitTable;
     private Form registrationUnitDetails;
+    private float spliterPosition;
 
     public MainWindow(String caption) {
         logger.trace("Entering MainWindow()");
@@ -79,6 +80,7 @@ public class MainWindow extends Window {
 
         splitPanel = new VerticalSplitPanel();
         splitPanel.setSizeFull();
+        spliterPosition = 40;
         splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
 
         registrationUnitTable = new TreeTable();
@@ -211,9 +213,10 @@ public class MainWindow extends Window {
         logger.trace("Entering setFormVisible()");
 
         if (isVisible) {
-            splitPanel.setSplitPosition(40, Sizeable.UNITS_PERCENTAGE);
+            splitPanel.setSplitPosition(spliterPosition, Sizeable.UNITS_PERCENTAGE);
             registrationUnitDetails.setVisible(true);
         } else {
+            spliterPosition = splitPanel.getSplitPosition();
             splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
             registrationUnitDetails.setVisible(false);
         }
