@@ -21,6 +21,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload;
+import com.vaadin.ui.Upload.SucceededListener;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.ui.Window;
@@ -67,7 +68,7 @@ public class MainWindow extends Window {
         buttonToolbar.setSpacing(true);
 
         Upload loadFileButton = new Upload(null, controller);
-        loadFileButton.addListener(controller);
+        loadFileButton.addListener((SucceededListener) controller);
         loadFileButton.setImmediate(true);
         loadFileButton.setButtonCaption("Load File");
         buttonToolbar.addComponent(loadFileButton);
@@ -216,9 +217,27 @@ public class MainWindow extends Window {
             splitPanel.setSplitPosition(spliterPosition, Sizeable.UNITS_PERCENTAGE);
             registrationUnitDetails.setVisible(true);
         } else {
-            spliterPosition = splitPanel.getSplitPosition();
             splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
             registrationUnitDetails.setVisible(false);
+        }
+
+        logger.trace("Exiting setFormVisible()");
+    }
+
+    /**
+     * Remembers current splitter position on screen.
+     * <p>
+     * This is for the user convenience. When user hides the form and shows it
+     * again, the application will restore the splitter position like user left
+     * it.
+     */
+    public void rememberSplitterPosition() {
+        logger.trace("Entering setFormVisible()");
+
+        float position = splitPanel.getSplitPosition();
+
+        if (position < splitPanel.getMaxSplitPosition()) {
+            spliterPosition = splitPanel.getSplitPosition();
         }
 
         logger.trace("Exiting setFormVisible()");

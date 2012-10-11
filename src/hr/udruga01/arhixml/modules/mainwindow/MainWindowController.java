@@ -123,7 +123,9 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void valueChange(ValueChangeEvent event) {
         logger.trace("Entering valueChange()");
-
+        
+        mainWindow.rememberSplitterPosition();
+        
         if (mainWindow.isTableItemSelected() == true) {
             mainWindow.setFormVisible(true);
         } else {
