@@ -13,6 +13,7 @@ import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.terminal.Sizeable;
 import com.vaadin.terminal.ThemeResource;
+import com.vaadin.ui.AbstractSplitPanel.SplitterClickListener;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
@@ -80,6 +81,7 @@ public class MainWindow extends Window {
         verticalLayout.addComponent(buttonToolbar);
 
         splitPanel = new VerticalSplitPanel();
+        splitPanel.addListener((SplitterClickListener) controller);
         splitPanel.setSizeFull();
         spliterPosition = 40;
         splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
@@ -232,7 +234,7 @@ public class MainWindow extends Window {
      * it.
      */
     public void rememberSplitterPosition() {
-        logger.trace("Entering setFormVisible()");
+        logger.trace("Entering rememberSplitterPosition()");
 
         float position = splitPanel.getSplitPosition();
 
@@ -240,6 +242,6 @@ public class MainWindow extends Window {
             spliterPosition = splitPanel.getSplitPosition();
         }
 
-        logger.trace("Exiting setFormVisible()");
+        logger.trace("Exiting rememberSplitterPosition()");
     }
 }

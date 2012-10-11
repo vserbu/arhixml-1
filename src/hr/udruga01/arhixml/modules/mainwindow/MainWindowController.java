@@ -14,6 +14,8 @@ import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
+import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
+import com.vaadin.ui.AbstractSplitPanel.SplitterClickListener;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Form;
@@ -21,9 +23,10 @@ import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload.Receiver;
 import com.vaadin.ui.Upload.SucceededEvent;
 import com.vaadin.ui.Upload.SucceededListener;
+import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.ui.Window.Notification;
 
-class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener {
+class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener, SplitterClickListener {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(MainWindowController.class.getName());
 
@@ -123,9 +126,9 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void valueChange(ValueChangeEvent event) {
         logger.trace("Entering valueChange()");
-        
+
         mainWindow.rememberSplitterPosition();
-        
+
         if (mainWindow.isTableItemSelected() == true) {
             mainWindow.setFormVisible(true);
         } else {
@@ -133,5 +136,22 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
         }
 
         logger.trace("Exiting valueChange()");
+    }
+
+    /**
+     * This method is automatically called by the framework when user makes a double
+     * click on splitter on {@link VerticalSplitPanel}.
+     * <p>
+     * Double click will hide the form.
+     */
+    @Override
+    public void splitterClick(SplitterClickEvent event) {
+        logger.trace("Entering splitterClick()");
+
+        if (event.isDoubleClick()) {
+            mainWindow.setFormVisible(false);
+        }
+
+        logger.trace("Exiting splitterClick()");
     }
 }
