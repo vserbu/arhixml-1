@@ -139,8 +139,8 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     }
 
     /**
-     * This method is automatically called by the framework when user makes a double
-     * click on splitter on {@link VerticalSplitPanel}.
+     * This method is automatically called by the framework when user makes a
+     * double click on splitter on {@link VerticalSplitPanel}.
      * <p>
      * Double click will hide the form.
      */
