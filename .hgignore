@@ -3,3 +3,5 @@ syntax: regexp
 ^build$
 syntax: regexp
 ^WebContent/WEB-INF/classes$
+syntax: regexp
+^dist$
