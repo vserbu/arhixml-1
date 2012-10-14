@@ -17,5 +17,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="tools/jetty/jetty-all-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="tools/jetty/servlet-api-3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
