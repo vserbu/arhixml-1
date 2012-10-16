@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ARHiNET xmlns="http://arhinet.arhiv.hr/ARHiNET.xsd">
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Hrvatski zavod za ..." GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Gradja KomPodvrstaId="2" />
+                    <Gradja KomPodvrstaId="3" />
+                    <Gradja KomPodvrstaId="4" />
+                    <Gradja KomPodvrstaId="5" />
+                    <Gradja KomPodvrstaId="6" />
+                    <Gradja KomPodvrstaId="7" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 2" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 3" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 4" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 5" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 6" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+    <RegistraturnaJedinica ImateljId="12345" RazinaId="0" Signatura="1" Naziv="Naziv 7" GodinaOd="1992" GodinaDo="2008">
+        <Stvaratelj StvarateljId="98765" UlogaId="1" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="1" Naziv="Organizacija i upravljanje">
+            <RegistraturnaJedinica RazinaId="2" Signatura="1" Naziv="Nadzorni odbor">
+                <RegistraturnaJedinica RazinaId="3" Signatura="1" Naziv="Sjednice Odbora" GodinaOd="1992" GodinaDo="2008">
+                    <NapomenaORazdoblju>Nedostaju zapisnici sa sjednica za razdoblje od 1994. do 1996.</NapomenaORazdoblju>
+                    <Sadrzaj>Materijali za sjednice, zapisnici sa sjednica, odluke.</Sadrzaj>
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="14" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="2" Naziv="Izvjeća o nadzoru vođenja poslova" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.3" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="4" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="3" Naziv="Suglasnost na programe razvoja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="4" Naziv="Suglasnost na godišji plan poslovanja" GodinaOd="1993" GodinaDo="2008">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaArhivskihJedinica MjernaJedinicaId="1" Kolicina="0.1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="91" Kolicina="1" />
+                </RegistraturnaJedinica>
+                <RegistraturnaJedinica RazinaId="3" Signatura="5" Naziv="Imenovanja" GodinaOd="1992" GodinaDo="2006">
+                    <Gradja KomPodvrstaId="1" />
+                    <Medij VrstaMedijaId="1" />
+                    <KolicinaTehnickihJedinica VrstaTehnickeJediniceId="23" Kolicina="1" />
+                </RegistraturnaJedinica>
+            </RegistraturnaJedinica>
+            <RegistraturnaJedinica RazinaId="2" Signatura="2" Naziv="Skupšina" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="3" Naziv="Uprava" />
+            <RegistraturnaJedinica RazinaId="2" Signatura="4" Naziv="Normativni akti" />
+        </RegistraturnaJedinica>
+        <RegistraturnaJedinica RazinaId="1" Signatura="2" Naziv="Opći poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="3" Naziv="Pravni poslovi" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="4" Naziv="Financijsko i račovodstveno poslovanje" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="5" Naziv="Ljudski potencijali" />
+        <RegistraturnaJedinica RazinaId="1" Signatura="6" Naziv="Stručna djelatnost zavoda" />
+    </RegistraturnaJedinica>
+</ARHiNET>
