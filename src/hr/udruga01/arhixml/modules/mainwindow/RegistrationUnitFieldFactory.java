@@ -1,15 +1,11 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import hr.udruga01.arhixml.datamodel.Material;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
-
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Item;
-import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.Form;
@@ -119,13 +115,6 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
             logger.trace("Exiting createField()");
             return yearToField;
         } else if ("materials".equals(beanProperty)) {
-            BeanItemContainer<Material> container = new BeanItemContainer<Material>(Material.class);
-            @SuppressWarnings("unchecked")
-            List<Material> materials = (List<Material>) item.getItemProperty("materials").getValue();
-            container.addAll(materials);
-
-            materialField.setContainerDataSource(container);
-
             logger.trace("Exiting createField()");
             return materialField;
         }

@@ -118,13 +118,13 @@ public class MainWindow extends Window {
         formButtonsLayout.setSizeUndefined();
         formButtonsLayout.setSpacing(true);
 
-        Button saveDetailsButton = new Button("Save", registrationUnitDetails, "commit");
-        saveDetailsButton.setIcon(new ThemeResource("icons/save.png"));
-        formButtonsLayout.addComponent(saveDetailsButton);
+        Button updateDetailsButton = new Button("Update", registrationUnitDetails, "commit");
+        updateDetailsButton.setIcon(new ThemeResource("icons/save.png"));
+        formButtonsLayout.addComponent(updateDetailsButton);
 
-        Button cancelDetailsButton = new Button("Cancel", registrationUnitDetails, "discard");
-        cancelDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
-        formButtonsLayout.addComponent(cancelDetailsButton);
+        Button discardDetailsButton = new Button("Discard", registrationUnitDetails, "discard");
+        discardDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
+        formButtonsLayout.addComponent(discardDetailsButton);
 
         Layout formFooter = registrationUnitDetails.getFooter();
         formFooter.setWidth("100%");
