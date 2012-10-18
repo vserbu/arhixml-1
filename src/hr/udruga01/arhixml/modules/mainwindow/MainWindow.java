@@ -71,10 +71,10 @@ public class MainWindow extends Window {
         Upload loadFileButton = new Upload(null, controller);
         loadFileButton.addListener((SucceededListener) controller);
         loadFileButton.setImmediate(true);
-        loadFileButton.setButtonCaption("Load File");
+        loadFileButton.setButtonCaption("Uèitaj datoteku");
         buttonToolbar.addComponent(loadFileButton);
 
-        Button saveFileButton = new Button("Save File");
+        Button saveFileButton = new Button("Skini datoteku");
         saveFileButton.addListener((ClickListener) controller);
         buttonToolbar.addComponent(saveFileButton);
 
@@ -100,6 +100,13 @@ public class MainWindow extends Window {
         registrationUnitTable.setColumnHeader(YEAR_FROM_PROPERTY, "Godina Od");
         registrationUnitTable.setColumnHeader(YEAR_TO_PROPERTY, "Godina Do");
         registrationUnitTable.setColumnHeader(HOLDER_ID_PROPERTY, "Imatelj Id");
+        
+        registrationUnitTable.setColumnExpandRatio(LEVEL_ID_PROPERTY, 1);
+        registrationUnitTable.setColumnExpandRatio(SIGNATURE_PROPERTY, 1);
+        registrationUnitTable.setColumnExpandRatio(NAME_PROPERTY, 3);
+        registrationUnitTable.setColumnExpandRatio(YEAR_FROM_PROPERTY, 1);
+        registrationUnitTable.setColumnExpandRatio(YEAR_TO_PROPERTY, 1);
+        registrationUnitTable.setColumnExpandRatio(HOLDER_ID_PROPERTY, 1);
 
         registrationUnitTable.setSelectable(true);
         registrationUnitTable.addListener((ItemClickListener) controller);
@@ -118,11 +125,11 @@ public class MainWindow extends Window {
         formButtonsLayout.setSizeUndefined();
         formButtonsLayout.setSpacing(true);
 
-        Button updateDetailsButton = new Button("Update", registrationUnitDetails, "commit");
+        Button updateDetailsButton = new Button("Ažuriraj", registrationUnitDetails, "commit");
         updateDetailsButton.setIcon(new ThemeResource("icons/save.png"));
         formButtonsLayout.addComponent(updateDetailsButton);
 
-        Button discardDetailsButton = new Button("Discard", registrationUnitDetails, "discard");
+        Button discardDetailsButton = new Button("Poništi", registrationUnitDetails, "discard");
         discardDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
         formButtonsLayout.addComponent(discardDetailsButton);
 
