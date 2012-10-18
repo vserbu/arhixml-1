@@ -15,65 +15,66 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
     /**
-     * Create a new ObjectFactory that can be used to create new instances of
-     * schema derived classes for package: hr.udruga01.arhixml.datamodel
+     * Constructor has <code>private</code> visiblity. Class is not ment to be
+     * instantiated. User code must use static methods to create data model
+     * objects.
      */
-    public ObjectFactory() {
+    private ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link Label }
+     * Create an instance of {@link Label}
      */
-    public Label createLabel() {
+    public static Label createLabel() {
         return new Label();
     }
 
     /**
-     * Create an instance of {@link Material }
+     * Create an instance of {@link Material}
      */
-    public Material createMaterial() {
+    public static Material createMaterial() {
         return new Material();
     }
 
     /**
-     * Create an instance of {@link TechnicalUnit }
+     * Create an instance of {@link TechnicalUnit}
      */
-    public TechnicalUnit createTechnicalUnit() {
+    public static TechnicalUnit createTechnicalUnit() {
         return new TechnicalUnit();
     }
 
     /**
-     * Create an instance of {@link Arhinet }
+     * Create an instance of {@link Arhinet}
      */
-    public Arhinet createArhinet() {
+    public static Arhinet createArhinet() {
         return new Arhinet();
     }
 
     /**
-     * Create an instance of {@link ArchiveUnit }
+     * Create an instance of {@link ArchiveUnit}
      */
-    public ArchiveUnit createArchiveUnit() {
+    public static ArchiveUnit createArchiveUnit() {
         return new ArchiveUnit();
     }
 
     /**
-     * Create an instance of {@link Maker }
+     * Create an instance of {@link Maker}
      */
-    public Maker createMaker() {
+    public static Maker createMaker() {
         return new Maker();
     }
 
     /**
-     * Create an instance of {@link Medium }
+     * Create an instance of {@link Medium}
      */
-    public Medium createMedium() {
+    public static Medium createMedium() {
         return new Medium();
     }
 
     /**
-     * Create an instance of {@link RegistrationUnit }
+     * Create an instance of {@link RegistrationUnit}
      */
-    public RegistrationUnit createRegistrationUnit() {
+    public static RegistrationUnit createRegistrationUnit() {
         return new RegistrationUnit();
     }
 }

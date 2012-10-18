@@ -107,6 +107,15 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
         Arhinet arhinet = mainWindow.getTableData();
         logger.debug("Fetched table data.");
         File file = model.marshalToFile(arhinet);
+        
+        if (file == null) {
+            logger.error("Can not generate XML file. Validation of user data failed.");
+            mainWindow.showNotification("Can not generate XML file. Validation of user data failed.", Notification.TYPE_ERROR_MESSAGE);
+            logger.trace("Exiting buttonClick()");
+
+            return;
+        }
+        
         mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
         logger.debug("File offered for downloading.");
 

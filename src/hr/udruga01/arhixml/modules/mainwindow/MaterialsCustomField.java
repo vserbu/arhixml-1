@@ -1,6 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Material;
+import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ class MaterialsCustomField extends CustomField {
 
     public MaterialsCustomField(String caption) {
         logger.trace("Entering MaterialsCustomField()");
-        
+
         setCaption(caption);
 
         HorizontalLayout layout = new HorizontalLayout();
@@ -78,7 +79,7 @@ class MaterialsCustomField extends CustomField {
         layout.addComponent(buttonsLayout);
 
         setCompositionRoot(layout);
-        
+
         logger.trace("Exiting MaterialsCustomField()");
     }
 
@@ -136,7 +137,7 @@ class MaterialsCustomField extends CustomField {
      */
     void selectTableItem(Object item) {
         logger.trace("Entering selectTableItem()");
-        
+
         @SuppressWarnings("unchecked")
         Set<Material> selectedItems = ((Set<Material>) materialsList.getValue());
 
@@ -145,24 +146,31 @@ class MaterialsCustomField extends CustomField {
         }
 
         materialsList.select(item);
-        
+
         logger.trace("Exiting selectTableItem()");
     }
 
     /**
-     * Removes selected items in a table from the container.
+     * Removes selected items in a table from the material container.
      */
     void removeSelectedItems() {
         logger.trace("Entering removeSelectedItems()");
-        
+
         @SuppressWarnings("unchecked")
         Set<Material> selectedItems = ((Set<Material>) materialsList.getValue());
 
         for (Material item : selectedItems) {
             materialsList.removeItem(item);
         }
-        
+
         logger.trace("Exiting removeSelectedItems()");
+    }
+
+    /**
+     * Adds new item of {@link Material} type to the material container.
+     */
+    public void addNewItem() {
+        materialsList.addItem(ObjectFactory.createMaterial());
     }
 
     /**
@@ -177,14 +185,14 @@ class MaterialsCustomField extends CustomField {
     @Override
     public void setPropertyDataSource(Property propertyDataSource) {
         logger.trace("Entering setPropertyDataSource()");
-        
+
         super.setPropertyDataSource(propertyDataSource);
 
         @SuppressWarnings("unchecked")
         List<Material> materials = (List<Material>) propertyDataSource.getValue();
         materialContainer.removeAllItems();
         materialContainer.addAll(materials);
-        
+
         logger.trace("Exiting setPropertyDataSource()");
     }
 
@@ -198,7 +206,7 @@ class MaterialsCustomField extends CustomField {
     @Override
     public Object getValue() {
         logger.trace("Entering getValue()");
-        
+
         ArrayList<Material> materials = new ArrayList<Material>();
 
         for (Object itemId : materialContainer.getItemIds()) {
@@ -206,7 +214,7 @@ class MaterialsCustomField extends CustomField {
         }
 
         logger.trace("Exiting getValue()");
-        
+
         return materials;
     }
 
@@ -223,7 +231,7 @@ class MaterialsCustomField extends CustomField {
     @Override
     public void discard() throws SourceException {
         logger.trace("Entering discard()");
-        
+
         super.discard();
 
         Property propertyDataSource = getPropertyDataSource();
@@ -234,7 +242,7 @@ class MaterialsCustomField extends CustomField {
             materialContainer.removeAllItems();
             materialContainer.addAll(materials);
         }
-        
+
         logger.trace("Exiting discard()");
     }
 }

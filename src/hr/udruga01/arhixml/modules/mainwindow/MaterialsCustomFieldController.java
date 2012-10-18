@@ -68,6 +68,10 @@ public class MaterialsCustomFieldController implements Handler, ItemClickListene
             materialsCustomField.removeSelectedItems();
         }
 
+        if (action == actionAdd) {
+            materialsCustomField.addNewItem();
+        }
+
         logger.trace("Exiting handleAction()");
     }
 
