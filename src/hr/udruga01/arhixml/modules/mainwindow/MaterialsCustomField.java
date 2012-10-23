@@ -38,6 +38,7 @@ class MaterialsCustomField extends CustomField {
     private BeanItemContainer<Material> materialContainer = new BeanItemContainer<Material>(Material.class);
 
     private static final int NUMBER_OF_VISIBLE_ROWS = 5;
+    private static final String SUBTYPEID_PROPERTY = "subtypeId";
 
     private Table materialsList;
     private Button newMaterialButton;
@@ -54,12 +55,16 @@ class MaterialsCustomField extends CustomField {
 
         materialsList = new Table();
         materialsList.setSelectable(true);
+        materialsList.setEditable(true);
+        materialsList.setTableFieldFactory(new MaterialsTableFieldFactory());
         materialsList.setMultiSelect(true);
         materialsList.setWidth("100%");
         materialsList.setImmediate(true);
+        
         materialsList.setColumnHeaderMode(Table.COLUMN_HEADER_MODE_HIDDEN);
         materialsList.setPageLength(NUMBER_OF_VISIBLE_ROWS);
         materialsList.setContainerDataSource(materialContainer);
+        materialsList.setVisibleColumns(new Object[] {SUBTYPEID_PROPERTY});
         materialsList.addActionHandler(controller);
         materialsList.addListener((ItemClickListener) controller);
         layout.addComponent(materialsList);
