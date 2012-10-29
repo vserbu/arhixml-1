@@ -50,7 +50,7 @@ class MaterialsCustomField extends CustomField {
         setCaption(caption);
 
         HorizontalLayout layout = new HorizontalLayout();
-        layout.setWidth("20%");
+        layout.setWidth("40%");
         layout.setSpacing(true);
 
         materialsList = new Table();
@@ -175,7 +175,12 @@ class MaterialsCustomField extends CustomField {
      * Adds new item of {@link Material} type to the material container.
      */
     public void addNewItem() {
-        materialsList.addItem(ObjectFactory.createMaterial());
+        Material material = ObjectFactory.createMaterial();
+        materialsList.addItem(material);
+        
+        materialsList.setValue(null);
+        materialsList.setCurrentPageFirstItemId(material);
+        materialsList.select(material);
     }
 
     /**
