@@ -24,7 +24,7 @@ public class AvailableMaterials {
         // class. This is not a good way for more reasons. First, it is tedious
         // to mantain this list because of possible schema changes. Second, the
         // list may contain false data because of human error. This should be
-        // fixed by reading the list directly from the schmea.
+        // fixed by reading the list directly from the schema.
         availableMaterials = new ArrayList<Material>();
 
         Material materialOne = ObjectFactory.createMaterial();
