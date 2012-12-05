@@ -4,6 +4,7 @@ import hr.udruga01.arhixml.datamodel.Arhinet;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -56,6 +57,7 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     @Override
     public BeanItem<RegistrationUnit> addBean(RegistrationUnit bean) {
         logger.trace("Entering addBean()");
+
         BeanItem<RegistrationUnit> addedBean = super.addBean(bean);
 
         List<RegistrationUnit> registrationUnits = bean.getRegistrationUnits();
@@ -66,6 +68,7 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
         }
 
         logger.trace("Exiting addBean()");
+
         return addedBean;
     }
 
@@ -99,8 +102,19 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     @Override
     public boolean setParent(Object itemId, Object newParentId) throws UnsupportedOperationException {
         logger.trace("Entering setParent()");
+
+        ((RegistrationUnit) itemId).setParentRegistrationUnit((RegistrationUnit) newParentId);
+
+        if (newParentId == null) {
+            root.getRegistrationUnits().add((RegistrationUnit) itemId);
+        } else {
+            ((RegistrationUnit) itemId).setlevelId(-1);
+            ((RegistrationUnit) newParentId).getRegistrationUnits().add((RegistrationUnit) itemId);
+        }
+
         logger.trace("Exiting setParent()");
-        return false;
+
+        return true;
     }
 
     @Override
@@ -121,7 +135,7 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     public boolean setChildrenAllowed(Object itemId, boolean areChildrenAllowed) throws UnsupportedOperationException {
         logger.trace("Entering setChildrenAllowed()");
         logger.trace("Exiting setChildrenAllowed()");
-        return false;
+        return true;
     }
 
     @Override
@@ -158,5 +172,29 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
         }
 
         logger.trace("Exiting setData()");
+    }
+
+    @Override
+    public boolean removeItem(Object itemId) {
+        removeRegistrationUnit(root.getRegistrationUnits(), itemId);
+
+        return true;
+    }
+
+    private void removeRegistrationUnit(List<RegistrationUnit> list, Object itemId) {
+        Iterator<RegistrationUnit> iterator = list.iterator();
+
+        while (iterator.hasNext()) {
+            RegistrationUnit item = (RegistrationUnit) iterator.next();
+
+            if (item == itemId) {
+                iterator.remove();
+                super.removeItem(itemId);
+
+                break;
+            } else {
+                removeRegistrationUnit(item.getRegistrationUnits(), itemId);
+            }
+        }
     }
 }

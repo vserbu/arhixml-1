@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.event.Action;
+import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
@@ -26,9 +28,12 @@ import com.vaadin.ui.Upload.SucceededListener;
 import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.ui.Window.Notification;
 
-class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener, SplitterClickListener {
+class MainWindowController implements Receiver, SucceededListener, ItemClickListener, ClickListener, ValueChangeListener, SplitterClickListener, Handler {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(MainWindowController.class.getName());
+
+    private static Action actionAdd = new Action("Dodaj");
+    private static Action actionRemove = new Action("Obriši");
 
     private MainWindowModel model = new MainWindowModel();
     private MainWindow mainWindow;
@@ -89,7 +94,12 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     @Override
     public void itemClick(ItemClickEvent event) {
         logger.trace("Entering itemClick()");
+
+        if (event.getButton() == ItemClickEvent.BUTTON_RIGHT) {
+            mainWindow.selectTableItem(event.getItemId());
+        }
         mainWindow.setFormData(event.getItem());
+
         logger.trace("Exiting itemClick()");
     }
 
@@ -107,7 +117,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
         Arhinet arhinet = mainWindow.getTableData();
         logger.debug("Fetched table data.");
         File file = model.marshalToFile(arhinet);
-        
+
         if (file == null) {
             logger.error("Can not generate XML file. Validation of user data failed.");
             mainWindow.showNotification("Can not generate XML file. Validation of user data failed.", Notification.TYPE_ERROR_MESSAGE);
@@ -115,7 +125,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
             return;
         }
-        
+
         mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
         logger.debug("File offered for downloading.");
 
@@ -162,5 +172,42 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
         }
 
         logger.trace("Exiting splitterClick()");
+    }
+
+    /**
+     * This method is automatically called by the framework for every item in a
+     * table of {@link RegistrationUnit} objects.
+     * <p>
+     * This is to ensure that the correct menu item will appear in context menu
+     * for each item in the table.
+     */
+    @Override
+    public Action[] getActions(Object target, Object sender) {
+        logger.trace("Entering getActions()");
+
+        Action[] actions = new Action[] { actionAdd, actionRemove };
+
+        logger.trace("Exiting getActions()");
+
+        return actions;
+    }
+
+    /**
+     * This method is automatically called by the framework when user chooses
+     * one of the context menu items.
+     */
+    @Override
+    public void handleAction(Action action, Object sender, Object target) {
+        logger.trace("Entering handleAction()");
+
+        if (action == actionRemove) {
+            mainWindow.removeSelectedItems();
+        }
+
+        if (action == actionAdd) {
+            mainWindow.addNewItem(target);
+        }
+
+        logger.trace("Exiting handleAction()");
     }
 }

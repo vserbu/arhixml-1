@@ -1,6 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Arhinet;
+import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import java.util.Set;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.terminal.Sizeable;
 import com.vaadin.terminal.ThemeResource;
@@ -111,6 +113,7 @@ public class MainWindow extends Window {
         registrationUnitTable.setSelectable(true);
         registrationUnitTable.addListener((ItemClickListener) controller);
         registrationUnitTable.addListener((ValueChangeListener) controller);
+        registrationUnitTable.addActionHandler((Handler) controller);
 
         splitPanel.setFirstComponent(registrationUnitTable);
 
@@ -209,6 +212,37 @@ public class MainWindow extends Window {
             return true;
         }
     }
+    
+    /**
+     * Method handles the selection of items.
+     * <p>
+     * This is modeled against the usual way that various operating systems
+     * behave. For example, if user makes a multiple selection and triggers
+     * context menu on one of the selected item, this needs to show a context
+     * menu but without deselection of items.
+     * <p>
+     * But if the user has selected more than one item and triggers the context
+     * menu on item which is not in the selection list, application will show
+     * the context menu but it will also deselect every item and instead select
+     * the one that user tried to trigger context menu on.
+     * 
+     * @param item
+     *            - {@link RegistrationUnit} which needs to be added to selection.
+     */
+    void selectTableItem(Object item) {
+        logger.trace("Entering selectTableItem()");
+
+        @SuppressWarnings("unchecked")
+        Set<RegistrationUnit> selectedItems = ((Set<RegistrationUnit>) registrationUnitTable.getValue());
+
+        if (selectedItems.contains(item) == false) {
+            registrationUnitTable.setValue(null);
+        }
+
+        registrationUnitTable.select(item);
+
+        logger.trace("Exiting selectTableItem()");
+    }
 
     /**
      * Setting the visible state for the form which contains selected
@@ -250,5 +284,38 @@ public class MainWindow extends Window {
         }
 
         logger.trace("Exiting rememberSplitterPosition()");
+    }
+    
+    /**
+     * Removes selected items in a table from the registration unit container.
+     */
+    void removeSelectedItems() {
+        logger.trace("Entering removeSelectedItems()");
+
+        @SuppressWarnings("unchecked")
+        Set<RegistrationUnit> selectedItems = ((Set<RegistrationUnit>) registrationUnitTable.getValue());
+
+        for (RegistrationUnit item : selectedItems) {
+            registrationUnitTable.removeItem(item);
+        }
+
+        logger.trace("Exiting removeSelectedItems()");
+    }
+    
+    /**
+     * Adds new item of {@link RegistrationUnit} type to the registration unit container.
+     */
+    public void addNewItem(Object target) {
+        RegistrationUnit registrationUnit = ObjectFactory.createRegistrationUnit();    
+        
+        registrationUnitContainer.setParent(registrationUnit, target);
+        Item item = registrationUnitContainer.addBean(registrationUnit);
+        
+        registrationUnitTable.setCollapsed(target, false);
+        registrationUnitTable.setValue(null);
+        registrationUnitTable.setCurrentPageFirstItemId(registrationUnit);
+        registrationUnitTable.select(registrationUnit);
+        
+        setFormData(item);
     }
 }
