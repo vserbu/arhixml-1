@@ -221,6 +221,10 @@ public class RegistrationUnit implements Serializable {
 
         return this.mediums;
     }
+    
+    public void setMediums(List<Medium> mediums) {
+        this.mediums = mediums;
+    }
 
     /**
      * Gets the value of the kolicinaArhivskihJedinica property.
