@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.data.Validator.EmptyValueException;
 import com.vaadin.event.Action;
 import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ItemClickEvent;
@@ -114,20 +115,30 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     public void buttonClick(ClickEvent event) {
         logger.trace("Entering buttonClick()");
 
-        Arhinet arhinet = mainWindow.getTableData();
-        logger.debug("Fetched table data.");
-        File file = model.marshalToFile(arhinet);
+        Object data = event.getButton().getData();
 
-        if (file == null) {
-            logger.error("Can not generate XML file. Validation of user data failed.");
-            mainWindow.showNotification("Can not generate XML file. Validation of user data failed.", Notification.TYPE_ERROR_MESSAGE);
-            logger.trace("Exiting buttonClick()");
+        if ("updateDetailsButton".equals(data)) {
+            try {
+                mainWindow.commitForm();
+            } catch (EmptyValueException exception) {
+                logger.warn("Error when trying to commit form data", exception);
+            }
+        } else if ("saveFileButton".equals(data)) {
+            Arhinet arhinet = mainWindow.getTableData();
+            logger.debug("Fetched table data.");
+            File file = model.marshalToFile(arhinet);
 
-            return;
+            if (file == null) {
+                logger.error("Can not generate XML file. Validation of user data failed.");
+                mainWindow.showNotification("Can not generate XML file. Validation of user data failed.", Notification.TYPE_ERROR_MESSAGE);
+                logger.trace("Exiting buttonClick()");
+
+                return;
+            }
+
+            mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
+            logger.debug("File offered for downloading.");
         }
-
-        mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
-        logger.debug("File offered for downloading.");
 
         logger.trace("Exiting buttonClick()");
     }

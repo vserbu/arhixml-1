@@ -22,7 +22,7 @@ import com.vaadin.ui.Table;
 
 public class MediumCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
-    private static final int NUMBER_OF_VISIBLE_ROWS = 5;
+    private static final int NUMBER_OF_VISIBLE_ROWS = 4;
     private static final String MEDIUM_TYPE_ID_PROPERTY = "mediumTypeId";
     
     private final Logger logger = LoggerFactory.getLogger(MediumCustomField.class.getName());
@@ -36,7 +36,7 @@ public class MediumCustomField extends CustomField {
         setCaption(caption);
 
         HorizontalLayout layout = new HorizontalLayout();
-        layout.setWidth("40%");
+        layout.setSizeFull();
         layout.setSpacing(true);
         
         mediumsList = new Table();
@@ -44,7 +44,7 @@ public class MediumCustomField extends CustomField {
         mediumsList.setEditable(true);
         mediumsList.setTableFieldFactory(new MediumsTableFieldFactory());
         mediumsList.setMultiSelect(true);
-        mediumsList.setWidth("100%");
+        mediumsList.setSizeFull();
         mediumsList.setImmediate(true);
         mediumsList.setColumnHeaderMode(Table.COLUMN_HEADER_MODE_HIDDEN);
         mediumsList.setPageLength(NUMBER_OF_VISIBLE_ROWS);
@@ -53,6 +53,7 @@ public class MediumCustomField extends CustomField {
         mediumsList.addActionHandler(controller);
         mediumsList.addListener((ItemClickListener) controller);
         layout.addComponent(mediumsList);
+        layout.setExpandRatio(mediumsList, 1f);
         
         setCompositionRoot(layout);
         

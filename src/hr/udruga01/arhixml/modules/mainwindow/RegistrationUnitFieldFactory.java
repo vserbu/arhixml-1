@@ -49,13 +49,17 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         contentsField.setNullRepresentation("");
 
         holderIdField = new TextField("Šifra imatelja");
+        holderIdField.setWidth("100%");
         holderIdField.setNullRepresentation("");
 
         levelIdField = new TextField("Šifra razine");
+        levelIdField.setWidth("100%");
         levelIdField.setNullRepresentation("");
 
         nameField = new TextField("Naziv");
         nameField.setWidth("100%");
+        nameField.setRequired(true);
+        nameField.setRequiredError("Molim unesite naziv registraturne jedinice");
         nameField.setNullRepresentation("");
 
         noteField = new TextField("Napomena");
@@ -63,6 +67,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         noteField.setNullRepresentation("");
 
         signatureField = new TextField("Signatura");
+        signatureField.setWidth("100%");
         signatureField.setNullRepresentation("");
 
         timePeriodNoteField = new TextField("Napomena o razdoblju");
@@ -70,9 +75,11 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         timePeriodNoteField.setNullRepresentation("");
 
         yearFromField = new TextField("Godina od");
+        yearFromField.setWidth("100%");
         yearFromField.setNullRepresentation("");
 
         yearToField = new TextField("Godina do");
+        yearToField.setWidth("100%");
         yearToField.setNullRepresentation("");
 
         materialField = new MaterialsCustomField("Graða");

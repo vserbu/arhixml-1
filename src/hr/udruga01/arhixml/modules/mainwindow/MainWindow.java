@@ -77,6 +77,7 @@ public class MainWindow extends Window {
         buttonToolbar.addComponent(loadFileButton);
 
         Button saveFileButton = new Button("Skini datoteku");
+        saveFileButton.setData("saveFileButton");
         saveFileButton.addListener((ClickListener) controller);
         buttonToolbar.addComponent(saveFileButton);
 
@@ -117,7 +118,7 @@ public class MainWindow extends Window {
 
         splitPanel.setFirstComponent(registrationUnitTable);
 
-        registrationUnitDetails = new Form();
+        registrationUnitDetails = new RegistrationUnitForm();
         registrationUnitDetails.setVisible(false);
         registrationUnitDetails.setWriteThrough(false);
         registrationUnitDetails.setWidth("100%");
@@ -128,7 +129,9 @@ public class MainWindow extends Window {
         formButtonsLayout.setSizeUndefined();
         formButtonsLayout.setSpacing(true);
 
-        Button updateDetailsButton = new Button("Ažuriraj", registrationUnitDetails, "commit");
+        Button updateDetailsButton = new Button("Ažuriraj");
+        updateDetailsButton.setData("updateDetailsButton");
+        updateDetailsButton.addListener((ClickListener) controller);
         updateDetailsButton.setIcon(new ThemeResource("icons/save.png"));
         formButtonsLayout.addComponent(updateDetailsButton);
 
@@ -139,7 +142,7 @@ public class MainWindow extends Window {
         Layout formFooter = registrationUnitDetails.getFooter();
         formFooter.setWidth("100%");
         formFooter.addComponent(formButtonsLayout);
-        ((HorizontalLayout) formFooter).setComponentAlignment(formButtonsLayout, Alignment.MIDDLE_CENTER);
+        ((HorizontalLayout) formFooter).setComponentAlignment(formButtonsLayout, Alignment.BOTTOM_CENTER);
 
         splitPanel.setSecondComponent(registrationUnitDetails);
 
@@ -317,5 +320,9 @@ public class MainWindow extends Window {
         registrationUnitTable.select(registrationUnit);
         
         setFormData(item);
+    }
+    
+    public void commitForm() {
+        registrationUnitDetails.commit();
     }
 }
