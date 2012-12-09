@@ -39,9 +39,11 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private TextField yearFromField;
     private TextField yearToField;
     private MaterialsCustomField materialField;
+    private MediumCustomField mediumField;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
+        
         contentsField = new TextField("Sadržaj");
         contentsField.setWidth("100%");
         contentsField.setNullRepresentation("");
@@ -74,6 +76,9 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         yearToField.setNullRepresentation("");
 
         materialField = new MaterialsCustomField("Graða");
+        
+        mediumField = new MediumCustomField("Medij");
+        
         logger.trace("Exiting RegistrationUnitFieldFactory()");
     }
 
@@ -117,6 +122,9 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         } else if ("materials".equals(beanProperty)) {
             logger.trace("Exiting createField()");
             return materialField;
+        } else if ("mediums".equals(beanProperty)) {
+            logger.trace("Exiting createField()");
+            return mediumField;
         }
 
         logger.trace("Exiting createField()");
