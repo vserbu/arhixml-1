@@ -15,6 +15,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.ValidationEventHandler;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -28,6 +29,11 @@ class MainWindowModel implements Serializable {
 
     private File file;
     private Arhinet arhinet;
+    private ValidationEventHandler validationEventHandler;
+    
+    public MainWindowModel() {
+        validationEventHandler = new XMLValidationEventHandler();
+    }
 
     /**
      * Sets up the upload destination for the framework.
@@ -88,6 +94,7 @@ class MainWindowModel implements Serializable {
             JAXBContext jc = JAXBContext.newInstance(Arhinet.class);
             Unmarshaller um = jc.createUnmarshaller();
             um.setSchema(schema);
+            um.setEventHandler(validationEventHandler);
             logger.debug("Unmarshaling XML file.");
             arhinet = (Arhinet) um.unmarshal(file);
             logger.debug("File successfully unmarshaled.");
@@ -130,6 +137,7 @@ class MainWindowModel implements Serializable {
             Marshaller m = jc.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.setSchema(schema);
+            m.setEventHandler(validationEventHandler);
             logger.debug("Marshaling object to XML file.");
             File file = File.createTempFile("ArhiXML", ".xml");
             m.marshal(arhinet, file);
@@ -153,5 +161,9 @@ class MainWindowModel implements Serializable {
 
             return null;
         }
+    }
+
+    String getValidationErrorDetails() {
+        return validationEventHandler.toString();
     }
 }

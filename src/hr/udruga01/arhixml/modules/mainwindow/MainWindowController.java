@@ -74,7 +74,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
         if (arhinet == null) {
             logger.error("Validation of the uploaded XML file failed.");
-            mainWindow.showNotification("Validation of the uploaded XML file failed", Notification.TYPE_ERROR_MESSAGE);
+            mainWindow.showNotification("Validacija uèitane XML datoteke je neuspješna", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
             logger.trace("Exiting uploadSucceeded()");
 
             return;
@@ -130,7 +130,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
             if (file == null) {
                 logger.error("Can not generate XML file. Validation of user data failed.");
-                mainWindow.showNotification("Can not generate XML file. Validation of user data failed.", Notification.TYPE_ERROR_MESSAGE);
+                mainWindow.showNotification("Nemoguæe je generirati XML datoteku. Validacija korisnièkih podataka je neuspjela.", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
                 logger.trace("Exiting buttonClick()");
 
                 return;
