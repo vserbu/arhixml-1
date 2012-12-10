@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Item;
+import com.vaadin.data.validator.IntegerValidator;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.Form;
@@ -51,10 +52,12 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         holderIdField = new TextField("Šifra imatelja");
         holderIdField.setWidth("100%");
         holderIdField.setNullRepresentation("");
-
+        holderIdField.addValidator(new IntegerValidator("Šifra imatelja mora biti brojèana vrijednost"));
+        
         levelIdField = new TextField("Šifra razine");
         levelIdField.setWidth("100%");
         levelIdField.setNullRepresentation("");
+        levelIdField.addValidator(new IntegerValidator("Šifra razine mora biti brojèana vrijednost"));
 
         nameField = new TextField("Naziv");
         nameField.setWidth("100%");
@@ -69,6 +72,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         signatureField = new TextField("Signatura");
         signatureField.setWidth("100%");
         signatureField.setNullRepresentation("");
+        signatureField.addValidator(new IntegerValidator("Vrijednost signature mora biti brojèana vrijednost"));
 
         timePeriodNoteField = new TextField("Napomena o razdoblju");
         timePeriodNoteField.setWidth("100%");
@@ -77,10 +81,12 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         yearFromField = new TextField("Godina od");
         yearFromField.setWidth("100%");
         yearFromField.setNullRepresentation("");
+        yearFromField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojèana vrijednost"));
 
         yearToField = new TextField("Godina do");
         yearToField.setWidth("100%");
         yearToField.setNullRepresentation("");
+        yearToField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojèana vrijednost"));
 
         materialField = new MaterialsCustomField("Graða");
         

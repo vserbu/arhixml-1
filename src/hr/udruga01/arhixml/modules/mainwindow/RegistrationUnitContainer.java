@@ -141,6 +141,10 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     @Override
     public boolean isRoot(Object itemId) {
         logger.trace("Entering isRoot()");
+        // FIXME There is a bug here somewhere (NullPointerException at the
+        // bellow line).
+        // This bug can be triggered by setting some other value for
+        // "Šifra razine" field.
         int levelId = ((RegistrationUnit) itemId).getLevelId();
 
         if (levelId == 0) {

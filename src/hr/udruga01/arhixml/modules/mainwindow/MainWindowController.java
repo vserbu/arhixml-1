@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.Validator.EmptyValueException;
+import com.vaadin.data.Validator.InvalidValueException;
 import com.vaadin.event.Action;
 import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ItemClickEvent;
@@ -121,7 +122,9 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
             try {
                 mainWindow.commitForm();
             } catch (EmptyValueException exception) {
-                logger.warn("Error when trying to commit form data", exception);
+                logger.warn("Error when trying to commit form data. There are fields which must not have an empty value.", exception);
+            } catch (InvalidValueException exception) {
+                logger.warn("Error when trying to commit form data. There are fields with invalid values.", exception);
             }
         } else if ("saveFileButton".equals(data)) {
             Arhinet arhinet = mainWindow.getTableData();
