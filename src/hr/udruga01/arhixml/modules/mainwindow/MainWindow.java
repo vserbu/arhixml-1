@@ -4,6 +4,7 @@ import hr.udruga01.arhixml.datamodel.Arhinet;
 import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -103,7 +104,7 @@ public class MainWindow extends Window {
         registrationUnitTable.setColumnHeader(YEAR_FROM_PROPERTY, "Godina Od");
         registrationUnitTable.setColumnHeader(YEAR_TO_PROPERTY, "Godina Do");
         registrationUnitTable.setColumnHeader(HOLDER_ID_PROPERTY, "Imatelj Id");
-        
+
         registrationUnitTable.setColumnExpandRatio(LEVEL_ID_PROPERTY, 1);
         registrationUnitTable.setColumnExpandRatio(SIGNATURE_PROPERTY, 1);
         registrationUnitTable.setColumnExpandRatio(NAME_PROPERTY, 3);
@@ -172,9 +173,31 @@ public class MainWindow extends Window {
      */
     public void setTableData(Arhinet arhinet) {
         logger.trace("Entering setTableData()");
+
         registrationUnitContainer.setData(arhinet);
         logger.debug("Table data updated with the new contents.");
+        logger.debug("Expanding contents of a table.");
+        expandAllNodes(arhinet.getRegistrationUnits());
+        logger.debug("Content is fully expanded.");
+
         logger.trace("Exiting setTableData()");
+    }
+
+    /**
+     * After contents of {@link Arhinet} is loaded into table, each
+     * {@link RegistrationUnit} node inside {@link Arhinet} object should be
+     * fully expanded.
+     * 
+     * This results in more pleasent and convenient experience for the user.
+     * 
+     * @param registrationUnits
+     *            - Reference to a {@link RegistrationUnit} object.
+     */
+    private void expandAllNodes(List<RegistrationUnit> registrationUnits) {
+        for (RegistrationUnit registrationUnit : registrationUnits) {
+            registrationUnitTable.setCollapsed(registrationUnit, false);
+            expandAllNodes(registrationUnit.getRegistrationUnits());
+        }
     }
 
     /**
@@ -215,7 +238,7 @@ public class MainWindow extends Window {
             return true;
         }
     }
-    
+
     /**
      * Method handles the selection of items.
      * <p>
@@ -230,7 +253,8 @@ public class MainWindow extends Window {
      * the one that user tried to trigger context menu on.
      * 
      * @param item
-     *            - {@link RegistrationUnit} which needs to be added to selection.
+     *            - {@link RegistrationUnit} which needs to be added to
+     *            selection.
      */
     void selectTableItem(Object item) {
         logger.trace("Entering selectTableItem()");
@@ -288,7 +312,7 @@ public class MainWindow extends Window {
 
         logger.trace("Exiting rememberSplitterPosition()");
     }
-    
+
     /**
      * Removes selected items in a table from the registration unit container.
      */
@@ -304,24 +328,25 @@ public class MainWindow extends Window {
 
         logger.trace("Exiting removeSelectedItems()");
     }
-    
+
     /**
-     * Adds new item of {@link RegistrationUnit} type to the registration unit container.
+     * Adds new item of {@link RegistrationUnit} type to the registration unit
+     * container.
      */
     public void addNewItem(Object target) {
-        RegistrationUnit registrationUnit = ObjectFactory.createRegistrationUnit();    
-        
+        RegistrationUnit registrationUnit = ObjectFactory.createRegistrationUnit();
+
         registrationUnitContainer.setParent(registrationUnit, target);
         Item item = registrationUnitContainer.addBean(registrationUnit);
-        
+
         registrationUnitTable.setCollapsed(target, false);
         registrationUnitTable.setValue(null);
         registrationUnitTable.setCurrentPageFirstItemId(registrationUnit);
         registrationUnitTable.select(registrationUnit);
-        
+
         setFormData(item);
     }
-    
+
     public void commitForm() {
         registrationUnitDetails.commit();
     }
