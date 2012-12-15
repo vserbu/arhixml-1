@@ -23,6 +23,7 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Layout;
+import com.vaadin.ui.Table.TableDragMode;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload;
 import com.vaadin.ui.Upload.SucceededListener;
@@ -113,6 +114,8 @@ public class MainWindow extends Window {
         registrationUnitTable.setColumnExpandRatio(HOLDER_ID_PROPERTY, 1);
 
         registrationUnitTable.setSelectable(true);
+        registrationUnitTable.setDragMode(TableDragMode.MULTIROW);
+        registrationUnitTable.setDropHandler(new RegistrationUnitTableDropHandler());
         registrationUnitTable.addListener((ItemClickListener) controller);
         registrationUnitTable.addListener((ValueChangeListener) controller);
         registrationUnitTable.addActionHandler((Handler) controller);

@@ -103,14 +103,34 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     public boolean setParent(Object itemId, Object newParentId) throws UnsupportedOperationException {
         logger.trace("Entering setParent()");
 
+        // First we should get a reference to the old parent.
+        RegistrationUnit oldParentId = ((RegistrationUnit) itemId).getParentRegistrationUnit();
+
+        if (oldParentId != null) {
+            // The item has a parent which should be replaced with the new one.
+            // But before we replace it with the new parent, we must remove the
+            // item from the container.
+            oldParentId.getRegistrationUnits().remove(itemId);
+        } else {
+            // The item has no parent. This means that this is the new item or
+            // the item is on the root level.
+            // Anyway, remove the item from the root level (if any).
+            root.getRegistrationUnits().remove(itemId);
+        }
+
+        // Now it is the time to set the new parent for the item.
         ((RegistrationUnit) itemId).setParentRegistrationUnit((RegistrationUnit) newParentId);
 
+        // After setting the parent, we must now add the item into container.
         if (newParentId == null) {
             root.getRegistrationUnits().add((RegistrationUnit) itemId);
         } else {
-            ((RegistrationUnit) itemId).setlevelId(-1);
             ((RegistrationUnit) newParentId).getRegistrationUnits().add((RegistrationUnit) itemId);
         }
+
+        // Container is changed, fire the event so that the table can update
+        // itself.
+        fireItemSetChange();
 
         logger.trace("Exiting setParent()");
 
@@ -141,18 +161,17 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     @Override
     public boolean isRoot(Object itemId) {
         logger.trace("Entering isRoot()");
-        // FIXME There is a bug here somewhere (NullPointerException at the
-        // bellow line).
-        // This bug can be triggered by setting some other value for
-        // "Šifra razine" field.
-        int levelId = ((RegistrationUnit) itemId).getLevelId();
 
-        if (levelId == 0) {
+        RegistrationUnit parentRegistrationUnit = ((RegistrationUnit) itemId).getParentRegistrationUnit();
+
+        if (parentRegistrationUnit != null) {
             logger.trace("Exiting isRoot()");
-            return true;
+
+            return false;
         } else {
             logger.trace("Exiting isRoot()");
-            return false;
+
+            return true;
         }
     }
 
