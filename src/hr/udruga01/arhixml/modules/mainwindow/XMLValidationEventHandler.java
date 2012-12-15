@@ -1,5 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
+import java.io.Serializable;
+
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
 
@@ -7,7 +9,9 @@ import javax.xml.bind.ValidationEventHandler;
  * This class is a handler for validation process.
  * It is used to extract details of validation error, if any.
  */
-public class XMLValidationEventHandler implements ValidationEventHandler {
+public class XMLValidationEventHandler implements Serializable, ValidationEventHandler {
+    private static final long serialVersionUID = 1L;
+    
     private String errorMessage;
     private int lineNumber;
 

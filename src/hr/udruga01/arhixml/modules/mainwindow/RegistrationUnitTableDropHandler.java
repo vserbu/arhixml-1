@@ -1,10 +1,10 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import java.util.Collection;
-import java.util.Iterator;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
-import com.vaadin.data.Container;
+import java.util.Collection;
+import java.util.Iterator;
+
 import com.vaadin.event.DataBoundTransferable;
 import com.vaadin.event.dd.DragAndDropEvent;
 import com.vaadin.event.dd.DropHandler;
@@ -58,6 +58,17 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
             // Drop happend above the referenced item.
             // Insert draged items just above the referenced item.
 
+            RegistrationUnitContainer container = (RegistrationUnitContainer) transferable.getSourceContainer();
+
+            while (it.hasNext()) {
+                RegistrationUnit registrationUnit = (RegistrationUnit) it.next();
+                RegistrationUnit parentRegistrationUnit = targetRegistrationUnit.getParentRegistrationUnit();
+                // Set a new parent for the draged item.
+                registrationUnitTable.setParent(registrationUnit, parentRegistrationUnit);
+                container.moveAfterSibling(registrationUnit, targetRegistrationUnit);
+                container.moveAfterSibling(targetRegistrationUnit, registrationUnit);
+            }
+
         } else if (dropLocation == VerticalDropLocation.MIDDLE) {
             // Drop happend exactlly on the referenced item.
             // Insert draged items into referenced item.
@@ -71,14 +82,16 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
         } else if (dropLocation == VerticalDropLocation.BOTTOM) {
             // Drop happend bellow the referenced item.
             // Insert draged items just bellow the referenced item.
-            
+
             RegistrationUnitContainer container = (RegistrationUnitContainer) transferable.getSourceContainer();
-            
+
             while (it.hasNext()) {
                 RegistrationUnit registrationUnit = (RegistrationUnit) it.next();
-                RegistrationUnit parentRegistrationUnit = registrationUnit.getParentRegistrationUnit();
-                // Set each draged item a new parent.
+                RegistrationUnit parentRegistrationUnit = targetRegistrationUnit.getParentRegistrationUnit();
+                // Set a new parent for the draged item.
                 registrationUnitTable.setParent(registrationUnit, parentRegistrationUnit);
+                // Move the item just bellow the sibling.
+                container.moveAfterSibling(registrationUnit, targetRegistrationUnit);
             }
         }
     }
