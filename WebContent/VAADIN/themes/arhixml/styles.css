@@ -1,2 +1,5 @@
 @import url(../reindeer/styles.css);
 
+.v-table tr.v-table-row:hover,.v-table tr.v-table-row-odd:hover {
+	background-color: LightBlue;
+}

@@ -221,25 +221,36 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
         }
     }
 
+    /**
+     * Moves object <code>itemId</code> after object <code>siblingId</code>.
+     * Before using this method, both <code>itemId</code> and
+     * <code>siblingId</code> needs to have the same parent. Otherwise this
+     * method will not work correctly.
+     * 
+     * @param itemId
+     *            - Object that needs to be moved.
+     * @param siblingId
+     *            - Object to which <code>itemId </code> needs to be moved to.
+     */
     public void moveAfterSibling(Object itemId, Object siblingId) {
         // The itemId and siblingId have the same parent. So we need to find out
         // the parent of any of those items.
-        RegistrationUnit parentRegistrationUnit = ((RegistrationUnit) itemId).getParentRegistrationUnit();
+        RegistrationUnit parentRegistrationUnit = (RegistrationUnit) getParent(itemId);
         // Now that we have a parent first we need to remove the old child which
         // is represented as itemId.
         List<RegistrationUnit> registrationUnitList = null;
-        
+
         if (parentRegistrationUnit != null) {
             registrationUnitList = parentRegistrationUnit.getRegistrationUnits();
         } else {
             registrationUnitList = root.getRegistrationUnits();
         }
-        
+
         registrationUnitList.remove(itemId);
         // Than we need to add the same child but after the sibling.
         int siblingIndex = registrationUnitList.indexOf(siblingId);
         registrationUnitList.add(siblingIndex + 1, (RegistrationUnit) itemId);
-        
+
         fireItemSetChange();
     }
 }

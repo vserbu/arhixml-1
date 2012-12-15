@@ -88,7 +88,7 @@ public class MainWindow extends Window {
         splitPanel = new VerticalSplitPanel();
         splitPanel.addListener((SplitterClickListener) controller);
         splitPanel.setSizeFull();
-        spliterPosition = 40;
+        spliterPosition = 55;
         splitPanel.setSplitPosition(100, Sizeable.UNITS_PERCENTAGE);
 
         registrationUnitTable = new TreeTable();

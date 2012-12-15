@@ -62,13 +62,12 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
 
             while (it.hasNext()) {
                 RegistrationUnit registrationUnit = (RegistrationUnit) it.next();
-                RegistrationUnit parentRegistrationUnit = targetRegistrationUnit.getParentRegistrationUnit();
+                RegistrationUnit parentRegistrationUnit = (RegistrationUnit) registrationUnitTable.getParent(targetRegistrationUnit);
                 // Set a new parent for the draged item.
                 registrationUnitTable.setParent(registrationUnit, parentRegistrationUnit);
                 container.moveAfterSibling(registrationUnit, targetRegistrationUnit);
                 container.moveAfterSibling(targetRegistrationUnit, registrationUnit);
             }
-
         } else if (dropLocation == VerticalDropLocation.MIDDLE) {
             // Drop happend exactlly on the referenced item.
             // Insert draged items into referenced item.
@@ -78,7 +77,6 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
                 RegistrationUnit registrationUnit = (RegistrationUnit) it.next();
                 registrationUnitTable.setParent(registrationUnit, targetRegistrationUnit);
             }
-
         } else if (dropLocation == VerticalDropLocation.BOTTOM) {
             // Drop happend bellow the referenced item.
             // Insert draged items just bellow the referenced item.
@@ -87,7 +85,7 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
 
             while (it.hasNext()) {
                 RegistrationUnit registrationUnit = (RegistrationUnit) it.next();
-                RegistrationUnit parentRegistrationUnit = targetRegistrationUnit.getParentRegistrationUnit();
+                RegistrationUnit parentRegistrationUnit = (RegistrationUnit) registrationUnitTable.getParent(targetRegistrationUnit);
                 // Set a new parent for the draged item.
                 registrationUnitTable.setParent(registrationUnit, parentRegistrationUnit);
                 // Move the item just bellow the sibling.
