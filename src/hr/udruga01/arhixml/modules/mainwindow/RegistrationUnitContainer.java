@@ -162,7 +162,7 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
     public boolean isRoot(Object itemId) {
         logger.trace("Entering isRoot()");
 
-        RegistrationUnit parentRegistrationUnit = ((RegistrationUnit) itemId).getParentRegistrationUnit();
+        RegistrationUnit parentRegistrationUnit = (RegistrationUnit) getParent(itemId);
 
         if (parentRegistrationUnit != null) {
             logger.trace("Exiting isRoot()");
