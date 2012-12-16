@@ -223,22 +223,29 @@ public class MainWindow extends Window {
     /**
      * Returns the table of {@link RegistrationUnit} items selection state.
      * 
-     * @return - If there are selected items in a table, method will return
-     *         <code>true</code>. Otherwise it will return <code>false</code>.
+     * @return - If there is only one selected item in a table, method will
+     *         return <code>true</code>. For all other selection (multiple
+     *         selection or no selection at all) it will return
+     *         <code>false</code>.
      */
-    public boolean isTableItemSelected() {
+    public boolean isSingleSelection() {
         logger.trace("Entering isTableItemSelected()");
+
+        // Get the list of selected items.
         @SuppressWarnings("unchecked")
-        Set<RegistrationUnit> itemList = (Set<RegistrationUnit>) registrationUnitTable.getValue();
+        Set<RegistrationUnit> selectedItems = (Set<RegistrationUnit>) registrationUnitTable.getValue();
 
-        if (itemList.size() == 0) {
-            logger.trace("Exiting isTableItemSelected()");
-
-            return false;
-        } else {
+        if (selectedItems.size() == 1) {
+            // If there is only one selected item than return true.
             logger.trace("Exiting isTableItemSelected()");
 
             return true;
+        } else {
+            // If there is a multiple selection or no selection at all, return
+            // false.
+            logger.trace("Exiting isTableItemSelected()");
+
+            return false;
         }
     }
 

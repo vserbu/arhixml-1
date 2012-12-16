@@ -162,7 +162,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
         mainWindow.rememberSplitterPosition();
 
-        if (mainWindow.isTableItemSelected() == true) {
+        if (mainWindow.isSingleSelection() == true) {
             mainWindow.setFormVisible(true);
         } else {
             mainWindow.setFormVisible(false);
