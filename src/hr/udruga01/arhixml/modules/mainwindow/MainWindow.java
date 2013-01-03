@@ -83,6 +83,12 @@ public class MainWindow extends Window {
         saveFileButton.addListener((ClickListener) controller);
         buttonToolbar.addComponent(saveFileButton);
 
+        // Create clear table button and add it to button toolbar.
+        Button clearTableButton = new Button("Isprazni tablicu");
+        clearTableButton.setData("clearTableButton");
+        clearTableButton.addListener((ClickListener) controller);
+        buttonToolbar.addComponent(clearTableButton);
+
         verticalLayout.addComponent(buttonToolbar);
 
         splitPanel = new VerticalSplitPanel();
@@ -344,6 +350,8 @@ public class MainWindow extends Window {
      * container.
      */
     public void addNewItem(Object target) {
+        logger.trace("Entering addNewItem()");
+        
         RegistrationUnit registrationUnit = ObjectFactory.createRegistrationUnit();
 
         registrationUnitContainer.setParent(registrationUnit, target);
@@ -355,9 +363,26 @@ public class MainWindow extends Window {
         registrationUnitTable.select(registrationUnit);
 
         setFormData(item);
+        
+        logger.trace("Exiting addNewItem()");
     }
 
     public void commitForm() {
+        logger.trace("Entering commitForm()");
+        
         registrationUnitDetails.commit();
+        
+        logger.trace("Exiting commitForm()");
+    }
+
+    /**
+     * Clears the table which holds the {@link RegistrationUnit} items.
+     */
+    public void emptyTable() {
+        logger.trace("Entering emptyTable()");
+        
+        registrationUnitTable.removeAllItems();
+        
+        logger.trace("Exiting emptyTable()");
     }
 }

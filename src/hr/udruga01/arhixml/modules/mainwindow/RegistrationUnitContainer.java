@@ -188,6 +188,7 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
 
     public void setData(Arhinet root) {
         logger.trace("Entering setData()");
+
         this.root = root;
 
         for (RegistrationUnit registrationUnit : root.getRegistrationUnits()) {
@@ -252,5 +253,19 @@ class RegistrationUnitContainer extends BeanItemContainer<RegistrationUnit> impl
         registrationUnitList.add(siblingIndex + 1, (RegistrationUnit) itemId);
 
         fireItemSetChange();
+    }
+
+    /**
+     * This method does everything that a super class does with addition of
+     * clearing the internal collection of objects.
+     */
+    @Override
+    public boolean removeAllItems() {
+        // First we need to clear our internal list of RegistrationUnit objects.
+        getData().getRegistrationUnits().clear();
+        // Then we need to remove all items from this container.
+        // This will also trigger repainting the table.
+
+        return super.removeAllItems();
     }
 }

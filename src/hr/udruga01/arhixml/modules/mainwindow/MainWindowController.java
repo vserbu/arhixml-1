@@ -107,10 +107,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
     /**
      * This method will be automatically called by the framework when user
-     * clicks on "Save File" button.
-     * <p>
-     * This will trigger marshaling process of the table data object and
-     * downloading the created file from the marshal process.
+     * clicks on "Save File", "Update Details" or "Clear Table" button.
      */
     @Override
     public void buttonClick(ClickEvent event) {
@@ -141,6 +138,10 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
             mainWindow.open(new FileDownloadResource(file, mainWindow.getApplication()));
             logger.debug("File offered for downloading.");
+        } else if ("clearTableButton".equals(data)) {
+            // User clicked on "Clear Table" button so lets empty it.
+            mainWindow.emptyTable();
+            logger.debug("Removed all items from the registration unit table.");
         }
 
         logger.trace("Exiting buttonClick()");
