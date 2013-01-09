@@ -41,6 +41,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private TextField yearToField;
     private MaterialsCustomField materialField;
     private MediumCustomField mediumField;
+    private IntegerValidator holderIdValidator;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
@@ -50,11 +51,11 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         contentsField.setNullRepresentation("");
 
         holderIdField = new TextField("Šifra imatelja");
+        holderIdField.setImmediate(true);
         holderIdField.setWidth("100%");
-        holderIdField.setRequired(true);
         holderIdField.setRequiredError("Molim unesite šifru imatelja");
         holderIdField.setNullRepresentation("");
-        holderIdField.addValidator(new IntegerValidator("Šifra imatelja mora biti brojèana vrijednost"));
+        holderIdValidator = new IntegerValidator("Šifra imatelja mora biti brojèana vrijednost");
         
         levelIdField = new TextField("Šifra razine");
         levelIdField.setWidth("100%");
@@ -118,6 +119,24 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
             return contentsField;
         } else if ("holderId".equals(beanProperty)) {
             logger.trace("Exiting createField()");
+            
+            // Get the parent registration unit.
+            Object parentRegistrationUnit = item.getItemProperty("parentRegistrationUnit").getValue();
+            
+            if (parentRegistrationUnit == null) {
+                // There is no parent which means that item is a top level registration unit.
+                // This means that holderId field must be enabled on the form.
+                holderIdField.setEnabled(true);
+                holderIdField.setRequired(true);
+                holderIdField.addValidator(holderIdValidator);
+            } else {
+                // This item is not top level registration unit.
+                // We need to disable the holderId field.
+                holderIdField.setEnabled(false);
+                holderIdField.setRequired(false);
+                holderIdField.removeAllValidators();
+            }
+            
             return holderIdField;
         } else if ("levelId".equals(beanProperty)) {
             logger.trace("Exiting createField()");
