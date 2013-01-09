@@ -221,8 +221,10 @@ public class MainWindow extends Window {
      */
     public void setFormData(Item tableItem) {
         logger.trace("Entering setFormData()");
+        
         registrationUnitDetails.setItemDataSource(tableItem);
         logger.debug("Form data updated with the new contents.");
+        
         logger.trace("Exiting setFormData()");
     }
 
@@ -298,6 +300,9 @@ public class MainWindow extends Window {
      */
     public void setFormVisible(boolean isVisible) {
         logger.trace("Entering setFormVisible()");
+        
+        // Reset the form data. This will update the state of form controls.
+        registrationUnitDetails.setItemDataSource(registrationUnitDetails.getItemDataSource());
 
         if (isVisible) {
             splitPanel.setSplitPosition(spliterPosition, Sizeable.UNITS_PERCENTAGE);

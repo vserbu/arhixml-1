@@ -92,5 +92,11 @@ public class RegistrationUnitTableDropHandler implements DropHandler {
                 container.moveAfterSibling(registrationUnit, targetRegistrationUnit);
             }
         }
+        
+        // After items are droped we need to trigger ValueChangeEvent for registration unit table.
+        // This must be triggered in orther to update form controls status.
+        Object selectedItems = registrationUnitTable.getValue();
+        registrationUnitTable.setValue(null);
+        registrationUnitTable.setValue(selectedItems);
     }
 }
