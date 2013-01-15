@@ -1,46 +1,38 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import hr.udruga01.arhixml.datamodel.Material;
-import hr.udruga01.arhixml.datamodel.ObjectFactory;
-import hr.udruga01.arhixml.datamodel.RegistrationUnit;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import hr.udruga01.arhixml.datamodel.Label;
+import hr.udruga01.arhixml.datamodel.Material;
+import hr.udruga01.arhixml.datamodel.ObjectFactory;
+import hr.udruga01.arhixml.datamodel.RegistrationUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.customfield.CustomField;
 
 import com.vaadin.data.Property;
+import com.vaadin.data.Buffered.SourceException;
 import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.event.ItemClickEvent.ItemClickListener;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 
-/**
- * This class represents the {@link CustomField} for the <code>materials</code>
- * property of {@link RegistrationUnit} class. Component consist of
- * {@link Table} and {@link Button} for creating new and deleting selected
- * {@link Material} items from a table.
- */
-class MaterialsCustomField extends CustomField {
+public class LabelCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
 
-    private final Logger logger = LoggerFactory.getLogger(MaterialsCustomField.class.getName());
-    private MaterialsCustomFieldController controller = new MaterialsCustomFieldController(this);
-    private BeanItemContainer<Material> materialContainer = new BeanItemContainer<Material>(Material.class);
-
+    private final Logger logger = LoggerFactory.getLogger(LabelCustomField.class.getName());
+    private Table labelsTable;
     private static final int NUMBER_OF_VISIBLE_ROWS = 4;
-    private static final String SUBTYPEID_PROPERTY = "subtypeId";
+    private static final String NAME_PROPERTY = "name";
+    private static final String REMAINING_LABEL_ID_TYPE_PROPERTY = "remainingLabelIdType";
+    private BeanItemContainer<Label> labelContainer = new BeanItemContainer<Label>(Label.class);
 
-    private Table materialsList;
-
-    public MaterialsCustomField(String caption) {
-        logger.trace("Entering MaterialsCustomField()");
+    public LabelCustomField(String caption) {
+        logger.trace("Entering LabelCustomField()");
 
         setCaption(caption);
 
@@ -48,25 +40,26 @@ class MaterialsCustomField extends CustomField {
         layout.setSizeFull();
         layout.setSpacing(true);
 
-        materialsList = new Table();
-        materialsList.setSelectable(true);
-        materialsList.setEditable(true);
-        materialsList.setTableFieldFactory(new MaterialsTableFieldFactory());
-        materialsList.setMultiSelect(true);
-        materialsList.setSizeFull();
-        materialsList.setImmediate(true);
-        materialsList.setColumnHeaderMode(Table.COLUMN_HEADER_MODE_HIDDEN);
-        materialsList.setPageLength(NUMBER_OF_VISIBLE_ROWS);
-        materialsList.setContainerDataSource(materialContainer);
-        materialsList.setVisibleColumns(new Object[] {SUBTYPEID_PROPERTY});
-        materialsList.addActionHandler(controller);
-        materialsList.addListener((ItemClickListener) controller);
-        layout.addComponent(materialsList);
-        layout.setExpandRatio(materialsList, 1f);
+        labelsTable = new Table();
+        labelsTable.setSelectable(true);
+        labelsTable.setEditable(true);
+        // labelsTable.setTableFieldFactory(new MaterialsTableFieldFactory());
+        labelsTable.setMultiSelect(true);
+        labelsTable.setSizeFull();
+        labelsTable.setImmediate(true);
+        labelsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
+        labelsTable.setContainerDataSource(labelContainer);
+        labelsTable.setVisibleColumns(new Object[] { REMAINING_LABEL_ID_TYPE_PROPERTY, NAME_PROPERTY });
+        labelsTable.setColumnHeader(NAME_PROPERTY, "Naziv");
+        labelsTable.setColumnHeader(REMAINING_LABEL_ID_TYPE_PROPERTY, "Vrsta Oznake");
+        // labelsTable.addActionHandler(controller);
+        // labelsTable.addListener((ItemClickListener) controller);
+        layout.addComponent(labelsTable);
+        layout.setExpandRatio(labelsTable, 1f);
 
         setCompositionRoot(layout);
 
-        logger.trace("Exiting MaterialsCustomField()");
+        logger.trace("Exiting LabelCustomField()");
     }
 
     /**
@@ -91,7 +84,7 @@ class MaterialsCustomField extends CustomField {
         logger.trace("Exiting getType()");
         return ArrayList.class;
     }
-
+    
     /**
      * Method handles the selection of items.
      * <p>
@@ -106,63 +99,63 @@ class MaterialsCustomField extends CustomField {
      * the one that user tried to trigger context menu on.
      * 
      * @param item
-     *            - {@link Material} which needs to be added to selection.
+     *            - {@link Label} which needs to be added to selection.
      */
     void selectTableItem(Object item) {
         logger.trace("Entering selectTableItem()");
 
         @SuppressWarnings("unchecked")
-        Set<Material> selectedItems = ((Set<Material>) materialsList.getValue());
+        Set<Label> selectedItems = ((Set<Label>) labelsTable.getValue());
 
         if (selectedItems.contains(item) == false) {
-            materialsList.setValue(null);
+            labelsTable.setValue(null);
         }
 
-        materialsList.select(item);
+        labelsTable.select(item);
 
         logger.trace("Exiting selectTableItem()");
     }
-
+    
     /**
-     * Removes selected items in a table from the material container.
+     * Removes selected items in a table from the label container.
      */
     void removeSelectedItems() {
         logger.trace("Entering removeSelectedItems()");
 
         @SuppressWarnings("unchecked")
-        Set<Material> selectedItems = ((Set<Material>) materialsList.getValue());
+        Set<Label> selectedItems = ((Set<Label>) labelsTable.getValue());
 
-        for (Material item : selectedItems) {
-            materialsList.removeItem(item);
+        for (Label item : selectedItems) {
+            labelsTable.removeItem(item);
         }
 
         logger.trace("Exiting removeSelectedItems()");
     }
-
+    
     /**
-     * Adds new item of {@link Material} type to the material container.
+     * Adds new item of {@link Label} type to the label container.
      */
     public void addNewItem() {
         logger.trace("Entering addNewItem()");
         
-        Material material = ObjectFactory.createMaterial();
-        materialsList.addItem(material);
+        Label label = ObjectFactory.createLabel();
+        labelsTable.addItem(label);
         
-        materialsList.setValue(null);
-        materialsList.setCurrentPageFirstItemId(material);
-        materialsList.select(material);
+        labelsTable.setValue(null);
+        labelsTable.setCurrentPageFirstItemId(label);
+        labelsTable.select(label);
         
-        logger.trace("Entering addNewItem()");
+        logger.trace("Exiting addNewItem()");
     }
-
+    
     /**
      * This method is automatically called by the framework when
-     * <code>materials</code> property of the {@link RegistrationUnit} object is
+     * <code>labels</code> property of the {@link RegistrationUnit} object is
      * bounded to {@link Field}. This happens in
      * {@link RegistrationUnitFieldFactory}.
      * <p>
      * This method is used to populate the container which holds
-     * {@link Material} objects.
+     * {@link Label} objects.
      */
     @Override
     public void setPropertyDataSource(Property propertyDataSource) {
@@ -171,43 +164,43 @@ class MaterialsCustomField extends CustomField {
         super.setPropertyDataSource(propertyDataSource);
 
         @SuppressWarnings("unchecked")
-        List<Material> materials = (List<Material>) propertyDataSource.getValue();
-        materialContainer.removeAllItems();
-        materialContainer.addAll(materials);
+        List<Label> labels = (List<Label>) propertyDataSource.getValue();
+        labelContainer.removeAllItems();
+        labelContainer.addAll(labels);
 
         logger.trace("Exiting setPropertyDataSource()");
     }
-
+    
     /**
      * This method is automatically called by the framework when the
      * {@link Form} is commited or when there is a need to read the value from
      * the field (user selected another item from the table).
      * <p>
-     * Method will return every {@link Material} from the container.
+     * Method will return every {@link Label} from the container.
      */
     @Override
     public Object getValue() {
         logger.trace("Entering getValue()");
 
-        ArrayList<Material> materials = new ArrayList<Material>();
+        ArrayList<Label> labels = new ArrayList<Label>();
 
-        for (Object itemId : materialContainer.getItemIds()) {
-            materials.add(materialContainer.getItem(itemId).getBean());
+        for (Object itemId : labelContainer.getItemIds()) {
+            labels.add(labelContainer.getItem(itemId).getBean());
         }
 
         logger.trace("Exiting getValue()");
 
-        return materials;
+        return labels;
     }
-
+    
     /**
      * This method is automatically called by the framework when there is a need
      * to discard the value from a field. For example, user clicked on
      * "Discard changes" button located in the form.
      * <p>
-     * This will simply overwrite the {@link Material} container with the
-     * original list of materials available from the time when the form
-     * initially bound the <code>materials</code> property of
+     * This will simply overwrite the {@link Label} container with the
+     * original list of labels available from the time when the form
+     * initially bound the <code>labels</code> property of
      * {@link RegistrationUnit} object.
      */
     @Override
@@ -220,9 +213,9 @@ class MaterialsCustomField extends CustomField {
 
         if (propertyDataSource != null) {
             @SuppressWarnings("unchecked")
-            List<Material> materials = (List<Material>) propertyDataSource.getValue();
-            materialContainer.removeAllItems();
-            materialContainer.addAll(materials);
+            List<Label> labels = (List<Label>) propertyDataSource.getValue();
+            labelContainer.removeAllItems();
+            labelContainer.addAll(labels);
         }
 
         logger.trace("Exiting discard()");

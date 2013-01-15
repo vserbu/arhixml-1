@@ -19,6 +19,8 @@ public class RegistrationUnitForm extends Form {
     private GridLayout technicalDataLayout;
     
     public RegistrationUnitForm() {
+        logger.trace("Entering RegistrationUnitForm()");
+        
         layout = new VerticalLayout();
         layout.setWidth("100%");
         layout.setSpacing(true);
@@ -45,14 +47,17 @@ public class RegistrationUnitForm extends Form {
         notesLayout.setSpacing(true);
         layout.addComponent(notesLayout);
         
-        technicalDataLayout = new GridLayout(2, 1);
-        technicalDataLayout.setColumnExpandRatio(0, 0.5f);
-        technicalDataLayout.setColumnExpandRatio(1, 0.5f);
+        technicalDataLayout = new GridLayout(3, 1);
+        technicalDataLayout.setColumnExpandRatio(0, 0.33f);
+        technicalDataLayout.setColumnExpandRatio(1, 0.33f);
+        technicalDataLayout.setColumnExpandRatio(2, 0.33f);
         technicalDataLayout.setWidth("100%");
         technicalDataLayout.setSpacing(true);
         layout.addComponent(technicalDataLayout);
         
         setLayout(layout);
+        
+        logger.trace("Exiting RegistrationUnitForm()");
     }
     
     @Override
@@ -81,6 +86,8 @@ public class RegistrationUnitForm extends Form {
             technicalDataLayout.addComponent(field, 0, 0);
         } else if ("mediums".equals(propertyId)) {
             technicalDataLayout.addComponent(field, 1, 0);
+        } else if ("labels".equals(propertyId)) {
+            technicalDataLayout.addComponent(field, 2, 0);
         }
         
         logger.trace("Exiting attachField()");

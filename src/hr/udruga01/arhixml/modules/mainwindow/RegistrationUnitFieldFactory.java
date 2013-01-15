@@ -42,6 +42,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private MaterialsCustomField materialField;
     private MediumCustomField mediumField;
     private IntegerValidator holderIdValidator;
+    private LabelCustomField labelField;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
@@ -101,6 +102,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         
         mediumField = new MediumCustomField("Medij");
         
+        labelField = new LabelCustomField("Oznaka");
+        
         logger.trace("Exiting RegistrationUnitFieldFactory()");
     }
 
@@ -112,11 +115,12 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     @Override
     public Field createField(Item item, Object propertyId, Component uiContext) {
         logger.trace("Entering createField()");
+        
+        Field formField = null;
         String beanProperty = (String) propertyId;
 
         if ("contents".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return contentsField;
+            formField = contentsField;
         } else if ("holderId".equals(beanProperty)) {
             logger.trace("Exiting createField()");
             
@@ -137,37 +141,31 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
                 holderIdField.removeAllValidators();
             }
             
-            return holderIdField;
+            formField = holderIdField;
         } else if ("levelId".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return levelIdField;
+            formField = levelIdField;
         } else if ("name".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return nameField;
+            formField = nameField;
         } else if ("note".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return noteField;
+            formField = noteField;
         } else if ("signature".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return signatureField;
+            formField = signatureField;
         } else if ("timePeriodNote".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return timePeriodNoteField;
+            formField = timePeriodNoteField;
         } else if ("yearFrom".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return yearFromField;
+            formField = yearFromField;
         } else if ("yearTo".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return yearToField;
+            formField = yearToField;
         } else if ("materials".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return materialField;
+            formField = materialField;
         } else if ("mediums".equals(beanProperty)) {
-            logger.trace("Exiting createField()");
-            return mediumField;
+            formField = mediumField;
+        } else if ("labels".equals(beanProperty)) {
+            formField = labelField;
         }
 
         logger.trace("Exiting createField()");
-        return null;
+        
+        return formField;
     }
 }
