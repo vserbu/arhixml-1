@@ -43,7 +43,7 @@ public class LabelCustomField extends CustomField {
         labelsTable = new Table();
         labelsTable.setSelectable(true);
         labelsTable.setEditable(true);
-        // labelsTable.setTableFieldFactory(new MaterialsTableFieldFactory());
+        labelsTable.setTableFieldFactory(new LabelsTableFieldFactory());
         labelsTable.setMultiSelect(true);
         labelsTable.setSizeFull();
         labelsTable.setImmediate(true);
