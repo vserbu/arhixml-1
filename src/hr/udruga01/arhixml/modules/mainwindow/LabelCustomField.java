@@ -1,21 +1,21 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import hr.udruga01.arhixml.datamodel.Label;
 import hr.udruga01.arhixml.datamodel.Material;
 import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.customfield.CustomField;
 
 import com.vaadin.data.Property;
-import com.vaadin.data.Buffered.SourceException;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
@@ -29,6 +29,7 @@ public class LabelCustomField extends CustomField {
     private static final int NUMBER_OF_VISIBLE_ROWS = 4;
     private static final String NAME_PROPERTY = "name";
     private static final String REMAINING_LABEL_ID_TYPE_PROPERTY = "remainingLabelIdType";
+    private LabelsCustomFieldController controller = new LabelsCustomFieldController(this);
     private BeanItemContainer<Label> labelContainer = new BeanItemContainer<Label>(Label.class);
 
     public LabelCustomField(String caption) {
@@ -52,8 +53,8 @@ public class LabelCustomField extends CustomField {
         labelsTable.setVisibleColumns(new Object[] { REMAINING_LABEL_ID_TYPE_PROPERTY, NAME_PROPERTY });
         labelsTable.setColumnHeader(NAME_PROPERTY, "Naziv");
         labelsTable.setColumnHeader(REMAINING_LABEL_ID_TYPE_PROPERTY, "Vrsta Oznake");
-        // labelsTable.addActionHandler(controller);
-        // labelsTable.addListener((ItemClickListener) controller);
+        labelsTable.addActionHandler(controller);
+        labelsTable.addListener((ItemClickListener) controller);
         layout.addComponent(labelsTable);
         layout.setExpandRatio(labelsTable, 1f);
 

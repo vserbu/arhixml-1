@@ -101,6 +101,7 @@ public class LabelsTableFieldFactory implements TableFieldFactory {
             final TextField nameTextField = new TextField();
             nameTextField.setWidth("100%");
             nameTextField.setReadOnly(true);
+            nameTextField.setNullRepresentation("");
             nameTextField.addListener(new FocusListener() {
                 private static final long serialVersionUID = 1L;
     
