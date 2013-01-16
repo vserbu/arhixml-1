@@ -3,3 +3,9 @@
 .v-table tr.v-table-row:hover,.v-table tr.v-table-row-odd:hover {
 	background-color: LightBlue;
 }
+
+.v-table-cell-wrapper input.v-textfield {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    height: 19px;
+}

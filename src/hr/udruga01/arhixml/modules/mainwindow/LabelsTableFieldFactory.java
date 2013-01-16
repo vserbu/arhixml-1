@@ -98,8 +98,41 @@ public class LabelsTableFieldFactory implements TableFieldFactory {
     
             tableField = labelsList;
         } else if ("name".equals(propertyId)) {
-            TextField nameTextField = new TextField();
+            final TextField nameTextField = new TextField();
             nameTextField.setWidth("100%");
+            nameTextField.setReadOnly(true);
+            nameTextField.addListener(new FocusListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void focus(FocusEvent event) {
+                    logger.trace("Entering focus()");
+    
+                    nameTextField.setReadOnly(false);
+    
+                    // FIXME Below is a rudimentary implementation of table row
+                    // selection.
+                    // It doesn't support multi selection despite we set a
+                    // multiselection for a table. This should be fixed to have a
+                    // natural multiselection for a table.
+                    ((Table) uiContext).setValue(null);
+                    ((Table) uiContext).select(itemId);
+    
+                    logger.trace("Exiting focus()");
+                }
+            });
+    
+            nameTextField.addListener(new BlurListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void blur(BlurEvent event) {
+                    logger.trace("Entering blur()");
+    
+                    nameTextField.setReadOnly(true);
+    
+                    logger.trace("Exiting blur()");
+                }
+            });
+            
             tableField = nameTextField;
         }
         
