@@ -135,6 +135,10 @@ public class RegistrationUnit implements Serializable {
 
         return this.labels;
     }
+    
+    public void setLabels(List<Label> labels) {
+        this.labels = labels;
+    }
 
     /**
      * Gets the value of the makers property.
