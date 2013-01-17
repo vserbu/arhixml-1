@@ -167,6 +167,10 @@ public class RegistrationUnit implements Serializable {
 
         return this.makers;
     }
+    
+    public void setMakers(List<Maker> makers) {
+        this.makers = makers;
+    }
 
     /**
      * Gets the value of the materials property.
@@ -257,6 +261,10 @@ public class RegistrationUnit implements Serializable {
 
         return this.archiveUnits;
     }
+    
+    public void setArchiveUnits(List<ArchiveUnit> archiveUnits) {
+        this.archiveUnits = archiveUnits;
+    }
 
     /**
      * Gets the value of the technicalUnits property.
@@ -285,6 +293,10 @@ public class RegistrationUnit implements Serializable {
 
         return this.technicalUnits;
     }
+    
+    public void setTechnicalUnits(List<TechnicalUnit> technicalUnits) {
+        this.technicalUnits = technicalUnits;
+    }
 
     /**
      * Gets the value of the registrationUnits property.
@@ -312,6 +324,10 @@ public class RegistrationUnit implements Serializable {
         }
 
         return this.registrationUnits;
+    }
+    
+    public void setRegistrationUnits(List<RegistrationUnit> registrationUnits) {
+        this.registrationUnits = registrationUnits;
     }
 
     /**
