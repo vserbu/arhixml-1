@@ -43,6 +43,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private MediumCustomField mediumField;
     private IntegerValidator holderIdValidator;
     private LabelCustomField labelField;
+    private ArchiveUnitCustomField archiveUnitField;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
@@ -104,6 +105,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         
         labelField = new LabelCustomField("Oznaka");
         
+        archiveUnitField = new ArchiveUnitCustomField("Arhivske Jedinice");
+        
         logger.trace("Exiting RegistrationUnitFieldFactory()");
     }
 
@@ -162,6 +165,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
             formField = mediumField;
         } else if ("labels".equals(beanProperty)) {
             formField = labelField;
+        } else if ("archiveUnits".equals(beanProperty)) {
+            formField = archiveUnitField;
         }
 
         logger.trace("Exiting createField()");

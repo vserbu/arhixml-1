@@ -1,5 +1,6 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
+import hr.udruga01.arhixml.datamodel.ArchiveUnit;
 import hr.udruga01.arhixml.datamodel.Label;
 import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
@@ -20,19 +21,19 @@ import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 
-public class LabelCustomField extends CustomField {
+public class ArchiveUnitCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
-
-    private final Logger logger = LoggerFactory.getLogger(LabelCustomField.class.getName());
-    private Table labelsTable;
+    
+    private final Logger logger = LoggerFactory.getLogger(ArchiveUnitCustomField.class.getName());
+    private Table archiveUnitsTable;
     private static final int NUMBER_OF_VISIBLE_ROWS = 4;
-    private static final String NAME_PROPERTY = "name";
-    private static final String REMAINING_LABEL_ID_TYPE_PROPERTY = "remainingLabelIdType";
-    private LabelsCustomFieldController controller = new LabelsCustomFieldController(this);
-    private BeanItemContainer<Label> labelContainer = new BeanItemContainer<Label>(Label.class);
-
-    public LabelCustomField(String caption) {
-        logger.trace("Entering LabelCustomField()");
+    private static final String MEASUREMENT_UNIT_ID_PROPERTY = "measurementUnitId";
+    private static final String AMOUNT_PROPERTY = "amount";
+    private ArchiveUnitsCustomFieldController controller = new ArchiveUnitsCustomFieldController(this);
+    private BeanItemContainer<ArchiveUnit> archiveUnitContainer = new BeanItemContainer<ArchiveUnit>(ArchiveUnit.class);
+    
+    public ArchiveUnitCustomField(String caption) {
+        logger.trace("Entering ArchiveUnitCustomField()");
 
         setCaption(caption);
 
@@ -40,26 +41,26 @@ public class LabelCustomField extends CustomField {
         layout.setSizeFull();
         layout.setSpacing(true);
 
-        labelsTable = new Table();
-        labelsTable.setSelectable(true);
-        labelsTable.setEditable(true);
-        labelsTable.setTableFieldFactory(new LabelsTableFieldFactory());
-        labelsTable.setMultiSelect(true);
-        labelsTable.setSizeFull();
-        labelsTable.setImmediate(true);
-        labelsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
-        labelsTable.setContainerDataSource(labelContainer);
-        labelsTable.setVisibleColumns(new Object[] { REMAINING_LABEL_ID_TYPE_PROPERTY, NAME_PROPERTY });
-        labelsTable.setColumnHeader(NAME_PROPERTY, "Naziv");
-        labelsTable.setColumnHeader(REMAINING_LABEL_ID_TYPE_PROPERTY, "Vrsta Oznake");
-        labelsTable.addActionHandler(controller);
-        labelsTable.addListener((ItemClickListener) controller);
-        layout.addComponent(labelsTable);
-        layout.setExpandRatio(labelsTable, 1f);
+        archiveUnitsTable = new Table();
+        archiveUnitsTable.setSelectable(true);
+        archiveUnitsTable.setEditable(true);
+        archiveUnitsTable.setTableFieldFactory(new ArchiveUnitsTableFieldFactory());
+        archiveUnitsTable.setMultiSelect(true);
+        archiveUnitsTable.setSizeFull();
+        archiveUnitsTable.setImmediate(true);
+        archiveUnitsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
+        archiveUnitsTable.setContainerDataSource(archiveUnitContainer);
+        archiveUnitsTable.setVisibleColumns(new Object[] { MEASUREMENT_UNIT_ID_PROPERTY, AMOUNT_PROPERTY });
+        archiveUnitsTable.setColumnHeader(MEASUREMENT_UNIT_ID_PROPERTY, "Mjerna Jedinica");
+        archiveUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Kolièina");
+        archiveUnitsTable.addActionHandler(controller);
+        archiveUnitsTable.addListener((ItemClickListener) controller);
+        layout.addComponent(archiveUnitsTable);
+        layout.setExpandRatio(archiveUnitsTable, 1f);
 
         setCompositionRoot(layout);
 
-        logger.trace("Exiting LabelCustomField()");
+        logger.trace("Exiting ArchiveUnitCustomField()");
     }
 
     /**
@@ -73,8 +74,8 @@ public class LabelCustomField extends CustomField {
      * <p>
      * If we do not override this method and return <code>ArrayList.class</code>
      * , framework data binding will not be able to set the value for the
-     * <code>labels</code> property of {@link RegistrationUnit} class. Our
-     * <code>labels</code> property is a {@link List} of {@link Label}
+     * <code>archiveUnits</code> property of {@link RegistrationUnit} class. Our
+     * <code>archiveUnits</code> property is a {@link List} of {@link ArchiveUnit}
      * objects. The {@link List} interface is not compatible to {@link Set}
      * interface and the framework will throw exception.
      */
@@ -105,52 +106,52 @@ public class LabelCustomField extends CustomField {
         logger.trace("Entering selectTableItem()");
 
         @SuppressWarnings("unchecked")
-        Set<Label> selectedItems = ((Set<Label>) labelsTable.getValue());
+        Set<Label> selectedItems = ((Set<Label>) archiveUnitsTable.getValue());
 
         if (selectedItems.contains(item) == false) {
-            labelsTable.setValue(null);
+            archiveUnitsTable.setValue(null);
         }
 
-        labelsTable.select(item);
+        archiveUnitsTable.select(item);
 
         logger.trace("Exiting selectTableItem()");
     }
     
     /**
-     * Removes selected items in a table from the label container.
+     * Removes selected items in a table from the archive unit container.
      */
     void removeSelectedItems() {
         logger.trace("Entering removeSelectedItems()");
 
         @SuppressWarnings("unchecked")
-        Set<Label> selectedItems = ((Set<Label>) labelsTable.getValue());
+        Set<Label> selectedItems = ((Set<Label>) archiveUnitsTable.getValue());
 
         for (Label item : selectedItems) {
-            labelsTable.removeItem(item);
+            archiveUnitsTable.removeItem(item);
         }
 
         logger.trace("Exiting removeSelectedItems()");
     }
     
     /**
-     * Adds new item of {@link Label} type to the label container.
+     * Adds new item of {@link ArchiveUnit} type to the archive unit container.
      */
     public void addNewItem() {
         logger.trace("Entering addNewItem()");
         
-        Label label = ObjectFactory.createLabel();
-        labelsTable.addItem(label);
+        ArchiveUnit archiveUnit = ObjectFactory.createArchiveUnit();
+        archiveUnitsTable.addItem(archiveUnit);
         
-        labelsTable.setValue(null);
-        labelsTable.setCurrentPageFirstItemId(label);
-        labelsTable.select(label);
+        archiveUnitsTable.setValue(null);
+        archiveUnitsTable.setCurrentPageFirstItemId(archiveUnit);
+        archiveUnitsTable.select(archiveUnit);
         
         logger.trace("Exiting addNewItem()");
     }
     
     /**
      * This method is automatically called by the framework when
-     * <code>labels</code> property of the {@link RegistrationUnit} object is
+     * <code>archiveUnits</code> property of the {@link RegistrationUnit} object is
      * bounded to {@link Field}. This happens in
      * {@link RegistrationUnitFieldFactory}.
      * <p>
@@ -164,9 +165,9 @@ public class LabelCustomField extends CustomField {
         super.setPropertyDataSource(propertyDataSource);
 
         @SuppressWarnings("unchecked")
-        List<Label> labels = (List<Label>) propertyDataSource.getValue();
-        labelContainer.removeAllItems();
-        labelContainer.addAll(labels);
+        List<ArchiveUnit> archiveUnits = (List<ArchiveUnit>) propertyDataSource.getValue();
+        archiveUnitContainer.removeAllItems();
+        archiveUnitContainer.addAll(archiveUnits);
 
         logger.trace("Exiting setPropertyDataSource()");
     }
@@ -176,21 +177,21 @@ public class LabelCustomField extends CustomField {
      * {@link Form} is commited or when there is a need to read the value from
      * the field (user selected another item from the table).
      * <p>
-     * Method will return every {@link Label} from the container.
+     * Method will return every {@link ArchiveUnit} from the container.
      */
     @Override
     public Object getValue() {
         logger.trace("Entering getValue()");
 
-        ArrayList<Label> labels = new ArrayList<Label>();
+        ArrayList<ArchiveUnit> archiveUnits = new ArrayList<ArchiveUnit>();
 
-        for (Object itemId : labelContainer.getItemIds()) {
-            labels.add(labelContainer.getItem(itemId).getBean());
+        for (Object itemId : archiveUnitContainer.getItemIds()) {
+            archiveUnits.add(archiveUnitContainer.getItem(itemId).getBean());
         }
 
         logger.trace("Exiting getValue()");
 
-        return labels;
+        return archiveUnits;
     }
     
     /**
@@ -198,9 +199,9 @@ public class LabelCustomField extends CustomField {
      * to discard the value from a field. For example, user clicked on
      * "Discard changes" button located in the form.
      * <p>
-     * This will simply overwrite the {@link Label} container with the
-     * original list of labels available from the time when the form
-     * initially bound the <code>labels</code> property of
+     * This will simply overwrite the {@link ArchiveUnit} container with the
+     * original list of archive units available from the time when the form
+     * initially bound the <code>archiveUnits</code> property of
      * {@link RegistrationUnit} object.
      */
     @Override
@@ -213,9 +214,9 @@ public class LabelCustomField extends CustomField {
 
         if (propertyDataSource != null) {
             @SuppressWarnings("unchecked")
-            List<Label> labels = (List<Label>) propertyDataSource.getValue();
-            labelContainer.removeAllItems();
-            labelContainer.addAll(labels);
+            List<ArchiveUnit> labels = (List<ArchiveUnit>) propertyDataSource.getValue();
+            archiveUnitContainer.removeAllItems();
+            archiveUnitContainer.addAll(labels);
         }
 
         logger.trace("Exiting discard()");

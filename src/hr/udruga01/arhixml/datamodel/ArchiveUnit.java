@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -16,6 +17,9 @@ public class ArchiveUnit implements Serializable {
     protected int measurementUnitId;
     @XmlAttribute(name = "Kolicina")
     protected BigDecimal amount;
+    
+    @XmlTransient
+    protected String label;
 
     /**
      * Gets the value of the measurementUnitId property.
@@ -48,5 +52,19 @@ public class ArchiveUnit implements Serializable {
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
+    }
+    
+    /**
+     * Gets the value of <code>label</code> property.
+     */
+    public String getLabel() {
+        return label;
+    }
+    
+    /**
+     * Sets the value of the <code>label</code> property.
+     */
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

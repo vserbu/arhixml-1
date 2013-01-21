@@ -47,10 +47,11 @@ public class RegistrationUnitForm extends Form {
         notesLayout.setSpacing(true);
         layout.addComponent(notesLayout);
         
-        technicalDataLayout = new GridLayout(3, 1);
-        technicalDataLayout.setColumnExpandRatio(0, 0.33f);
-        technicalDataLayout.setColumnExpandRatio(1, 0.33f);
-        technicalDataLayout.setColumnExpandRatio(2, 0.33f);
+        technicalDataLayout = new GridLayout(4, 1);
+        technicalDataLayout.setColumnExpandRatio(0, 0.25f);
+        technicalDataLayout.setColumnExpandRatio(1, 0.25f);
+        technicalDataLayout.setColumnExpandRatio(2, 0.25f);
+        technicalDataLayout.setColumnExpandRatio(3, 0.25f);
         technicalDataLayout.setWidth("100%");
         technicalDataLayout.setSpacing(true);
         layout.addComponent(technicalDataLayout);
@@ -88,6 +89,8 @@ public class RegistrationUnitForm extends Form {
             technicalDataLayout.addComponent(field, 1, 0);
         } else if ("labels".equals(propertyId)) {
             technicalDataLayout.addComponent(field, 2, 0);
+        } else if ("archiveUnits".equals(propertyId)) {
+            technicalDataLayout.addComponent(field, 3, 0);
         }
         
         logger.trace("Exiting attachField()");
