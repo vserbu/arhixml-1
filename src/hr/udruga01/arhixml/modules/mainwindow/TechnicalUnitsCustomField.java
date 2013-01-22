@@ -1,8 +1,8 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import hr.udruga01.arhixml.datamodel.ArchiveUnit;
 import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
+import hr.udruga01.arhixml.datamodel.TechnicalUnit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,19 +20,20 @@ import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 
-public class ArchiveUnitCustomField extends CustomField {
+public class TechnicalUnitsCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
     
-    private final Logger logger = LoggerFactory.getLogger(ArchiveUnitCustomField.class.getName());
-    private Table archiveUnitsTable;
+    private final Logger logger = LoggerFactory.getLogger(TechnicalUnitsCustomField.class.getName());
+    private Table technicalUnitsTable;
     private static final int NUMBER_OF_VISIBLE_ROWS = 4;
-    private static final String MEASUREMENT_UNIT_ID_PROPERTY = "measurementUnitId";
+    private static final String TECHNICAL_UNIT_TYPE_ID_PROPERTY = "technicalUnitTypeId";
     private static final String AMOUNT_PROPERTY = "amount";
-    private ArchiveUnitsCustomFieldController controller = new ArchiveUnitsCustomFieldController(this);
-    private BeanItemContainer<ArchiveUnit> archiveUnitContainer = new BeanItemContainer<ArchiveUnit>(ArchiveUnit.class);
-    
-    public ArchiveUnitCustomField(String caption) {
-        logger.trace("Entering ArchiveUnitCustomField()");
+    private static final String CHARACTERISTICS_PROPERTY = "characteristics";
+    private TechnicalUnitsCustomFieldController controller = new TechnicalUnitsCustomFieldController(this);
+    private BeanItemContainer<TechnicalUnit> technicalUnitContainer = new BeanItemContainer<TechnicalUnit>(TechnicalUnit.class);
+
+    public TechnicalUnitsCustomField(String caption) {
+        logger.trace("Entering TechnicalUnitsCustomField()");
 
         setCaption(caption);
 
@@ -40,28 +41,29 @@ public class ArchiveUnitCustomField extends CustomField {
         layout.setSizeFull();
         layout.setSpacing(true);
 
-        archiveUnitsTable = new Table();
-        archiveUnitsTable.setSelectable(true);
-        archiveUnitsTable.setEditable(true);
-        archiveUnitsTable.setTableFieldFactory(new ArchiveUnitsTableFieldFactory());
-        archiveUnitsTable.setMultiSelect(true);
-        archiveUnitsTable.setSizeFull();
-        archiveUnitsTable.setImmediate(true);
-        archiveUnitsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
-        archiveUnitsTable.setContainerDataSource(archiveUnitContainer);
-        archiveUnitsTable.setVisibleColumns(new Object[] { MEASUREMENT_UNIT_ID_PROPERTY, AMOUNT_PROPERTY });
-        archiveUnitsTable.setColumnHeader(MEASUREMENT_UNIT_ID_PROPERTY, "Mjerna Jedinica");
-        archiveUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Kolièina");
-        archiveUnitsTable.addActionHandler(controller);
-        archiveUnitsTable.addListener((ItemClickListener) controller);
-        layout.addComponent(archiveUnitsTable);
-        layout.setExpandRatio(archiveUnitsTable, 1f);
+        technicalUnitsTable = new Table();
+        technicalUnitsTable.setSelectable(true);
+        technicalUnitsTable.setEditable(true);
+        technicalUnitsTable.setTableFieldFactory(new TechnicalUnitsTableFieldFactory());
+        technicalUnitsTable.setMultiSelect(true);
+        technicalUnitsTable.setSizeFull();
+        technicalUnitsTable.setImmediate(true);
+        technicalUnitsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
+        technicalUnitsTable.setContainerDataSource(technicalUnitContainer);
+        technicalUnitsTable.setVisibleColumns(new Object[] { TECHNICAL_UNIT_TYPE_ID_PROPERTY, AMOUNT_PROPERTY, CHARACTERISTICS_PROPERTY });
+        technicalUnitsTable.setColumnHeader(TECHNICAL_UNIT_TYPE_ID_PROPERTY, "Vrsta Tehnièke Jedinice");
+        technicalUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Kolièina");
+        technicalUnitsTable.setColumnHeader(CHARACTERISTICS_PROPERTY, "Tvarne Znaèajke");
+        technicalUnitsTable.addActionHandler(controller);
+        technicalUnitsTable.addListener((ItemClickListener) controller);
+        layout.addComponent(technicalUnitsTable);
+        layout.setExpandRatio(technicalUnitsTable, 1f);
 
         setCompositionRoot(layout);
 
-        logger.trace("Exiting ArchiveUnitCustomField()");
+        logger.trace("Exiting TechnicalUnitsCustomField()");
     }
-
+    
     /**
      * This method is automatically called when there is a need to read and set
      * the value to a table.
@@ -73,8 +75,8 @@ public class ArchiveUnitCustomField extends CustomField {
      * <p>
      * If we do not override this method and return <code>ArrayList.class</code>
      * , framework data binding will not be able to set the value for the
-     * <code>archiveUnits</code> property of {@link RegistrationUnit} class. Our
-     * <code>archiveUnits</code> property is a {@link List} of {@link ArchiveUnit}
+     * <code>technicalUnits</code> property of {@link RegistrationUnit} class. Our
+     * <code>technicalUnits</code> property is a {@link List} of {@link TechnicalUnit}
      * objects. The {@link List} interface is not compatible to {@link Set}
      * interface and the framework will throw exception.
      */
@@ -99,63 +101,63 @@ public class ArchiveUnitCustomField extends CustomField {
      * the one that user tried to trigger context menu on.
      * 
      * @param item
-     *            - {@link ArchiveUnit} which needs to be added to selection.
+     *            - {@link TechnicalUnit} which needs to be added to selection.
      */
     void selectTableItem(Object item) {
         logger.trace("Entering selectTableItem()");
 
         @SuppressWarnings("unchecked")
-        Set<ArchiveUnit> selectedItems = ((Set<ArchiveUnit>) archiveUnitsTable.getValue());
+        Set<TechnicalUnit> selectedItems = ((Set<TechnicalUnit>) technicalUnitsTable.getValue());
 
         if (selectedItems.contains(item) == false) {
-            archiveUnitsTable.setValue(null);
+            technicalUnitsTable.setValue(null);
         }
 
-        archiveUnitsTable.select(item);
+        technicalUnitsTable.select(item);
 
         logger.trace("Exiting selectTableItem()");
     }
     
     /**
-     * Removes selected items in a table from the archive unit container.
+     * Removes selected items in a table from the technical unit container.
      */
     void removeSelectedItems() {
         logger.trace("Entering removeSelectedItems()");
 
         @SuppressWarnings("unchecked")
-        Set<ArchiveUnit> selectedItems = ((Set<ArchiveUnit>) archiveUnitsTable.getValue());
+        Set<TechnicalUnit> selectedItems = ((Set<TechnicalUnit>) technicalUnitsTable.getValue());
 
-        for (ArchiveUnit item : selectedItems) {
-            archiveUnitsTable.removeItem(item);
+        for (TechnicalUnit item : selectedItems) {
+            technicalUnitsTable.removeItem(item);
         }
 
         logger.trace("Exiting removeSelectedItems()");
     }
     
     /**
-     * Adds new item of {@link ArchiveUnit} type to the archive unit container.
+     * Adds new item of {@link TechnicalUnit} type to the technical unit container.
      */
     public void addNewItem() {
         logger.trace("Entering addNewItem()");
         
-        ArchiveUnit archiveUnit = ObjectFactory.createArchiveUnit();
-        archiveUnitsTable.addItem(archiveUnit);
+        TechnicalUnit technicalUnit = ObjectFactory.createTechnicalUnit();
+        technicalUnitsTable.addItem(technicalUnit);
         
-        archiveUnitsTable.setValue(null);
-        archiveUnitsTable.setCurrentPageFirstItemId(archiveUnit);
-        archiveUnitsTable.select(archiveUnit);
+        technicalUnitsTable.setValue(null);
+        technicalUnitsTable.setCurrentPageFirstItemId(technicalUnit);
+        technicalUnitsTable.select(technicalUnit);
         
         logger.trace("Exiting addNewItem()");
     }
     
     /**
      * This method is automatically called by the framework when
-     * <code>archiveUnits</code> property of the {@link RegistrationUnit} object is
+     * <code>technicalUnits</code> property of the {@link RegistrationUnit} object is
      * bounded to {@link Field}. This happens in
      * {@link RegistrationUnitFieldFactory}.
      * <p>
      * This method is used to populate the container which holds
-     * {@link ArchiveUnit} objects.
+     * {@link TechnicalUnit} objects.
      */
     @Override
     public void setPropertyDataSource(Property propertyDataSource) {
@@ -164,9 +166,9 @@ public class ArchiveUnitCustomField extends CustomField {
         super.setPropertyDataSource(propertyDataSource);
 
         @SuppressWarnings("unchecked")
-        List<ArchiveUnit> archiveUnits = (List<ArchiveUnit>) propertyDataSource.getValue();
-        archiveUnitContainer.removeAllItems();
-        archiveUnitContainer.addAll(archiveUnits);
+        List<TechnicalUnit> technicalUnits = (List<TechnicalUnit>) propertyDataSource.getValue();
+        technicalUnitContainer.removeAllItems();
+        technicalUnitContainer.addAll(technicalUnits);
 
         logger.trace("Exiting setPropertyDataSource()");
     }
@@ -176,21 +178,21 @@ public class ArchiveUnitCustomField extends CustomField {
      * {@link Form} is commited or when there is a need to read the value from
      * the field (user selected another item from the table).
      * <p>
-     * Method will return every {@link ArchiveUnit} from the container.
+     * Method will return every {@link TechnicalUnit} from the container.
      */
     @Override
     public Object getValue() {
         logger.trace("Entering getValue()");
 
-        ArrayList<ArchiveUnit> archiveUnits = new ArrayList<ArchiveUnit>();
+        ArrayList<TechnicalUnit> technicalUnits = new ArrayList<TechnicalUnit>();
 
-        for (Object itemId : archiveUnitContainer.getItemIds()) {
-            archiveUnits.add(archiveUnitContainer.getItem(itemId).getBean());
+        for (Object itemId : technicalUnitContainer.getItemIds()) {
+            technicalUnits.add(technicalUnitContainer.getItem(itemId).getBean());
         }
 
         logger.trace("Exiting getValue()");
 
-        return archiveUnits;
+        return technicalUnits;
     }
     
     /**
@@ -198,9 +200,9 @@ public class ArchiveUnitCustomField extends CustomField {
      * to discard the value from a field. For example, user clicked on
      * "Discard changes" button located in the form.
      * <p>
-     * This will simply overwrite the {@link ArchiveUnit} container with the
-     * original list of archive units available from the time when the form
-     * initially bound the <code>archiveUnits</code> property of
+     * This will simply overwrite the {@link TechnicalUnit} container with the
+     * original list of technical units available from the time when the form
+     * initially bound the <code>technicalUnits</code> property of
      * {@link RegistrationUnit} object.
      */
     @Override
@@ -213,9 +215,9 @@ public class ArchiveUnitCustomField extends CustomField {
 
         if (propertyDataSource != null) {
             @SuppressWarnings("unchecked")
-            List<ArchiveUnit> labels = (List<ArchiveUnit>) propertyDataSource.getValue();
-            archiveUnitContainer.removeAllItems();
-            archiveUnitContainer.addAll(labels);
+            List<TechnicalUnit> labels = (List<TechnicalUnit>) propertyDataSource.getValue();
+            technicalUnitContainer.removeAllItems();
+            technicalUnitContainer.addAll(labels);
         }
 
         logger.trace("Exiting discard()");

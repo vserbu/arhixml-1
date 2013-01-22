@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,6 +20,9 @@ public class TechnicalUnit implements Serializable {
     protected int technicalUnitTypeId;
     @XmlAttribute(name = "Kolicina")
     protected BigDecimal amount;
+    
+    @XmlTransient
+    protected String label;
 
     /**
      * Gets the value of the characteristics property.
@@ -70,5 +74,19 @@ public class TechnicalUnit implements Serializable {
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
+    }
+    
+    /**
+     * Gets the value of <code>label</code> property.
+     */
+    public String getLabel() {
+        return label;
+    }
+    
+    /**
+     * Sets the value of the <code>label</code> property.
+     */
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

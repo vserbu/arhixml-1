@@ -16,6 +16,7 @@ public class RegistrationUnitForm extends Form {
     private GridLayout headerLayout;
     private GridLayout idsLayout;
     private GridLayout notesLayout;
+    private GridLayout dataLayout;
     private GridLayout technicalDataLayout;
     
     public RegistrationUnitForm() {
@@ -47,11 +48,17 @@ public class RegistrationUnitForm extends Form {
         notesLayout.setSpacing(true);
         layout.addComponent(notesLayout);
         
-        technicalDataLayout = new GridLayout(4, 1);
-        technicalDataLayout.setColumnExpandRatio(0, 0.25f);
-        technicalDataLayout.setColumnExpandRatio(1, 0.25f);
-        technicalDataLayout.setColumnExpandRatio(2, 0.25f);
-        technicalDataLayout.setColumnExpandRatio(3, 0.25f);
+        dataLayout = new GridLayout(3, 1);
+        dataLayout.setColumnExpandRatio(0, 0.33f);
+        dataLayout.setColumnExpandRatio(1, 0.33f);
+        dataLayout.setColumnExpandRatio(2, 0.33f);
+        dataLayout.setWidth("100%");
+        dataLayout.setSpacing(true);
+        layout.addComponent(dataLayout);
+        
+        technicalDataLayout = new GridLayout(2, 1);
+        technicalDataLayout.setColumnExpandRatio(0, 0.50f);
+        technicalDataLayout.setColumnExpandRatio(1, 0.50f);
         technicalDataLayout.setWidth("100%");
         technicalDataLayout.setSpacing(true);
         layout.addComponent(technicalDataLayout);
@@ -84,13 +91,15 @@ public class RegistrationUnitForm extends Form {
         } else if ("timePeriodNote".equals(propertyId)) {
             notesLayout.addComponent(field, 0, 1);
         } else if ("materials".equals(propertyId)) {
-            technicalDataLayout.addComponent(field, 0, 0);
+            dataLayout.addComponent(field, 0, 0);
         } else if ("mediums".equals(propertyId)) {
-            technicalDataLayout.addComponent(field, 1, 0);
+            dataLayout.addComponent(field, 1, 0);
         } else if ("labels".equals(propertyId)) {
-            technicalDataLayout.addComponent(field, 2, 0);
+            dataLayout.addComponent(field, 2, 0);
         } else if ("archiveUnits".equals(propertyId)) {
-            technicalDataLayout.addComponent(field, 3, 0);
+            technicalDataLayout.addComponent(field, 0, 0);
+        } else if ("technicalUnits".equals(propertyId)) {
+            technicalDataLayout.addComponent(field, 1, 0);
         }
         
         logger.trace("Exiting attachField()");

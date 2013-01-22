@@ -44,6 +44,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private IntegerValidator holderIdValidator;
     private LabelCustomField labelField;
     private ArchiveUnitCustomField archiveUnitField;
+    private TechnicalUnitsCustomField technicalUnitField;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
@@ -107,6 +108,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         
         archiveUnitField = new ArchiveUnitCustomField("Arhivske Jedinice");
         
+        technicalUnitField = new TechnicalUnitsCustomField("Tehnièke Jedinice");
+        
         logger.trace("Exiting RegistrationUnitFieldFactory()");
     }
 
@@ -167,6 +170,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
             formField = labelField;
         } else if ("archiveUnits".equals(beanProperty)) {
             formField = archiveUnitField;
+        } else if ("technicalUnits".equals(beanProperty)) {
+            formField = technicalUnitField;
         }
 
         logger.trace("Exiting createField()");

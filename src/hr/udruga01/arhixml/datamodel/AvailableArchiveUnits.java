@@ -12,7 +12,7 @@ import com.vaadin.ui.Table;
  * ids.
  * <p>
  * It is used to populate {@link ComboBox} component inside {@link Table} of
- * {@link Label} objects. This way, {@link Form} automatically makes data
+ * {@link ArchiveUnit} objects. This way, {@link Form} automatically makes data
  * bounding to these objects.
  */
 public class AvailableArchiveUnits {
