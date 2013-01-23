@@ -1,8 +1,8 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
+import hr.udruga01.arhixml.datamodel.Maker;
 import hr.udruga01.arhixml.datamodel.ObjectFactory;
 import hr.udruga01.arhixml.datamodel.RegistrationUnit;
-import hr.udruga01.arhixml.datamodel.TechnicalUnit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +20,21 @@ import com.vaadin.ui.Form;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Table;
 
-public class TechnicalUnitsCustomField extends CustomField {
+public class MakersCustomField extends CustomField {
     private static final long serialVersionUID = 1L;
     
-    private final Logger logger = LoggerFactory.getLogger(TechnicalUnitsCustomField.class.getName());
-    private Table technicalUnitsTable;
+    private final Logger logger = LoggerFactory.getLogger(MakersCustomField.class.getName());
+    private Table makersTable;
     private static final int NUMBER_OF_VISIBLE_ROWS = 4;
-    private static final String TECHNICAL_UNIT_TYPE_ID_PROPERTY = "technicalUnitTypeId";
-    private static final String AMOUNT_PROPERTY = "amount";
-    private static final String CHARACTERISTICS_PROPERTY = "characteristics";
-    private TechnicalUnitsCustomFieldController controller = new TechnicalUnitsCustomFieldController(this);
-    private BeanItemContainer<TechnicalUnit> technicalUnitContainer = new BeanItemContainer<TechnicalUnit>(TechnicalUnit.class);
-
-    public TechnicalUnitsCustomField(String caption) {
-        logger.trace("Entering TechnicalUnitsCustomField()");
+    private static final String MAKER_NOTE_PROPERTY = "makerNote";
+    private static final String MAKER_ID_PROPERTY = "makerId";
+    private static final String ROLE_ID_PROPERTY = "roleId";
+    private static final String PERIOD_PROPERTY = "period";
+    private MakersCustomFieldController controller = new MakersCustomFieldController(this);
+    private BeanItemContainer<Maker> makerContainer = new BeanItemContainer<Maker>(Maker.class);
+    
+    public MakersCustomField(String caption) {
+        logger.trace("Entering MakersCustomField()");
 
         setCaption(caption);
 
@@ -41,27 +42,28 @@ public class TechnicalUnitsCustomField extends CustomField {
         layout.setSizeFull();
         layout.setSpacing(true);
 
-        technicalUnitsTable = new Table();
-        technicalUnitsTable.setSelectable(true);
-        technicalUnitsTable.setEditable(true);
-        technicalUnitsTable.setTableFieldFactory(new TechnicalUnitsTableFieldFactory());
-        technicalUnitsTable.setMultiSelect(true);
-        technicalUnitsTable.setSizeFull();
-        technicalUnitsTable.setImmediate(true);
-        technicalUnitsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
-        technicalUnitsTable.setContainerDataSource(technicalUnitContainer);
-        technicalUnitsTable.setVisibleColumns(new Object[] { TECHNICAL_UNIT_TYPE_ID_PROPERTY, AMOUNT_PROPERTY, CHARACTERISTICS_PROPERTY });
-        technicalUnitsTable.setColumnHeader(TECHNICAL_UNIT_TYPE_ID_PROPERTY, "Vrsta Tehnièke Jedinice");
-        technicalUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Kolièina");
-        technicalUnitsTable.setColumnHeader(CHARACTERISTICS_PROPERTY, "Tvarne Znaèajke");
-        technicalUnitsTable.addActionHandler(controller);
-        technicalUnitsTable.addListener((ItemClickListener) controller);
-        layout.addComponent(technicalUnitsTable);
-        layout.setExpandRatio(technicalUnitsTable, 1f);
+        makersTable = new Table();
+        makersTable.setSelectable(true);
+        makersTable.setEditable(true);
+        makersTable.setTableFieldFactory(new MakersTableFieldFactory());
+        makersTable.setMultiSelect(true);
+        makersTable.setSizeFull();
+        makersTable.setImmediate(true);
+        makersTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
+        makersTable.setContainerDataSource(makerContainer);
+        makersTable.setVisibleColumns(new Object[] { MAKER_ID_PROPERTY, ROLE_ID_PROPERTY, PERIOD_PROPERTY, MAKER_NOTE_PROPERTY });
+        makersTable.setColumnHeader(MAKER_ID_PROPERTY, "Šifra Stvaratelja");
+        makersTable.setColumnHeader(ROLE_ID_PROPERTY, "Uloge");
+        makersTable.setColumnHeader(PERIOD_PROPERTY, "Razdoblje");
+        makersTable.setColumnHeader(MAKER_NOTE_PROPERTY, "Napomena o Stvaratelju");
+        makersTable.addActionHandler(controller);
+        makersTable.addListener((ItemClickListener) controller);
+        layout.addComponent(makersTable);
+        layout.setExpandRatio(makersTable, 1f);
 
         setCompositionRoot(layout);
 
-        logger.trace("Exiting TechnicalUnitsCustomField()");
+        logger.trace("Exiting MakersCustomField()");
     }
     
     /**
@@ -75,8 +77,8 @@ public class TechnicalUnitsCustomField extends CustomField {
      * <p>
      * If we do not override this method and return <code>ArrayList.class</code>
      * , framework data binding will not be able to set the value for the
-     * <code>technicalUnits</code> property of {@link RegistrationUnit} class. Our
-     * <code>technicalUnits</code> property is a {@link List} of {@link TechnicalUnit}
+     * <code>makers</code> property of {@link RegistrationUnit} class. Our
+     * <code>makers</code> property is a {@link List} of {@link Maker}
      * objects. The {@link List} interface is not compatible to {@link Set}
      * interface and the framework will throw exception.
      */
@@ -101,63 +103,63 @@ public class TechnicalUnitsCustomField extends CustomField {
      * the one that user tried to trigger context menu on.
      * 
      * @param item
-     *            - {@link TechnicalUnit} which needs to be added to selection.
+     *            - {@link Maker} which needs to be added to selection.
      */
     void selectTableItem(Object item) {
         logger.trace("Entering selectTableItem()");
 
         @SuppressWarnings("unchecked")
-        Set<TechnicalUnit> selectedItems = ((Set<TechnicalUnit>) technicalUnitsTable.getValue());
+        Set<Maker> selectedItems = ((Set<Maker>) makersTable.getValue());
 
         if (selectedItems.contains(item) == false) {
-            technicalUnitsTable.setValue(null);
+            makersTable.setValue(null);
         }
 
-        technicalUnitsTable.select(item);
+        makersTable.select(item);
 
         logger.trace("Exiting selectTableItem()");
     }
     
     /**
-     * Removes selected items in a table from the technical unit container.
+     * Removes selected items in a table from the maker container.
      */
     void removeSelectedItems() {
         logger.trace("Entering removeSelectedItems()");
 
         @SuppressWarnings("unchecked")
-        Set<TechnicalUnit> selectedItems = ((Set<TechnicalUnit>) technicalUnitsTable.getValue());
+        Set<Maker> selectedItems = ((Set<Maker>) makersTable.getValue());
 
-        for (TechnicalUnit item : selectedItems) {
-            technicalUnitsTable.removeItem(item);
+        for (Maker item : selectedItems) {
+            makersTable.removeItem(item);
         }
 
         logger.trace("Exiting removeSelectedItems()");
     }
     
     /**
-     * Adds new item of {@link TechnicalUnit} type to the technical unit container.
+     * Adds new item of {@link Maker} type to the maker container.
      */
     public void addNewItem() {
         logger.trace("Entering addNewItem()");
         
-        TechnicalUnit technicalUnit = ObjectFactory.createTechnicalUnit();
-        technicalUnitsTable.addItem(technicalUnit);
+        Maker maker = ObjectFactory.createMaker();
+        makersTable.addItem(maker);
         
-        technicalUnitsTable.setValue(null);
-        technicalUnitsTable.setCurrentPageFirstItemId(technicalUnit);
-        technicalUnitsTable.select(technicalUnit);
+        makersTable.setValue(null);
+        makersTable.setCurrentPageFirstItemId(maker);
+        makersTable.select(maker);
         
         logger.trace("Exiting addNewItem()");
     }
     
     /**
      * This method is automatically called by the framework when
-     * <code>technicalUnits</code> property of the {@link RegistrationUnit} object is
+     * <code>makers</code> property of the {@link RegistrationUnit} object is
      * bounded to {@link Field}. This happens in
      * {@link RegistrationUnitFieldFactory}.
      * <p>
      * This method is used to populate the container which holds
-     * {@link TechnicalUnit} objects.
+     * {@link Maker} objects.
      */
     @Override
     public void setPropertyDataSource(Property propertyDataSource) {
@@ -166,9 +168,9 @@ public class TechnicalUnitsCustomField extends CustomField {
         super.setPropertyDataSource(propertyDataSource);
 
         @SuppressWarnings("unchecked")
-        List<TechnicalUnit> technicalUnits = (List<TechnicalUnit>) propertyDataSource.getValue();
-        technicalUnitContainer.removeAllItems();
-        technicalUnitContainer.addAll(technicalUnits);
+        List<Maker> makers = (List<Maker>) propertyDataSource.getValue();
+        makerContainer.removeAllItems();
+        makerContainer.addAll(makers);
 
         logger.trace("Exiting setPropertyDataSource()");
     }
@@ -178,21 +180,21 @@ public class TechnicalUnitsCustomField extends CustomField {
      * {@link Form} is commited or when there is a need to read the value from
      * the field (user selected another item from the table).
      * <p>
-     * Method will return every {@link TechnicalUnit} from the container.
+     * Method will return every {@link Maker} from the container.
      */
     @Override
     public Object getValue() {
         logger.trace("Entering getValue()");
 
-        ArrayList<TechnicalUnit> technicalUnits = new ArrayList<TechnicalUnit>();
+        ArrayList<Maker> makers = new ArrayList<Maker>();
 
-        for (Object itemId : technicalUnitContainer.getItemIds()) {
-            technicalUnits.add(technicalUnitContainer.getItem(itemId).getBean());
+        for (Object itemId : makerContainer.getItemIds()) {
+            makers.add(makerContainer.getItem(itemId).getBean());
         }
 
         logger.trace("Exiting getValue()");
 
-        return technicalUnits;
+        return makers;
     }
     
     /**
@@ -200,9 +202,9 @@ public class TechnicalUnitsCustomField extends CustomField {
      * to discard the value from a field. For example, user clicked on
      * "Discard changes" button located in the form.
      * <p>
-     * This will simply overwrite the {@link TechnicalUnit} container with the
-     * original list of technical units available from the time when the form
-     * initially bound the <code>technicalUnits</code> property of
+     * This will simply overwrite the {@link Maker} container with the
+     * original list of makers available from the time when the form
+     * initially bound the <code>makers</code> property of
      * {@link RegistrationUnit} object.
      */
     @Override
@@ -215,9 +217,9 @@ public class TechnicalUnitsCustomField extends CustomField {
 
         if (propertyDataSource != null) {
             @SuppressWarnings("unchecked")
-            List<TechnicalUnit> technicalUnits = (List<TechnicalUnit>) propertyDataSource.getValue();
-            technicalUnitContainer.removeAllItems();
-            technicalUnitContainer.addAll(technicalUnits);
+            List<Maker> makers = (List<Maker>) propertyDataSource.getValue();
+            makerContainer.removeAllItems();
+            makerContainer.addAll(makers);
         }
 
         logger.trace("Exiting discard()");

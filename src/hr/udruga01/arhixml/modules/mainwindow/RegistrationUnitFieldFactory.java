@@ -45,6 +45,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     private LabelCustomField labelField;
     private ArchiveUnitCustomField archiveUnitField;
     private TechnicalUnitsCustomField technicalUnitField;
+    private MakersCustomField makerField;
 
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
@@ -102,13 +103,15 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
 
         materialField = new MaterialsCustomField("Graða");
         
-        mediumField = new MediumCustomField("Medij");
+        mediumField = new MediumCustomField("Mediji");
         
-        labelField = new LabelCustomField("Oznaka");
+        labelField = new LabelCustomField("Oznake");
         
         archiveUnitField = new ArchiveUnitCustomField("Arhivske Jedinice");
         
         technicalUnitField = new TechnicalUnitsCustomField("Tehnièke Jedinice");
+        
+        makerField = new MakersCustomField("Stvaratelji");
         
         logger.trace("Exiting RegistrationUnitFieldFactory()");
     }
@@ -172,6 +175,8 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
             formField = archiveUnitField;
         } else if ("technicalUnits".equals(beanProperty)) {
             formField = technicalUnitField;
+        } else if ("makers".equals(beanProperty)) {
+            formField = makerField;
         }
 
         logger.trace("Exiting createField()");

@@ -1,7 +1,7 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
-import hr.udruga01.arhixml.datamodel.AvailableTechnicalUnits;
-import hr.udruga01.arhixml.datamodel.TechnicalUnit;
+import hr.udruga01.arhixml.datamodel.AvailableMakers;
+import hr.udruga01.arhixml.datamodel.Maker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,20 +20,20 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.TableFieldFactory;
 import com.vaadin.ui.TextField;
 
-public class TechnicalUnitsTableFieldFactory implements TableFieldFactory {
+public class MakersTableFieldFactory implements TableFieldFactory {
     private static final long serialVersionUID = 1L;
     
-    private final Logger logger = LoggerFactory.getLogger(TechnicalUnitsTableFieldFactory.class.getName());
-    private BeanContainer<Integer, TechnicalUnit> technicalUnitContainer;
+    private final Logger logger = LoggerFactory.getLogger(MakersTableFieldFactory.class.getName());
+    private BeanContainer<Integer, Maker> makerContainer;
 
-    public TechnicalUnitsTableFieldFactory() {
-        logger.trace("Entering TechnicalUnitsTableFieldFactory()");
+    public MakersTableFieldFactory() {
+        logger.trace("Entering MakersTableFieldFactory()");
         
-        technicalUnitContainer = new BeanContainer<Integer, TechnicalUnit>(TechnicalUnit.class);
-        technicalUnitContainer.setBeanIdProperty("technicalUnitTypeId");
-        technicalUnitContainer.addAll(AvailableTechnicalUnits.getAvailableTechnicalUnits());
+        makerContainer = new BeanContainer<Integer, Maker>(Maker.class);
+        makerContainer.setBeanIdProperty("roleId");
+        makerContainer.addAll(AvailableMakers.getAvailableMakers());
         
-        logger.trace("Exiting TechnicalUnitsTableFieldFactory()");
+        logger.trace("Exiting MakersTableFieldFactory()");
     }
     
     /**
@@ -49,25 +49,18 @@ public class TechnicalUnitsTableFieldFactory implements TableFieldFactory {
 
         Field tableField = null;
         
-        if ("technicalUnitTypeId".equals(propertyId)) {
-            final ComboBox technicalUnitsList = new ComboBox();
-            technicalUnitsList.setItemCaptionMode(ComboBox.ITEM_CAPTION_MODE_PROPERTY);
-            technicalUnitsList.setItemCaptionPropertyId("label");
-            technicalUnitsList.setTextInputAllowed(false);
-            technicalUnitsList.setNullSelectionAllowed(false);
-            technicalUnitsList.setImmediate(true);
-            technicalUnitsList.setWidth("95%");
-            technicalUnitsList.setContainerDataSource(technicalUnitContainer);
-    
-            technicalUnitsList.setReadOnly(true);
-    
-            technicalUnitsList.addListener(new FocusListener() {
+        if ("makerId".equals(propertyId)) {
+            final TextField makerIdTextField = new TextField();
+            makerIdTextField.setWidth("100%");
+            makerIdTextField.setReadOnly(true);
+            makerIdTextField.setNullRepresentation("");
+            makerIdTextField.addListener(new FocusListener() {
                 private static final long serialVersionUID = 1L;
     
                 public void focus(FocusEvent event) {
                     logger.trace("Entering focus()");
     
-                    technicalUnitsList.setReadOnly(false);
+                    makerIdTextField.setReadOnly(false);
     
                     // FIXME Below is a rudimentary implementation of table row
                     // selection.
@@ -81,69 +74,38 @@ public class TechnicalUnitsTableFieldFactory implements TableFieldFactory {
                 }
             });
     
-            technicalUnitsList.addListener(new BlurListener() {
+            makerIdTextField.addListener(new BlurListener() {
                 private static final long serialVersionUID = 1L;
     
                 public void blur(BlurEvent event) {
                     logger.trace("Entering blur()");
     
-                    technicalUnitsList.setReadOnly(true);
-    
-                    logger.trace("Exiting blur()");
-                }
-            });
-    
-            tableField = technicalUnitsList;
-        } else if ("amount".equals(propertyId)) {
-            final TextField amountTextField = new TextField();
-            amountTextField.setWidth("100%");
-            amountTextField.setReadOnly(true);
-            amountTextField.setNullRepresentation("");
-            amountTextField.addListener(new FocusListener() {
-                private static final long serialVersionUID = 1L;
-    
-                public void focus(FocusEvent event) {
-                    logger.trace("Entering focus()");
-    
-                    amountTextField.setReadOnly(false);
-    
-                    // FIXME Below is a rudimentary implementation of table row
-                    // selection.
-                    // It doesn't support multi selection despite we set a
-                    // multiselection for a table. This should be fixed to have a
-                    // natural multiselection for a table.
-                    ((Table) uiContext).setValue(null);
-                    ((Table) uiContext).select(itemId);
-    
-                    logger.trace("Exiting focus()");
-                }
-            });
-    
-            amountTextField.addListener(new BlurListener() {
-                private static final long serialVersionUID = 1L;
-    
-                public void blur(BlurEvent event) {
-                    logger.trace("Entering blur()");
-    
-                    amountTextField.setReadOnly(true);
+                    makerIdTextField.setReadOnly(true);
     
                     logger.trace("Exiting blur()");
                 }
             });
             
-            tableField = amountTextField;
-        } else if ("characteristics".equals(propertyId)) {
-            final TextField characteristicsTextField = new TextField();
-            characteristicsTextField.setWidth("100%");
-            characteristicsTextField.setReadOnly(true);
-            characteristicsTextField.setNullRepresentation("");
-            characteristicsTextField.addListener(new FocusListener() {
+            tableField = makerIdTextField;
+        } else if ("roleId".equals(propertyId)) {
+            final ComboBox makersList = new ComboBox();
+            makersList.setItemCaptionMode(ComboBox.ITEM_CAPTION_MODE_PROPERTY);
+            makersList.setItemCaptionPropertyId("label");
+            makersList.setTextInputAllowed(false);
+            makersList.setNullSelectionAllowed(false);
+            makersList.setImmediate(true);
+            makersList.setWidth("95%");
+            makersList.setContainerDataSource(makerContainer);
+    
+            makersList.setReadOnly(true);
+    
+            makersList.addListener(new FocusListener() {
                 private static final long serialVersionUID = 1L;
     
                 public void focus(FocusEvent event) {
                     logger.trace("Entering focus()");
     
-                    characteristicsTextField.setReadOnly(false);
+                    makersList.setReadOnly(false);
     
                     // FIXME Below is a rudimentary implementation of table row
                     // selection.
@@ -157,19 +119,95 @@ public class TechnicalUnitsTableFieldFactory implements TableFieldFactory {
                 }
             });
     
-            characteristicsTextField.addListener(new BlurListener() {
+            makersList.addListener(new BlurListener() {
                 private static final long serialVersionUID = 1L;
     
                 public void blur(BlurEvent event) {
                     logger.trace("Entering blur()");
     
-                    characteristicsTextField.setReadOnly(true);
+                    makersList.setReadOnly(true);
+    
+                    logger.trace("Exiting blur()");
+                }
+            });
+    
+            tableField = makersList;
+        } else if ("period".equals(propertyId)) {
+            final TextField periodTextField = new TextField();
+            periodTextField.setWidth("100%");
+            periodTextField.setReadOnly(true);
+            periodTextField.setNullRepresentation("");
+            periodTextField.addListener(new FocusListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void focus(FocusEvent event) {
+                    logger.trace("Entering focus()");
+    
+                    periodTextField.setReadOnly(false);
+    
+                    // FIXME Below is a rudimentary implementation of table row
+                    // selection.
+                    // It doesn't support multi selection despite we set a
+                    // multiselection for a table. This should be fixed to have a
+                    // natural multiselection for a table.
+                    ((Table) uiContext).setValue(null);
+                    ((Table) uiContext).select(itemId);
+    
+                    logger.trace("Exiting focus()");
+                }
+            });
+    
+            periodTextField.addListener(new BlurListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void blur(BlurEvent event) {
+                    logger.trace("Entering blur()");
+    
+                    periodTextField.setReadOnly(true);
     
                     logger.trace("Exiting blur()");
                 }
             });
             
-            tableField = characteristicsTextField;
+            tableField = periodTextField;
+        } else if ("makerNote".equals(propertyId)) {
+            final TextField makerNoteTextField = new TextField();
+            makerNoteTextField.setWidth("100%");
+            makerNoteTextField.setReadOnly(true);
+            makerNoteTextField.setNullRepresentation("");
+            makerNoteTextField.addListener(new FocusListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void focus(FocusEvent event) {
+                    logger.trace("Entering focus()");
+    
+                    makerNoteTextField.setReadOnly(false);
+    
+                    // FIXME Below is a rudimentary implementation of table row
+                    // selection.
+                    // It doesn't support multi selection despite we set a
+                    // multiselection for a table. This should be fixed to have a
+                    // natural multiselection for a table.
+                    ((Table) uiContext).setValue(null);
+                    ((Table) uiContext).select(itemId);
+    
+                    logger.trace("Exiting focus()");
+                }
+            });
+    
+            makerNoteTextField.addListener(new BlurListener() {
+                private static final long serialVersionUID = 1L;
+    
+                public void blur(BlurEvent event) {
+                    logger.trace("Entering blur()");
+    
+                    makerNoteTextField.setReadOnly(true);
+    
+                    logger.trace("Exiting blur()");
+                }
+            });
+            
+            tableField = makerNoteTextField;
         }
         
         logger.trace("Exiting createField()");

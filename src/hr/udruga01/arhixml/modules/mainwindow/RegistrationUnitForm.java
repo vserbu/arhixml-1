@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.Form;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 
 public class RegistrationUnitForm extends Form {
@@ -14,6 +15,7 @@ public class RegistrationUnitForm extends Form {
 
     private VerticalLayout layout;
     private GridLayout headerLayout;
+    private HorizontalLayout makerLayout;
     private GridLayout idsLayout;
     private GridLayout notesLayout;
     private GridLayout dataLayout;
@@ -32,6 +34,10 @@ public class RegistrationUnitForm extends Form {
         headerLayout.setWidth("100%");
         headerLayout.setSpacing(true);
         layout.addComponent(headerLayout);
+        
+        makerLayout = new HorizontalLayout();
+        makerLayout.setWidth("100%");
+        layout.addComponent(makerLayout);
         
         idsLayout = new GridLayout(5, 1);
         idsLayout.setColumnExpandRatio(0, 0.2f);
@@ -76,6 +82,8 @@ public class RegistrationUnitForm extends Form {
             headerLayout.addComponent(field, 0, 0);
         } else if ("contents".equals(propertyId)) {
             headerLayout.addComponent(field, 1, 0);
+        } else if ("makers".equals(propertyId)) {
+            makerLayout.addComponent(field);
         } else if ("levelId".equals(propertyId)) {
             idsLayout.addComponent(field, 0, 0);
         } else if ("signature".equals(propertyId)) {
