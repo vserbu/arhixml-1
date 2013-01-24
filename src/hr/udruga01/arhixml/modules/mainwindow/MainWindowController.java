@@ -18,6 +18,7 @@ import com.vaadin.event.Action;
 import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
+import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
 import com.vaadin.ui.AbstractSplitPanel.SplitterClickListener;
 import com.vaadin.ui.Button.ClickEvent;
@@ -43,6 +44,10 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     public MainWindowController(MainWindow mainWindow) {
         logger.trace("Entering MainWindowController()");
         this.mainWindow = mainWindow;
+        
+        actionAdd.setIcon(new ThemeResource("icons/add.png"));
+        actionRemove.setIcon(new ThemeResource("icons/remove.png"));
+        
         logger.trace("Exiting MainWindowController()");
     }
 
