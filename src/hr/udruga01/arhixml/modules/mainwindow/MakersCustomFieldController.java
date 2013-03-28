@@ -1,14 +1,13 @@
 package hr.udruga01.arhixml.modules.mainwindow;
 
 import hr.udruga01.arhixml.datamodel.Maker;
-import hr.udruga01.arhixml.datamodel.TechnicalUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.event.Action;
-import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.Action.Handler;
+import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.terminal.ThemeResource;
 

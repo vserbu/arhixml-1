@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import com.vaadin.Application;
 import com.vaadin.ui.Window;
 
+/**
+ * Class handles services provided by the framework such as starting and stopping application.
+ */
 public class ArhiXMLApplication extends Application {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(ArhiXMLApplication.class.getName());
@@ -20,9 +23,12 @@ public class ArhiXMLApplication extends Application {
     @Override
     public void init() {
         logger.trace("Entering init()");
+        logger.debug("Initializing application");
+        logger.debug("Setting the application theme");
         setTheme("arhixml");
         Window mainWindow = new MainWindow("ArhiXML");
         setMainWindow(mainWindow);
+        logger.debug("Application sucesfully initialized");
         logger.trace("Exiting init()");
     }
 }

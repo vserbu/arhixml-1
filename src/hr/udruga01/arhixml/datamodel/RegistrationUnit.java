@@ -133,7 +133,7 @@ public class RegistrationUnit implements Serializable {
             labels = new ArrayList<Label>();
         }
 
-        return this.labels;
+        return labels;
     }
     
     public void setLabels(List<Label> labels) {
@@ -165,7 +165,7 @@ public class RegistrationUnit implements Serializable {
             makers = new ArrayList<Maker>();
         }
 
-        return this.makers;
+        return makers;
     }
     
     public void setMakers(List<Maker> makers) {
@@ -196,7 +196,7 @@ public class RegistrationUnit implements Serializable {
             materials = new ArrayList<Material>();
         }
 
-        return this.materials;
+        return materials;
     }
     
     public void setMaterials(List<Material> materials) {
@@ -227,7 +227,7 @@ public class RegistrationUnit implements Serializable {
             mediums = new ArrayList<Medium>();
         }
 
-        return this.mediums;
+        return mediums;
     }
     
     public void setMediums(List<Medium> mediums) {
@@ -259,7 +259,7 @@ public class RegistrationUnit implements Serializable {
             archiveUnits = new ArrayList<ArchiveUnit>();
         }
 
-        return this.archiveUnits;
+        return archiveUnits;
     }
     
     public void setArchiveUnits(List<ArchiveUnit> archiveUnits) {
@@ -291,7 +291,7 @@ public class RegistrationUnit implements Serializable {
             technicalUnits = new ArrayList<TechnicalUnit>();
         }
 
-        return this.technicalUnits;
+        return technicalUnits;
     }
     
     public void setTechnicalUnits(List<TechnicalUnit> technicalUnits) {
@@ -323,7 +323,7 @@ public class RegistrationUnit implements Serializable {
             registrationUnits = new ArrayList<RegistrationUnit>();
         }
 
-        return this.registrationUnits;
+        return registrationUnits;
     }
     
     public void setRegistrationUnits(List<RegistrationUnit> registrationUnits) {
@@ -438,7 +438,7 @@ public class RegistrationUnit implements Serializable {
         return parentRegistrationUnit;
     }
     
-    public void setParentRegistrationUnit(RegistrationUnit registrationUnit) {
-        parentRegistrationUnit = registrationUnit;
+    public void setParentRegistrationUnit(RegistrationUnit parentRegistrationUnit) {
+        this.parentRegistrationUnit = parentRegistrationUnit;
     }
 }
