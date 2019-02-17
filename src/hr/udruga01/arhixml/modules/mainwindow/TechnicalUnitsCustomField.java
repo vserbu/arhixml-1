@@ -51,9 +51,9 @@ public class TechnicalUnitsCustomField extends CustomField {
         technicalUnitsTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
         technicalUnitsTable.setContainerDataSource(technicalUnitContainer);
         technicalUnitsTable.setVisibleColumns(new Object[] { TECHNICAL_UNIT_TYPE_ID_PROPERTY, AMOUNT_PROPERTY, CHARACTERISTICS_PROPERTY });
-        technicalUnitsTable.setColumnHeader(TECHNICAL_UNIT_TYPE_ID_PROPERTY, "Vrsta TehniËke Jedinice");
-        technicalUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "KoliËina");
-        technicalUnitsTable.setColumnHeader(CHARACTERISTICS_PROPERTY, "Tvarne ZnaËajke");
+        technicalUnitsTable.setColumnHeader(TECHNICAL_UNIT_TYPE_ID_PROPERTY, "Vrsta Tehniƒçke Jedinice");
+        technicalUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Koliƒçina");
+        technicalUnitsTable.setColumnHeader(CHARACTERISTICS_PROPERTY, "Tvarne Znaƒçajke");
         technicalUnitsTable.addActionHandler(controller);
         technicalUnitsTable.addListener((ItemClickListener) controller);
         layout.addComponent(technicalUnitsTable);

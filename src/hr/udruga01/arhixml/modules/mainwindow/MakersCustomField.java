@@ -52,7 +52,7 @@ public class MakersCustomField extends CustomField {
         makersTable.setPageLength(NUMBER_OF_VISIBLE_ROWS);
         makersTable.setContainerDataSource(makerContainer);
         makersTable.setVisibleColumns(new Object[] { MAKER_ID_PROPERTY, ROLE_ID_PROPERTY, PERIOD_PROPERTY, MAKER_NOTE_PROPERTY });
-        makersTable.setColumnHeader(MAKER_ID_PROPERTY, "Šifra Stvaratelja");
+        makersTable.setColumnHeader(MAKER_ID_PROPERTY, "Å ifra Stvaratelja");
         makersTable.setColumnHeader(ROLE_ID_PROPERTY, "Uloge");
         makersTable.setColumnHeader(PERIOD_PROPERTY, "Razdoblje");
         makersTable.setColumnHeader(MAKER_NOTE_PROPERTY, "Napomena o Stvaratelju");

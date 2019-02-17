@@ -51,7 +51,7 @@ public class ArchiveUnitCustomField extends CustomField {
         archiveUnitsTable.setContainerDataSource(archiveUnitContainer);
         archiveUnitsTable.setVisibleColumns(new Object[] { MEASUREMENT_UNIT_ID_PROPERTY, AMOUNT_PROPERTY });
         archiveUnitsTable.setColumnHeader(MEASUREMENT_UNIT_ID_PROPERTY, "Mjerna Jedinica");
-        archiveUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "KoliËina");
+        archiveUnitsTable.setColumnHeader(AMOUNT_PROPERTY, "Koliƒçina");
         archiveUnitsTable.addActionHandler(controller);
         archiveUnitsTable.addListener((ItemClickListener) controller);
         layout.addComponent(archiveUnitsTable);

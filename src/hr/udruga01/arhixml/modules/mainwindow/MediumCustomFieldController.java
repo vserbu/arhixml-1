@@ -18,7 +18,7 @@ public class MediumCustomFieldController implements Handler, ItemClickListener {
     private MediumCustomField mediumsCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
     
     public MediumCustomFieldController(MediumCustomField mediumsCustomField) {
         logger.trace("Entering MediumCustomFieldController()");

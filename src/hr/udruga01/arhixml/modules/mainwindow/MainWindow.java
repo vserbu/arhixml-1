@@ -75,7 +75,7 @@ public class MainWindow extends Window {
         Upload loadFileButton = new Upload(null, controller);
         loadFileButton.addListener((SucceededListener) controller);
         loadFileButton.setImmediate(true);
-        loadFileButton.setButtonCaption("UËitaj datoteku");
+        loadFileButton.setButtonCaption("Uƒçitaj datoteku");
         buttonToolbar.addComponent(loadFileButton);
 
         Button saveFileButton = new Button("Skini datoteku");
@@ -139,13 +139,13 @@ public class MainWindow extends Window {
         formButtonsLayout.setSizeUndefined();
         formButtonsLayout.setSpacing(true);
 
-        Button updateDetailsButton = new Button("Aûuriraj");
+        Button updateDetailsButton = new Button("A≈æuriraj");
         updateDetailsButton.setData("updateDetailsButton");
         updateDetailsButton.addListener((ClickListener) controller);
         updateDetailsButton.setIcon(new ThemeResource("icons/save.png"));
         formButtonsLayout.addComponent(updateDetailsButton);
 
-        Button discardDetailsButton = new Button("Poniöti", registrationUnitDetails, "discard");
+        Button discardDetailsButton = new Button("PoniÔøΩti", registrationUnitDetails, "discard");
         discardDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
         formButtonsLayout.addComponent(discardDetailsButton);
 

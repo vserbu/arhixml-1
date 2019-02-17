@@ -39,7 +39,7 @@ public class AvailableLabels {
         
         Label LabelThree = ObjectFactory.createLabel();
         LabelThree.setRemainingLabelIdType(5);
-        LabelThree.setLabel("Izvorna uredska oznaka - Urudûbeni broj");
+        LabelThree.setLabel("Izvorna uredska oznaka - Urud≈æbeni broj");
         availableLabels.add(LabelThree);
         
         Label LabelFour = ObjectFactory.createLabel();

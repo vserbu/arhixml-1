@@ -18,7 +18,7 @@ public class MakersCustomFieldController implements Handler, ItemClickListener {
     private MakersCustomField makersCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
     
     public MakersCustomFieldController(MakersCustomField makersCustomField) {
         logger.trace("Entering MakersCustomFieldController()");

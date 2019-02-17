@@ -36,7 +36,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
     private final Logger logger = LoggerFactory.getLogger(MainWindowController.class.getName());
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
 
     private MainWindowModel model = new MainWindowModel();
     private MainWindow mainWindow;
@@ -80,7 +80,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
         if (arhinet == null) {
             logger.error("Validation of the uploaded XML file failed.");
-            mainWindow.showNotification("Validacija uËitane XML datoteke je neuspjeöna", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
+            mainWindow.showNotification("Validacija uƒçitane XML datoteke je neuspje≈°na", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
             logger.trace("Exiting uploadSucceeded()");
 
             return;
@@ -135,7 +135,7 @@ class MainWindowController implements Receiver, SucceededListener, ItemClickList
 
             if (file == null) {
                 logger.error("Can not generate XML file. Validation of user data failed.");
-                mainWindow.showNotification("NemoguÊe je generirati XML datoteku. Validacija korisniËkih podataka je neuspjela.", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
+                mainWindow.showNotification("Nemoguƒáe je generirati XML datoteku. Validacija korisniƒçkih podataka je neuspjela.", model.getValidationErrorDetails(), Notification.TYPE_ERROR_MESSAGE);
                 logger.trace("Exiting buttonClick()");
 
                 return;

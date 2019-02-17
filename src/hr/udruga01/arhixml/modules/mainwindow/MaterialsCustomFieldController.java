@@ -18,7 +18,7 @@ public class MaterialsCustomFieldController implements Handler, ItemClickListene
     private MaterialsCustomField materialsCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
 
     public MaterialsCustomFieldController(MaterialsCustomField materialsCustomField) {
         logger.trace("Entering MaterialsCustomFieldController()");

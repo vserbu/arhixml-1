@@ -50,23 +50,23 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
     public RegistrationUnitFieldFactory() {
         logger.trace("Entering RegistrationUnitFieldFactory()");
         
-        contentsField = new TextField("Sadrûaj");
+        contentsField = new TextField("Sadr≈æaj");
         contentsField.setWidth("100%");
         contentsField.setNullRepresentation("");
 
-        holderIdField = new TextField("äifra imatelja");
+        holderIdField = new TextField("≈†ifra imatelja");
         holderIdField.setImmediate(true);
         holderIdField.setWidth("100%");
-        holderIdField.setRequiredError("Molim unesite öifru imatelja");
+        holderIdField.setRequiredError("Molim unesite ≈°ifru imatelja");
         holderIdField.setNullRepresentation("");
-        holderIdValidator = new IntegerValidator("äifra imatelja mora biti brojËana vrijednost");
+        holderIdValidator = new IntegerValidator("≈†ifra imatelja mora biti brojƒçana vrijednost");
         
-        levelIdField = new TextField("äifra razine");
+        levelIdField = new TextField("≈†ifra razine");
         levelIdField.setWidth("100%");
         levelIdField.setRequired(true);
-        levelIdField.setRequiredError("Molim unesite öifru razine");
+        levelIdField.setRequiredError("Molim unesite ≈°ifru razine");
         levelIdField.setNullRepresentation("");
-        levelIdField.addValidator(new IntegerValidator("äifra razine mora biti brojËana vrijednost"));
+        levelIdField.addValidator(new IntegerValidator("≈†ifra razine mora biti brojÔøΩana vrijednost"));
 
         nameField = new TextField("Naziv");
         nameField.setWidth("100%");
@@ -81,9 +81,9 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         signatureField = new TextField("Signatura");
         signatureField.setWidth("100%");
         signatureField.setRequired(true);
-        signatureField.setRequiredError("Molim unesite öifru signature");
+        signatureField.setRequiredError("Molim unesite ≈°ifru signature");
         signatureField.setNullRepresentation("");
-        signatureField.addValidator(new IntegerValidator("Vrijednost signature mora biti brojËana vrijednost"));
+        signatureField.addValidator(new IntegerValidator("Vrijednost signature mora biti brojƒçana vrijednost"));
 
         timePeriodNoteField = new TextField("Napomena o razdoblju");
         timePeriodNoteField.setWidth("100%");
@@ -93,15 +93,15 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         yearFromField.setWidth("100%");
         yearFromField.setNullRepresentation("");
         yearFromField.setNullSettingAllowed(true);
-        yearFromField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojËana vrijednost"));
+        yearFromField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojƒçana vrijednost"));
 
         yearToField = new TextField("Godina do");
         yearToField.setWidth("100%");
         yearToField.setNullRepresentation("");
         yearToField.setNullSettingAllowed(true);
-        yearToField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojËana vrijednost"));
+        yearToField.addValidator(new IntegerValidator("Vrijednost godine mora biti brojƒçana vrijednost"));
 
-        materialField = new MaterialsCustomField("Graa");
+        materialField = new MaterialsCustomField("Graƒëa");
         
         mediumField = new MediumCustomField("Mediji");
         
@@ -109,7 +109,7 @@ class RegistrationUnitFieldFactory implements FormFieldFactory {
         
         archiveUnitField = new ArchiveUnitCustomField("Arhivske Jedinice");
         
-        technicalUnitField = new TechnicalUnitsCustomField("TehniËke Jedinice");
+        technicalUnitField = new TechnicalUnitsCustomField("Tehniƒçke Jedinice");
         
         makerField = new MakersCustomField("Stvaratelji");
         

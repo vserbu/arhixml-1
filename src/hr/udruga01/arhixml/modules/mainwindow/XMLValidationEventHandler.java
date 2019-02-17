@@ -28,7 +28,7 @@ public class XMLValidationEventHandler implements Serializable, ValidationEventH
         StringBuilder sb = new StringBuilder();
 
         sb.append("<br/>");
-        sb.append("Opis greöke: ");
+        sb.append("Opis gre≈°ke: ");
         sb.append("<i>");
         sb.append(errorMessage);
         sb.append("</i>");

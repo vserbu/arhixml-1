@@ -18,7 +18,7 @@ public class TechnicalUnitsCustomFieldController implements Handler, ItemClickLi
     private TechnicalUnitsCustomField technicalUnitsCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
     
     public TechnicalUnitsCustomFieldController(TechnicalUnitsCustomField technicalUnitsCustomField) {
         logger.trace("Entering TechnicalUnitsCustomFieldController()");

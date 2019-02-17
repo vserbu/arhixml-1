@@ -49,7 +49,7 @@ public class AvailableMaterials {
 
         Material materialFive = ObjectFactory.createMaterial();
         materialFive.setSubtypeId(5);
-        materialFive.setLabel("Crteû");
+        materialFive.setLabel("Crte≈æ");
         availableMaterials.add(materialFive);
 
         Material materialSix = ObjectFactory.createMaterial();
@@ -149,7 +149,7 @@ public class AvailableMaterials {
 
         Material materialTwentyFive = ObjectFactory.createMaterial();
         materialTwentyFive.setSubtypeId(25);
-        materialTwentyFive.setLabel("TehniËki nacrt");
+        materialTwentyFive.setLabel("Tehniƒçki nacrt");
         availableMaterials.add(materialTwentyFive);
 
         Material materialTwentySix = ObjectFactory.createMaterial();
@@ -159,7 +159,7 @@ public class AvailableMaterials {
 
         Material materialTwentySeven = ObjectFactory.createMaterial();
         materialTwentySeven.setSubtypeId(27);
-        materialTwentySeven.setLabel("Neodreeno");
+        materialTwentySeven.setLabel("Neodreƒëeno");
         availableMaterials.add(materialTwentySeven);
 
         Material materialTwentyEight = ObjectFactory.createMaterial();
@@ -189,7 +189,7 @@ public class AvailableMaterials {
 
         Material materialThirtyNine = ObjectFactory.createMaterial();
         materialThirtyNine.setSubtypeId(39);
-        materialThirtyNine.setLabel("GrafiËki prikaz");
+        materialThirtyNine.setLabel("Grafiƒçki prikaz");
         availableMaterials.add(materialThirtyNine);
 
         Material materialForty = ObjectFactory.createMaterial();
@@ -214,12 +214,12 @@ public class AvailableMaterials {
 
         Material materialFortyFour = ObjectFactory.createMaterial();
         materialFortyFour.setSubtypeId(44);
-        materialFortyFour.setLabel("Mreûni sustav");
+        materialFortyFour.setLabel("Mre≈æni sustav");
         availableMaterials.add(materialFortyFour);
 
         Material materialFortyFive = ObjectFactory.createMaterial();
         materialFortyFive.setSubtypeId(45);
-        materialFortyFive.setLabel("Mjeöano");
+        materialFortyFive.setLabel("Mje≈°ano");
         availableMaterials.add(materialFortyFive);
 
         Material materialFortySix = ObjectFactory.createMaterial();
@@ -234,7 +234,7 @@ public class AvailableMaterials {
 
         Material materialFortyEight = ObjectFactory.createMaterial();
         materialFortyEight.setSubtypeId(48);
-        materialFortyEight.setLabel("Poloûajni nacrt");
+        materialFortyEight.setLabel("Polo≈æajni nacrt");
         availableMaterials.add(materialFortyEight);
     }
 

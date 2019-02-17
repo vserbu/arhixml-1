@@ -44,7 +44,7 @@ public class AvailableMakers {
         
         Maker makerFour = ObjectFactory.createMaker();
         makerFour.setRoleId(4);
-        makerFour.setLabel("pošiljatelj");
+        makerFour.setLabel("poÅ¡iljatelj");
         availableMakers.add(makerFour);
         
         Maker makerFive = ObjectFactory.createMaker();
@@ -109,7 +109,7 @@ public class AvailableMakers {
         
         Maker makerSeventeen = ObjectFactory.createMaker();
         makerSeventeen.setRoleId(17);
-        makerSeventeen.setLabel("izvoğaè");
+        makerSeventeen.setLabel("izvoÄ‘aÄ");
         availableMakers.add(makerSeventeen);
         
         Maker makerEighteen = ObjectFactory.createMaker();
@@ -134,12 +134,12 @@ public class AvailableMakers {
         
         Maker makerTwentyTwo = ObjectFactory.createMaker();
         makerTwentyTwo.setRoleId(22);
-        makerTwentyTwo.setLabel("prerağivaè");
+        makerTwentyTwo.setLabel("preraÄ‘ivaÄ‡");
         availableMakers.add(makerTwentyTwo);
         
         Maker makerTwentyThree = ObjectFactory.createMaker();
         makerTwentyThree.setRoleId(23);
-        makerTwentyThree.setLabel("autor predloška");
+        makerTwentyThree.setLabel("autor predloÅ¡ka");
         availableMakers.add(makerTwentyThree);
         
         Maker makerTwentyFour = ObjectFactory.createMaker();
@@ -154,7 +154,7 @@ public class AvailableMakers {
         
         Maker makerTwentySix = ObjectFactory.createMaker();
         makerTwentySix.setRoleId(26);
-        makerTwentySix.setLabel("organizator izlobe");
+        makerTwentySix.setLabel("organizator izloÅ¾be");
         availableMakers.add(makerTwentySix);
         
         Maker makerTwentySeven = ObjectFactory.createMaker();
@@ -164,7 +164,7 @@ public class AvailableMakers {
         
         Maker makerTwentyEight = ObjectFactory.createMaker();
         makerTwentyEight.setRoleId(28);
-        makerTwentyEight.setLabel("filmski montaer");
+        makerTwentyEight.setLabel("filmski montaÅ¾er");
         availableMakers.add(makerTwentyEight);
         
         Maker makerTwentyNine = ObjectFactory.createMaker();
@@ -179,12 +179,12 @@ public class AvailableMakers {
         
         Maker makerThirtyOne = ObjectFactory.createMaker();
         makerThirtyOne.setRoleId(31);
-        makerThirtyOne.setLabel("pripovjedaè");
+        makerThirtyOne.setLabel("pripovjedaÄ");
         availableMakers.add(makerThirtyOne);
         
         Maker makerThirtyTwo = ObjectFactory.createMaker();
         makerThirtyTwo.setRoleId(32);
-        makerThirtyTwo.setLabel("zaèetnik");
+        makerThirtyTwo.setLabel("zaÄ‡etnik");
         availableMakers.add(makerThirtyTwo);
         
         Maker makerThirtyThree = ObjectFactory.createMaker();
@@ -219,7 +219,7 @@ public class AvailableMakers {
         
         Maker makerThirtyNine = ObjectFactory.createMaker();
         makerThirtyNine.setRoleId(39);
-        makerThirtyNine.setLabel("araner");
+        makerThirtyNine.setLabel("aranÅ¾er");
         availableMakers.add(makerThirtyNine);
         
         Maker makerFourty = ObjectFactory.createMaker();
@@ -229,7 +229,7 @@ public class AvailableMakers {
         
         Maker makerFourtyOne = ObjectFactory.createMaker();
         makerFourtyOne.setRoleId(41);
-        makerFourtyOne.setLabel("sakupljaè");
+        makerFourtyOne.setLabel("sakupljaï¿½");
         availableMakers.add(makerFourtyOne);
         
         Maker makerFourtyTwo = ObjectFactory.createMaker();

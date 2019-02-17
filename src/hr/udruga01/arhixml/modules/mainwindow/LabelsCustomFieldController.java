@@ -18,7 +18,7 @@ public class LabelsCustomFieldController implements Handler, ItemClickListener {
     private LabelCustomField labelsCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
     
     public LabelsCustomFieldController(LabelCustomField labelsCustomField) {
         logger.trace("Entering LabelsCustomFieldController()");

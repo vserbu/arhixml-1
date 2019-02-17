@@ -18,7 +18,7 @@ public class ArchiveUnitsCustomFieldController implements Handler, ItemClickList
     private ArchiveUnitCustomField archiveUnitsCustomField;
 
     private static Action actionAdd = new Action("Dodaj");
-    private static Action actionRemove = new Action("Obriöi");
+    private static Action actionRemove = new Action("Obri≈°i");
     
     public ArchiveUnitsCustomFieldController(ArchiveUnitCustomField archiveUnitsCustomField) {
         logger.trace("Entering ArchiveUnitsCustomFieldController()");

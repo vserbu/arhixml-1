@@ -89,7 +89,7 @@ public class AvailableMediums {
         
         Medium mediumThirteen = ObjectFactory.createMedium();
         mediumThirteen.setMediumTypeId(15);
-        mediumThirteen.setLabel("Gramofonska ploèa");
+        mediumThirteen.setLabel("Gramofonska ploÄa");
         availableMediums.add(mediumThirteen);
         
         Medium mediumFourteen = ObjectFactory.createMedium();

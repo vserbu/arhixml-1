@@ -34,7 +34,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitTwo = ObjectFactory.createTechnicalUnit();
         technicalUnitTwo.setTechnicalUnitTypeId(4);
-        technicalUnitTwo.setLabel("ambalažna kutija");
+        technicalUnitTwo.setLabel("ambalaÅ¾na kutija");
         availableTechnicalUnits.add(technicalUnitTwo);
         
         TechnicalUnit technicalUnitThree = ObjectFactory.createTechnicalUnit();
@@ -44,7 +44,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitFour = ObjectFactory.createTechnicalUnit();
         technicalUnitFour.setTechnicalUnitTypeId(10);
-        technicalUnitFour.setLabel("bilježnica");
+        technicalUnitFour.setLabel("biljeÅ¾nica");
         availableTechnicalUnits.add(technicalUnitFour);
         
         TechnicalUnit technicalUnitFive = ObjectFactory.createTechnicalUnit();
@@ -99,7 +99,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitFifteen = ObjectFactory.createTechnicalUnit();
         technicalUnitFifteen.setTechnicalUnitTypeId(39);
-        technicalUnitFifteen.setLabel("gramofonska ploèa");
+        technicalUnitFifteen.setLabel("gramofonska ploï¿½a");
         availableTechnicalUnits.add(technicalUnitFifteen);
         
         TechnicalUnit technicalUnitSixteen = ObjectFactory.createTechnicalUnit();
@@ -174,7 +174,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitThirty = ObjectFactory.createTechnicalUnit();
         technicalUnitThirty.setTechnicalUnitTypeId(108);
-        technicalUnitThirty.setLabel("svežanj");
+        technicalUnitThirty.setLabel("sveï¿½anj");
         availableTechnicalUnits.add(technicalUnitThirty);
         
         TechnicalUnit technicalUnitThirtyOne = ObjectFactory.createTechnicalUnit();
@@ -189,7 +189,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitThirtyThree = ObjectFactory.createTechnicalUnit();
         technicalUnitThirtyThree.setTechnicalUnitTypeId(122);
-        technicalUnitThirtyThree.setLabel("vreæica");
+        technicalUnitThirtyThree.setLabel("vreï¿½ica");
         availableTechnicalUnits.add(technicalUnitThirtyThree);
     }
 
