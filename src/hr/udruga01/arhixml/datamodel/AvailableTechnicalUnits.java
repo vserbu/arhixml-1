@@ -99,7 +99,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitFifteen = ObjectFactory.createTechnicalUnit();
         technicalUnitFifteen.setTechnicalUnitTypeId(39);
-        technicalUnitFifteen.setLabel("gramofonska plo�a");
+        technicalUnitFifteen.setLabel("gramofonska ploča");
         availableTechnicalUnits.add(technicalUnitFifteen);
         
         TechnicalUnit technicalUnitSixteen = ObjectFactory.createTechnicalUnit();
@@ -174,7 +174,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitThirty = ObjectFactory.createTechnicalUnit();
         technicalUnitThirty.setTechnicalUnitTypeId(108);
-        technicalUnitThirty.setLabel("sve�anj");
+        technicalUnitThirty.setLabel("svežanj");
         availableTechnicalUnits.add(technicalUnitThirty);
         
         TechnicalUnit technicalUnitThirtyOne = ObjectFactory.createTechnicalUnit();
@@ -189,7 +189,7 @@ public class AvailableTechnicalUnits {
         
         TechnicalUnit technicalUnitThirtyThree = ObjectFactory.createTechnicalUnit();
         technicalUnitThirtyThree.setTechnicalUnitTypeId(122);
-        technicalUnitThirtyThree.setLabel("vre�ica");
+        technicalUnitThirtyThree.setLabel("vrečica");
         availableTechnicalUnits.add(technicalUnitThirtyThree);
     }
 

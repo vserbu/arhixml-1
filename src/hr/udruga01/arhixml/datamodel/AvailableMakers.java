@@ -229,7 +229,7 @@ public class AvailableMakers {
         
         Maker makerFourtyOne = ObjectFactory.createMaker();
         makerFourtyOne.setRoleId(41);
-        makerFourtyOne.setLabel("sakuplja�");
+        makerFourtyOne.setLabel("sakupljač");
         availableMakers.add(makerFourtyOne);
         
         Maker makerFourtyTwo = ObjectFactory.createMaker();
