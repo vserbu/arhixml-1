@@ -1,8 +1,8 @@
 # ArhiXML
 
-ArhiXML is used to create and maintain the digital archive used by ARHiNET information system. A digital archive itself is a file which uses a XML format powered by the XML schema. It is a web application written in Java using [Vaadin](https://vaadin.com/) web framework.
+ArhiXML is used to create and maintain the digital archive used by ARHiNET information system. A digital archive itself is a file which uses an XML format powered by the XML schema. It is a web application written in Java using [Vaadin](https://vaadin.com/) web framework.
 
-The goal of this project was to try-out and learn Vaadin. The source code is not something that I am proud of nor it does contain any good design. UI is particulary not done well and has some non-critical bugs. But apparently, ArhiXML it is used in a production. Maybe one day, I will rewrite it into something more better.
+The goal of this project was to try-out and learn Vaadin. The source code is not something that I am proud of nor it does contain any good design. UI is particularly not done well and has some non-critical bugs. But apparently, ArhiXML it is used in production. Maybe one day, I will rewrite it into something more better.
 
 I strongly advise you to follow the [How To Run ArhiXML From Docker Image](#how-to-run-arhixml-from-docker-image) if you want to use ArhiXML on your own computer.
 
