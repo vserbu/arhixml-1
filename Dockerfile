@@ -4,8 +4,8 @@ FROM openjdk:8-jdk-alpine
 
 # Author and Docker Image information.
 LABEL maintainer="hrvoje.varga@gmail.com"
-LABEL build="docker build -t hvarga/arhixml-docker ."
-LABEL run="docker run --network host --rm --name arhixml-docker hvarga/arhixml-docker"
+LABEL build="docker build -t hvarga/arhixml ."
+LABEL run="docker run --network host --rm --name arhixml hvarga/arhixml"
 
 # Install Apache Ant.
 RUN apk add apache-ant
