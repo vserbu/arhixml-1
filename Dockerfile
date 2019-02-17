@@ -23,5 +23,5 @@ RUN ant
 FROM openjdk:8-jre-alpine
 
 WORKDIR /root/
-COPY --from=builder /root/source/dist/ArhiXML.war /root/
-CMD ["java", "-jar", "/root/ArhiXML.war"]
+COPY --from=builder /root/source/dist/ArhiXML.war .
+CMD ["java", "-jar", "ArhiXML.war"]
