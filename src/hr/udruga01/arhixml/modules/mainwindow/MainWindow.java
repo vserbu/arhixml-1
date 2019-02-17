@@ -145,7 +145,7 @@ public class MainWindow extends Window {
         updateDetailsButton.setIcon(new ThemeResource("icons/save.png"));
         formButtonsLayout.addComponent(updateDetailsButton);
 
-        Button discardDetailsButton = new Button("Poni�ti", registrationUnitDetails, "discard");
+        Button discardDetailsButton = new Button("Poništi", registrationUnitDetails, "discard");
         discardDetailsButton.setIcon(new ThemeResource("icons/cancel.png"));
         formButtonsLayout.addComponent(discardDetailsButton);
 
