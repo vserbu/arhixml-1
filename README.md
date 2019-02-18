@@ -23,7 +23,7 @@ docker pull hvarga/arhixml
 Finally, to run the ArhiXML, execute the following command also from your terminal:
 
 ```shell
-docker run --network host --rm hvarga/arhixml
+docker run -p 8080:8080 --rm hvarga/arhixml
 ```
 
 That's it! Your ArhiXML instance is ready to use. Just open up your web browser and type `http://localhost:8080/` into your address bar.
